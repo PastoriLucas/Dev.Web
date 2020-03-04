@@ -12,7 +12,7 @@ function btnRadio(){
     }
     else return false;
 }
-function Submit() {
+/*function Submit() {
     if (prnm.value !== NULL && nm.value !== NULL && mail.value !== NULL && mdp.value !== NULL) {
         var sql = "insert into users (firstname, lastname, mail, password, notifications, likes) " +
             "VALUES (" + prnm.value + nm.value + mail.value + mdp.value+ btnRadio()+ ")";
@@ -24,7 +24,7 @@ function Submit() {
     } else {
         alert('Veuillez Remplir les champs non complété !')
     }
-}
+}*/
 
 const pool = new pg.Pool({
     user: 'postgres',
@@ -42,18 +42,83 @@ let answer;
 
 app.get('/', (req, res) => {
     res.send(`
-    <form action="/connected" enctype="multipart/form-data" method="post">
-        <div>Prénom : <input type="text" id="firstname" name="firstname" required></div>
-        <div>Nom : <input type="text" id="lastname" name="lastname" required></div>
-        <div>Mail : <input type="email" id="mail" name="mail" required</div>
-        <div>Mot de passe : <input type="text" id="mdp" name="mdp" required</div>
-        <div>Voulez-vous recevoir des notifications ?
-            <input type="radio" id="yes" name="notif" value="yes" checked>
-            <label for="huey">Oui :</label>
-            <input type="radio" id="no" name="notif" value="no">
-            <label for="huey">Non :</label> </div>
-        <input class="submit" type="submit" id="submit" value="Upload">
-    </form>
+    <html>
+        <head>
+        </head>
+        <body>
+             <script type="text/javascript" >
+                function passwordCheck(form){
+                    if (form.firstname.value === "" || form.lastname.value === ""){
+                        alert("error : cannot let firstname or lastname blank");
+                        form.firstname.focus();
+                        return false;
+                    }
+                    let re= /^\\w+$/;
+                    if(!re.test(form.lastname.value) || !re.test(form.firstname.value)){
+                        alert("error : firstname and lastname must contain only letters");
+                        form.firstname.focus();
+                        return false;
+                    }
+                    if(form.pwd1.value !== "" && form.pwd1.value === form.pwd2.value) {
+                        if(form.pwd1.value.length < 8) {
+                            alert("Error: Password must contain at least eight characters!");
+                            form.pwd1.focus();
+                            return false;
+                        }
+                        if(form.pwd1.value === form.firstname.value || form.pwd1.value === form.lastname.value) {
+                            alert("Error: Password must be different from firstname or lastname!");
+                            form.pwd1.focus();
+                            return false;
+                        }
+                        let re = /[0-9]/;
+                        if(!re.test(form.pwd1.value)) {
+                            alert("Error: password must contain at least one number (0-9)!");
+                            form.pwd1.focus();
+                            return false;
+                        }
+                        re = /[a-z]/;
+                        if(!re.test(form.pwd1.value)) {
+                            alert("Error: password must contain at least one lowercase letter (a-z)!");
+                            form.pwd1.focus();
+                            return false;
+                        }
+                        re = /[A-Z]/;
+                        if(!re.test(form.pwd1.value)) {
+                            alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                            form.pwd1.focus();
+                            return false;
+                        }
+                    } 
+                     else {
+                        alert("Error: Please check that you've entered and confirmed your password!");
+                        form.pwd1.focus();
+                        return false;
+                     }
+                }
+                function shwPassword(){
+                    const password = document.getElementById('pwd1');
+                    if (password.type === 'password') {
+                        password.type = 'text';
+                    } else {
+                        password.type = 'password';
+                    }
+                }
+             </script>
+             <form action="/connected" enctype="multipart/form-data" method="post" name="register" >
+              <div>Prénom : <input type="text" id="firstname" name="firstname" required></div>
+              <div>Nom : <input type="text" id="lastname" name="lastname" required></div>
+              <div>Mail : <input type="email" id="mail" name="mail" required></div>
+              <div>Mot de passe : <input type="password" id="pwd1" name="pwd1" required > <label for="shwPwd"> Voir le mot de passe </label> <input type="checkbox" name="shwPwd" id="shwPwd" onchange="shwPassword()"></div>
+              <div>confirmer le mot de passe :  <input type="password" id="pwd2" name="pwd2" required> </div> 
+              <div>Voulez-vous recevoir des notifications ?
+                 <input type="radio" id="yes" name="notif" value="yes" checked>
+                 <label for="huey">Oui :</label>
+                 <input type="radio" id="no" name="notif" value="no">
+                 <label for="huey">Non :</label> </div>
+              <input class="submit" type="submit" id="submit" value="Upload" onmouseover="passwordCheck(register)">
+            </form>
+        </body>
+    </html>
   `);
 });
 
