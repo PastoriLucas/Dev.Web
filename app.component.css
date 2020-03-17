@@ -1,0 +1,61 @@
+/* Add a black background color to the top navigation */
+.topnav {
+  float: top;
+  background-color: white;
+  overflow: hidden;
+  margin-top: 0%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.topnav a:hover {
+  background-color: lightgray;
+  color: orange;
+  font-weight: bold;
+}
+
+.topnav a.active {
+  background-color: lightgray;
+  color: black;
+}
+
+.hrow {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.itemToolbar {
+  float: right;
+  color: darkgray;
+  padding: 14px 5%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#divSelectLanguage {
+  float: right;
+  margin-right: 2%;
+  background: lightgray;
+}
+.selectLanguage {
+  float : right;
+  color: black;
+  padding: 10px;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  border: solid orange 1px;
+}
+
+.selectLanguage:active {
+  border: solid orange 2px;
+}
+
+#logo {
+  font-size: 40px;
+  margin-bottom: -40px;
+  float: top;
+  margin-left: 20px;
+}
