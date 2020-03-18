@@ -1,0 +1,12 @@
+img {
+  margin: 10px;
+  background-color: white;
+  border: 5px solid black;
+}
+
+#paraIntro {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-style: italic;
+  text-align: center;
+}
