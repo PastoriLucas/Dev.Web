@@ -9,6 +9,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { ContactComponent } from './contact/contact.component';
 import { EventComponent } from './event/event.component';
 import { HomeComponent } from './home/home.component';
+import { RootComponent } from './root/root.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -16,10 +17,10 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
-  { path: '**',
+  /*{ path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
-  }
+  }*/
 ];
 
 @NgModule({
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     PresentationComponent,
     ContactComponent,
     EventComponent,
-    HomeComponent
+    HomeComponent,
+    RootComponent
   ],
   exports: [RouterModule],
   providers: [],

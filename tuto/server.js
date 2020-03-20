@@ -3,31 +3,109 @@ let bodyParser = require('body-parser');
 let pg = require('pg');
 let app = express();
 
-// Create application/x-www-form-urlencoded parser
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
-//accès aux fichiers statiques
-//app.use(express.static('public'));
 
 
 
-//connexion a la base de données
+/* *****************************************************************************************************
+*************************************** Fonctions liées au reste ***************************************
+ ******************************************************************************************************/
 
+
+
+let urlencodedParser = bodyParser.urlencoded({ extended: true});
+app.get('/db', function(req,res) {
+	let val = select('*', 'users');
+	res.send(val);
+});
+
+
+app.get('/',  function(req, res) {
+	res.sendFile('home.html', { root: __dirname });
+});
+
+app.post('/', urlencodedParser, (req, res) =>{
+	let response = null;
+	response = {
+		mail:req.body.mail,
+		password:req.body.mdp,
+	};
+	select('mail, password', 'users', 'mail LIKE \''+ response.mail +'%\'');
+	setTimeout(() =>{
+		if (sel.length > 0){
+			for (let i = 0; i < sel.length; i++) {
+				if (sel[i].password === response.password){
+					console.log('Password ok ', sel[i].password, response.password);
+					res.sendFile(__dirname+'/home.html');
+				}
+				else {
+					console.log('Password KO ', sel[i].password, response.password);
+					res.sendFile( __dirname+'/connect.html', '<script>alert(\'Mauvais mot de passe\')</script>' );
+				}
+			}
+		}
+		else {
+			res.sendFile(__dirname+'/inscription.html')
+		}
+	}, 500);
+});
+
+app.get('/inscription', (req, res) =>{
+	res.sendFile(__dirname + "/inscription.html");
+});
+
+app.post('/connect', urlencodedParser, (req, res)=>{
+	let response;
+	response = {
+		firstname:req.body.firstName,
+		lastname:req.body.lastName,
+		mail:req.body.mail,
+		password:req.body.mdp,
+		confirm:req.body.vmdp,
+		notifications:req.body.notif
+	};
+	let verif = check(response);
+	if (!verif){
+		//permetra d'envoyer un mail de confirmation
+		res.sendFile(__dirname+ '/connect.html');
+	}
+	else{
+		res.sendFile(__dirname+ '/connect.html');
+	}
+	sel = [];
+});
+
+let server = app.listen(3000, function () {
+	let host = server.address().address;
+	let port = server.address().port;
+
+	console.log("Example app listening at http://%s:%s", host, port)
+});
+
+
+
+
+/* *****************************************************************************************************
+********************************** Fonctions liées à la Base de Données ********************************
+ ******************************************************************************************************/
+
+
+
+
+let sel;
 let pool = new pg.Pool({
 	user: 'postgres',
 	host: '127.0.0.1',
-	database: 'postgres',
-	password: 'sql',
+	database: 'dbValouKervyn',
+	password: 'dbpassword$$$',
 	port: '5432'
 });
 pool.connect(function(err) {
 	if (err) throw err;
-	console.log("Connected!");
+	console.log("Database connected !");
 });
 
-let sel;
-
 //permet de selectionner des données d'une base de données en
-function select(columns, table, params) {
+/*function select(columns, table, params) {
 	let sql;
 	if (params !== null) {
 		sql = "SELECT " + columns + " FROM " + table + " WHERE " + params;
@@ -39,6 +117,14 @@ function select(columns, table, params) {
 		sel = res.rows;
 		return sel;
 	});
+}*/
+
+function select(columns, table) {
+	let sql = "SELECT " + columns + " FROM " + table;
+	pool.query(sql, (err, res) => {
+		sel = res.rows;
+	});
+	return sel;
 }
 
 //permet d'ajouter des utilisateurs dans la base de données
@@ -82,77 +168,9 @@ function check(user) {
 	sel = [];
 }
 
-app.get('/', (req, res) =>{
-	res.sendFile(__dirname + '/connect.html');
-});
-
-app.post('/', urlencodedParser, (req, res) =>{
-	let response = null;
-	response = {
-		mail:req.body.mail,
-		password:req.body.mdp,
-	};
-	select('mail, password', 'users', 'mail LIKE \''+ response.mail +'%\'');
-	setTimeout(() =>{
-		if (sel.length > 0){
-			for (let i = 0; i < sel.length; i++) {
-				if (sel[i].password === response.password){
-					console.log('Password ok ', sel[i].password, response.password);
-					res.sendFile(__dirname+'/home.html');
-				}
-				else {
-					console.log('Password KO ', sel[i].password, response.password);
-					res.sendFile( __dirname+'/connect.html', '<script>alert(\'Mauvais mot de passe\')</script>' );
-				}
-			}
-		}
-		else {
-			res.sendFile(__dirname+'/inscription.html')
-		}
-	}, 500);
-});
-
-app.get('/home.html', (req, res) =>{
-	res.send('Vous etes connecté');
-});
-
-app.post('/home.html', (req, res) =>{
-	res.send('Vous etes connecté');
-});
 
 
-app.get('/inscription.html', (req, res) =>{
-	res.sendFile(__dirname + "/inscription.html");
-});
 
-app.post('/connect.html', urlencodedParser, (req, res)=>{
-	let response;
-	response = {
-		firstname:req.body.firstName,
-		lastname:req.body.lastName,
-		mail:req.body.mail,
-		password:req.body.mdp,
-		confirm:req.body.vmdp,
-		notifications:req.body.notif
-	};
-	let verif = check(response);
-	if (!verif){
-		//permetra d'envoyer un mail de confirmation
-		res.sendFile(__dirname+ '/connect.html');
-	}
-	else{
-		res.sendFile(__dirname+ '/connect.html');
-	}
-	sel = [];
-});
-
-
-let server = app.listen(8081, function () {
-	let host = server.address().address;
-	let port = server.address().port;
-
-	console.log("Example app listening at http://%s:%s", host, port)
-});
 
 
 /*//verification du mot de passe
@@ -170,3 +188,4 @@ else {
 	break;
 }
 }*/
+
