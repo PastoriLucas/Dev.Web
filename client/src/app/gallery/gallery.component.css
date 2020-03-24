@@ -1,12 +1,48 @@
-img {
-  margin: 10px;
+/*img {
+  margin: 0.5%;
   background-color: white;
   border: 5px solid black;
-}
-
+}*/
 #paraIntro {
   margin-left: 5%;
   margin-right: 5%;
   font-style: italic;
   text-align: center;
+}
+
+.blocImages {
+  background-color: lightgray;
+  text-align: center;
+  margin: 0 5%;
+  padding: 10px;
+}
+.imgText {
+  border: 2px solid red;
+  background-color: lightblue;
+  width: 206px;
+  float: right;
+  position: relative;
+  margin-left: 10%;
+}
+
+.commentaireImg {
+  margin: 5px;
+}
+
+.imgs {
+  border: 3px solid black;
+  position: relative;
+  margin: 2% 6%;
+  width: 20%;
+}
+
+.parTrois {
+  margin: 0;
+}
+
+
+
+.horrow {
+  margin-left: 5%;
+  margin-right: 5%;
 }
