@@ -1,9 +1,14 @@
 /* Add a black background color to the top navigation */
+
+body {
+  background-color: #ededed;
+  margin: 0 -10px;
+}
+
 .topnav {
-  float: top;
   background-color: white;
   overflow: hidden;
-  margin-top: 0%;
+  margin-top: -10px;
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -22,6 +27,7 @@
 .hrow {
   margin-left: 5%;
   margin-right: 5%;
+  background-color: white;
 }
 
 .itemToolbar {
@@ -36,7 +42,7 @@
 #divSelectLanguage {
   float: right;
   margin-right: 2%;
-  background: lightgray;
+  background: #ededed;
 }
 .selectLanguage {
   float : right;
@@ -46,7 +52,6 @@
   text-align: center;
   font-size: 12px;
   text-decoration: none;
-  border: solid orange 1px;
 }
 
 .selectLanguage:active {

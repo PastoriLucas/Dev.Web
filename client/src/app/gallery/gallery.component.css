@@ -3,6 +3,11 @@
   background-color: white;
   border: 5px solid black;
 }*/
+
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+}
 #paraIntro {
   margin-left: 5%;
   margin-right: 5%;
@@ -11,29 +16,23 @@
 }
 
 .blocImages {
-  background-color: lightgray;
   text-align: center;
   margin: 0 5%;
   padding: 10px;
 }
-.imgText {
-  border: 2px solid red;
-  background-color: lightblue;
-  width: 206px;
-  float: right;
-  position: relative;
-  margin-left: 10%;
-}
 
-.commentaireImg {
-  margin: 5px;
+.imgs:hover {
+  opacity: 0.8;
 }
-
 .imgs {
   border: 3px solid black;
   position: relative;
-  margin: 2% 6%;
+  margin: 3% 6%;
   width: 20%;
+}
+
+.imgs:active {
+  border: 3px solid green;
 }
 
 .parTrois {
