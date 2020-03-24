@@ -1,5 +1,5 @@
 {
-  "name": "pg",
+  "name": "auth",
   "version": "1.0.0",
   "description": "",
   "main": "login.js",
