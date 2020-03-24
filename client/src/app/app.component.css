@@ -5,6 +5,19 @@ body {
   margin: 0 -10px;
 }
 
+#logoValouKervyn {
+  width: 20%;
+  float: left;
+  margin: 20px;
+}
+
+#toolbar {
+  width: 70%;
+  height: 30px;
+  margin: 7% 10% 5% 25%;
+  text-align: center;
+}
+
 .topnav {
   background-color: white;
   overflow: hidden;
@@ -14,15 +27,38 @@ body {
 }
 
 .topnav a:hover {
-  background-color: lightgray;
-  color: orange;
-  font-weight: bold;
+  background-color: #e4e4e4;
+
 }
 
 .topnav a.active {
   background-color: lightgray;
   color: black;
 }
+
+.selectLanguage {
+  float : right;
+  color: black;
+  padding: 10px;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 19px;
+  text-decoration: none;
+}
+#divSelectLanguage {
+  float: right;
+  margin-right: 2%;
+  background: #ededed;
+}
+
+#loginDiv {
+  float: right;
+  margin-right: 1%;
+  background: #ededed;
+  text-align: center;
+}
+
+#login
 
 .hrow {
   margin-left: 5%;
@@ -31,36 +67,17 @@ body {
 }
 
 .itemToolbar {
-  float: right;
-  color: darkgray;
-  padding: 14px 5%;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-#divSelectLanguage {
-  float: right;
-  margin-right: 2%;
-  background: #ededed;
-}
-.selectLanguage {
-  float : right;
   color: black;
-  padding: 10px;
-  margin-top: 0px;
+  background-color: #ededed;
+  position: relative;
+  padding: 1.5% 5%;
+  margin: 5% 1.5%;
   text-align: center;
-  font-size: 12px;
   text-decoration: none;
+  font-size: 150%;
 }
 
 .selectLanguage:active {
   border: solid orange 2px;
 }
 
-#logo {
-  font-size: 40px;
-  margin-bottom: -40px;
-  float: top;
-  margin-left: 20px;
-}

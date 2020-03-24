@@ -13,6 +13,7 @@
   margin-right: 5%;
   font-style: italic;
   text-align: center;
+  font-size: 23px;
 }
 
 .blocImages {
@@ -34,12 +35,6 @@
 .imgs:active {
   border: 3px solid green;
 }
-
-.parTrois {
-  margin: 0;
-}
-
-
 
 .horrow {
   margin-left: 5%;
