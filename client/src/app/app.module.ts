@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'event/1', component: EventComponent}
   /*{ path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

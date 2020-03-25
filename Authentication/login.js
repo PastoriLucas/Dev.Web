@@ -79,6 +79,73 @@ app.post('/welcome',urlencodedParser, async (req, res) => {
 	}
 });
 
+//Récupère la liste des users dans la base de données
+app.get("/users",async function(req,res){
+	var query = "SELECT * FROM users";
+	await pool.query(query, (err,rows) => {
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing Mpg query"});
+		}
+		res.json({"Error" : false, "Message" : "Success", "Users" : rows.rows});
+	});
+});
+
+//Récupère l'utilisateur voulu dans la base de données
+app.get("/users/:user_id",async function(req,res){
+	var query = 'SELECT * FROM users WHERE "userId"=\''+ req.params.user_id + '\'';
+	await pool.query(query, (err,rows) => {
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing pg query"});
+		}
+		res.json({"Error" : false, "Message" : "Success", "Users" : rows.rows});
+	});
+});
+
+//Récupère la liste des images dans la base de données
+app.get("/img",async function(req,res){
+	var query = "SELECT * FROM paintings";
+	await pool.query(query, (err,rows) => {
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing Mpg query"});
+		}
+		res.json({"Error" : false, "Message" : "Success", "Users" : rows.rows});
+	});
+});
+
+//Récupère l'image voulue dans la base de données.
+app.get("/img/:img_id",async function(req,res){
+	var query = 'SELECT * FROM paintings WHERE "paintingId"=\''+ req.params.img_id + '\'';
+	await pool.query(query, (err,rows) => {
+		console.log(rows,err);
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing pg query"});
+		}
+		res.sendFile(__dirname + "/img/" + req.params.img_id + ".png");
+	});
+});
+
+//Récupère les commentaires de la base de données
+app.get("/comments",async function(req,res){
+	var query = "SELECT * FROM comments";
+	await pool.query(query, (err,rows) => {
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing Mpg query"});
+		}
+		res.json({"Error" : false, "Message" : "Success", "Users" : rows.rows});
+	});
+});
+
+//Récupère la liste des évènements
+app.get("/events",async function(req,res){
+	var query = "SELECT * FROM events";
+	await pool.query(query, (err,rows) => {
+		if(err) {
+			return res.json({"Error" : true, "Message" : "Error executing Mpg query"});
+		}
+		res.json({"Error" : false, "Message" : "Success", "Users" : rows.rows});
+	});
+});
+
 // vérifie le login :
 	// Si il y a une valeur de reponse a la requete envoyée précedement
 		// si le mot de passe du formulaire et celui de la valeur trouvée dans la base de données sont identiques : renvoie TRUE
