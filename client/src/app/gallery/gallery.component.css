@@ -1,12 +1,42 @@
-img {
-  margin: 10px;
+/*img {
+  margin: 0.5%;
   background-color: white;
   border: 5px solid black;
-}
+}*/
 
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+}
 #paraIntro {
   margin-left: 5%;
   margin-right: 5%;
   font-style: italic;
   text-align: center;
+  font-size: 23px;
+}
+
+.blocImages {
+  text-align: center;
+  margin: 0 5%;
+  padding: 10px;
+}
+
+.imgs:hover {
+  opacity: 0.8;
+}
+.imgs {
+  border: 3px solid black;
+  position: relative;
+  margin: 3% 6%;
+  width: 20%;
+}
+
+.imgs:active {
+  border: 3px solid green;
+}
+
+.horrow {
+  margin-left: 5%;
+  margin-right: 5%;
 }

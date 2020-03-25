@@ -1,28 +1,29 @@
+<body>
 <div class="topnav">
   <div id="divSelectLanguage">
   <a class="selectLanguage" href="">NL</a>
   <a class="selectLanguage" href="">EN</a>
   <a class="selectLanguage" href="">FR</a>
   </div>
-  <img src="../assets/img/logoV2.jpg" alt="Valou Kervyn" height="147.5" width="337.5">
-  <div id="connect">
-    <a href="">Login</a>
+  <div id="loginDiv">
+    <a id="login" href="">Login</a>
   </div>
+  <!--<div id="registerDiv">
+    <a id="register" href="">Register</a>
+  </div>-->
+  <a href="home"><img id="logoValouKervyn" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
   <div id="toolbar">
-  <a class="itemToolbar" href="event">Event</a>
-  <a class="itemToolbar" href="contact">Contact</a>
-  <a class="itemToolbar" href="presentation">Presentation</a>
-  <a class="itemToolbar" href="gallery">Gallery</a>
-  <a class="itemToolbar" href="home">Home</a>
-</div>
-
+    <a class="itemToolbar" href="home">Home</a>
+    <a class="itemToolbar" href="gallery">Gallery</a>
+    <a class="itemToolbar" href="presentation">Presentation</a>
+    <a class="itemToolbar" href="contact">Contact</a>
+    <a class="itemToolbar" href="event">Event</a>
+  </div>
 </div>
 <br>
-<hr class="hrow">
-<!--<h1>Welcome in the site :  {{ title }}</h1>-->
+  <!-- azd aze-->
 <router-outlet></router-outlet>
-<hr class="hrow">
-
+</body>
 
 
 

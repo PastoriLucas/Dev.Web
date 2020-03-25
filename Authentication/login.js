@@ -10,8 +10,8 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false });
 let pool = new pg.Pool({
 	user: 'postgres',
 	host: '127.0.0.1',
-	database: 'postgres',
-	password: 'sql',
+	database: 'dbValouKervyn',
+	password: 'dbpassword$$$',
 	port: '5432'
 });
 pool.connect(function (err) {
@@ -24,6 +24,24 @@ pool.connect(function (err) {
 //accueil
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/home.html');
+});
+
+app.get('/image', (req,res) => {
+    res.sendFile(__dirname + '/img/1.jpg');
+});
+app.get('/essaiApi', (req, res) => {
+	res.send('{\n' +
+		'   "username" : "my_username",\n' +
+		'   "password" : "my_password",\n' +
+		'   "validation-factors" : {\n' +
+		'      "validationFactors" : [\n' +
+		'         {\n' +
+		'            "name" : "remote_address",\n' +
+		'            "value" : "127.0.0.1"\n' +
+		'         }\n' +
+		'      ]\n' +
+		'   }\n' +
+		'}')
 });
 
 //          inscription
@@ -175,3 +193,4 @@ function inscript(values){
 
 //ecoute sur le port 8888
 app.listen(8888);
+module.exports = app;
