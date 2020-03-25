@@ -28,7 +28,7 @@ body {
 
 .topnav a:hover {
   background-color: #e4e4e4;
-
+  border-bottom: solid 3px black;
 }
 
 .topnav a.active {
@@ -53,12 +53,25 @@ body {
 
 #loginDiv {
   float: right;
-  margin-right: 1%;
+  margin-right: 3%;
   background: #ededed;
   text-align: center;
+  margin-top: 10px;
 }
 
-#login
+#login {
+  background-color: #ededed;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  padding: 10px;
+
+}
+
+#login:hover {
+  background-color: #e4e4e4;
+}
 
 .hrow {
   margin-left: 5%;
@@ -75,9 +88,5 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: 150%;
-}
-
-.selectLanguage:active {
-  border: solid orange 2px;
 }
 
