@@ -6,12 +6,19 @@ const app = express();
 // Create application/x-www-form-urlencoded parser
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+app.all("/*", function(req, res, next){
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+	next();
+});
+
 //connection avec la db
 let pool = new pg.Pool({
 	user: 'postgres',
 	host: '127.0.0.1',
-	database: 'dbValouKervyn',
-	password: 'dbpassword$$$',
+	database: 'postgres',
+	password: 'N@tDeb22',
 	port: '5432'
 });
 pool.connect(function (err) {
@@ -190,6 +197,15 @@ function inscript(values){
 		return !(err);
 	});
 }
+
+app.post('/evenement',urlencodedParser, async (req, res) => {
+	// recupere les valeurs du formulaire
+	let sql = 'SELECT "eventId" , name, to_char("dateBegin", \'DD MM YYYY\') as "dateBegin", to_char("dateEnd", \'DD MM YYYY\') as "dateEnd", place, description, image from events'
+	await pool.query(sql, (err, rows) => {
+		return res.json(rows.rows);
+	});
+});
+
 
 //ecoute sur le port 8888
 app.listen(8888);
