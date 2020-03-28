@@ -1,22 +1,42 @@
+.pageEvent {
+  margin: 0 5%;
+  background-color: white;
+  padding: 1%;
+}
+
+.order{
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 1%;
+}
+.order a{
+  border: 0;
+  background-color: #e4e4e4;
+  margin: 1% 5%;
+  font-size: 20px;
+  padding: 0 5%;
+  position: center;
+  float: contour;
+}
+.order a:hover{
+  border-bottom: 3px black solid;
+  background-color: #ededed;
+}
+
+
 .event{
-  display: block;
   position: center;
   height: 150px;
-  width: content-box;
-  background-color: lightgray;
+  background-color: #ededed;
   border-radius: 5px;
-  margin-bottom: 8px;
   font-family: sans-serif;
+  margin: 0 10px 10px 10px;
 }
 img{
   float: left;
   margin-right: 10px;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   height: inherit;
-}
-a{
-  margin-top: -10px;
-  float: right;
 }
 
 h1{
@@ -32,5 +52,5 @@ iframe{
 
 
 .event:hover{
-  background-color: #d3d3d3a0;
+  background-color: #e4e4e4;
 }

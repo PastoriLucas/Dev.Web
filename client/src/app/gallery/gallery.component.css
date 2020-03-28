@@ -26,14 +26,9 @@
   opacity: 0.8;
 }
 .imgs {
-  border: 3px solid black;
   position: relative;
   margin: 3% 6%;
   width: 20%;
-}
-
-.imgs:active {
-  border: 3px solid green;
 }
 
 .horrow {

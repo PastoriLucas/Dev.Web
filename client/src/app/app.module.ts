@@ -10,6 +10,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { PresentationComponent } from './presentation/presentation.component';
 import { ContactComponent } from './contact/contact.component';
 import { EventComponent } from './event/event.component';
+import { EventidComponent } from './eventid/eventid.component';
 import { HomeComponent } from './home/home.component';
 import { RootComponent } from './root/root.component';
 
@@ -19,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'event/1', component: EventComponent}
+  { path: 'event/:id', component: EventidComponent}
   /*{ path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
