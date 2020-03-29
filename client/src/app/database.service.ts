@@ -4,8 +4,9 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class DatabaseService {
-  constructor(private httpClient: HttpClient) { }
-  public get(url: string): Observable<any> {
-    return this.httpClient.get(url);
+  databaseUrl = 'gallery/';
+  constructor(private http: HttpClient) { }
+  getDatabase(id) {
+    return this.http.get(this.databaseUrl + id);
   }
 }

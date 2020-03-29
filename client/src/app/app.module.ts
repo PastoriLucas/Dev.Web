@@ -13,9 +13,11 @@ import { EventComponent } from './event/event.component';
 import { EventidComponent } from './eventid/eventid.component';
 import { HomeComponent } from './home/home.component';
 import { RootComponent } from './root/root.component';
+import { GalleryDetailComponent } from './gallery-detail/gallery-detail.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
+  { path: 'gallery/:id', component: GalleryDetailComponent },
   { path: 'presentation', component: PresentationComponent },
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     ContactComponent,
     EventComponent,
     HomeComponent,
-    RootComponent
+    RootComponent,
+    GalleryDetailComponent
   ],
   exports: [RouterModule],
   providers: [],

@@ -8,13 +8,6 @@
   margin: 0 5%;
   background-color: white;
 }
-#paraIntro {
-  margin-left: 5%;
-  margin-right: 5%;
-  font-style: italic;
-  text-align: center;
-  font-size: 23px;
-}
 
 .blocImages {
   text-align: center;
@@ -27,7 +20,7 @@
 }
 .imgs {
   position: relative;
-  margin: 3% 6%;
+  margin: 3% 2%;
   width: 20%;
 }
 
