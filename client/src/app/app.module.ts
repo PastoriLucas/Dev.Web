@@ -14,6 +14,7 @@ import { EventidComponent } from './eventid/eventid.component';
 import { HomeComponent } from './home/home.component';
 import { RootComponent } from './root/root.component';
 import { GalleryDetailComponent } from './gallery-detail/gallery-detail.component';
+import { adminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'event/:id', component: EventidComponent}
+  { path: 'event/:id', component: EventidComponent},
+  { path: 'admin', component: adminComponent}
   /*{ path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
