@@ -206,6 +206,13 @@ app.post('/evenement',urlencodedParser, async (req, res) => {
 	});
 });
 
+app.post('/galerie',urlencodedParser, async (req, res) => {
+	// recupere les valeurs du formulaire
+	let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image FROM paintings;';
+	await pool.query(sql, (err, rows) => {
+		return res.json(rows.rows);
+	});
+});
 
 //ecoute sur le port 8888
 app.listen(8888);
