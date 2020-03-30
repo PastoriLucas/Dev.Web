@@ -9,7 +9,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 export class GalleryComponent implements OnInit {
 
-  public image = [];
+  public transition;
 
   constructor(private http: HttpClient) {
   }
@@ -22,16 +22,7 @@ export class GalleryComponent implements OnInit {
       headers
     })
       .subscribe(result => {
-        // @ts-ignore
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < result.length; i++) {
-            this.image[i] = result[i].image;
-        }
-        const img = document.getElementsByClassName('imgs');
-        for (let r = this.image.length; r < img.length; r++ ) {
-          // @ts-ignore
-          img[r].style = 'display: none';
-        }
+        this.transition = result;
       });
   }
 }

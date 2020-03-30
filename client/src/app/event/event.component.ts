@@ -7,7 +7,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  event: any;
+
+  public transition;
 
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
@@ -18,13 +19,8 @@ export class EventComponent implements OnInit {
       headers
     })
       .subscribe(result => {
-        this.event = result;
-        console.log(this.event);
-        const event = document.getElementsByClassName('event');
-        for (let r = this.event.length; r < event.length; r++ ) {
-          // @ts-ignore
-          event[r].style = 'display: none';
-        }
+        this.transition = result;
+        console.log(this.transition);
     });
   }
 }
