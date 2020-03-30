@@ -1,27 +1,19 @@
-/*img {
-  margin: 0.5%;
-  background-color: white;
-  border: 5px solid black;
-}*/
-
 .pageWeb {
   margin: 0 5%;
   background-color: white;
 }
 
 .blocImages {
+  width: 100%;
   text-align: center;
-  margin: 0 5%;
-  padding: 10px;
 }
 
 .imgs:hover {
   opacity: 0.8;
 }
 .imgs {
-  position: relative;
-  margin: 3% 2%;
   width: 20%;
+  margin: 3% 2%;
 }
 
 .horrow {

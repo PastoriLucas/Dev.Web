@@ -12,10 +12,51 @@ body {
 }
 
 #toolbar {
-  width: 70%;
-  height: 30px;
-  margin: 7% 10% 5% 25%;
-  text-align: center;
+  position: relative;
+  width: 75%;
+  height: 40%;
+  /*margin: 7% 10% 5% 25%;*/
+  margin-top: 7%;
+  margin-right: 0%;
+  margin-left: 25%;
+  background-color: lightblue;
+}
+
+#hoverHome {
+  position: absolute;
+  margin-left: 0;
+}
+
+#hoverGallery {
+  position: absolute;
+  margin-left: 18%;
+}
+
+#hoverPresentation {
+  position: absolute;
+  margin-left: 37%;
+}
+
+#hoverEvent {
+  position: absolute;
+  margin-left: 62.5%;
+}
+
+#hoverContact {
+  position: absolute;
+  margin-left: 80%;
+}
+
+
+.itemToolbar {
+  color: black;
+  background-color: #ededed;
+  position: relative;
+  padding: 13px 40px;
+  margin: 5% 1.5%;
+  text-align: left;
+  text-decoration: none;
+  font-size: 120%;
 }
 
 .topnav {
@@ -78,13 +119,3 @@ body {
   background-color: white;
 }
 
-.itemToolbar {
-  color: black;
-  background-color: #ededed;
-  position: relative;
-  padding: 1.5% 5%;
-  margin: 5% 1.5%;
-  text-align: center;
-  text-decoration: none;
-  font-size: 150%;
-}
