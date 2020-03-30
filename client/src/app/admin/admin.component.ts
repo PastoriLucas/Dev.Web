@@ -11,5 +11,8 @@ export class adminComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  send(values) {
+    console.log(values);
+    alert(values);
+  }
 }

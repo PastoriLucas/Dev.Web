@@ -1,23 +1,75 @@
 <div class="pageEvent">
-  <!--<div class="order">
-    <a id="En cours">En cours</a>
-    <a id="A suivre">A suivre</a>
-    <a id="Passé">Passé</a>
-  </div>-->
-  <div class="event" id='1' onclick="window.location='/event/'+ this.id">
-  <img src="../../assets/img/1.jpg" alt="Event">
-  <h1>Vernissage Sablon d'Art</h1>
-  <div class="moment">
-    <p>7 fevrier 2019</p>
+
+  <div class="event" id='{{this.event[0].eventId}}' [routerLink]="'/event/'+this.event[0].eventId" >
+    <img src="../../assets/{{this.event[0].image}}" alt="Event">
+    <h1>{{this.event[0].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[0].dateBegin}} - {{this.event[0].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[0].place}}</p>
   </div>
-  <p class="location">Sablon</p>
-</div>
-<div class="event">
-  <img src="../../assets/img/2.jpg" alt="Event">
-  <h1>Vernissage Sablon d'Art</h1>
-  <div class="moment">
-    <p>7 fevrier 2019</p>
+
+  <div class="event" id='{{this.event[1].eventId}}' [routerLink]="'/event/'+this.event[1].eventId" >
+    <img src="../../assets/{{this.event[1].image}}" alt="Event">
+    <h1>{{this.event[1].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[1].dateBegin}} - {{this.event[1].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[1].place}}</p>
   </div>
-  <p class="location">Sablon</p>
-</div>
+
+  <div class="event" id='{{this.event[2].eventId}}' [routerLink]="'/event/'+this.event[2].eventId" >
+    <img src="../../assets/{{this.event[2].image}}" alt="Event">
+    <h1>{{this.event[2].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[2].dateBegin}} - {{this.event[2].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[2].place}}</p>
+  </div>
+
+  <div class="event" id='{{this.event[3].eventId}}' [routerLink]="'/event/'+this.event[3].eventId" >
+    <img src="../../assets/{{this.event[3].image}}" alt="Event">
+    <h1>{{this.event[3].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[3].dateBegin}} - {{this.event[3].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[3].place}}</p>
+  </div>
+
+  <div class="event" id='{{this.event[4].eventId}}' [routerLink]="'/event/'+this.event[4].eventId" >
+    <img src="../../assets/{{this.event[4].image}}" alt="Event">
+    <h1>{{this.event[4].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[4].dateBegin}} - {{this.event[4].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[4].place}}</p>
+  </div>
+
+  <div class="event" id='{{this.event[5].eventId}}' [routerLink]="'/event/'+this.event[5].eventId" >
+    <img src="../../assets/{{this.event[5].image}}" alt="Event">
+    <h1>{{this.event[5].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[5].dateBegin}} - {{this.event[5].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[5].place}}</p>
+  </div>
+
+  <div class="event" id='{{this.event[6].eventId}}' [routerLink]="'/event/'+this.event[6].eventId" >
+    <img src="../../assets/{{this.event[6].image}}" alt="Event">
+    <h1>{{this.event[6].name}}</h1>
+    <div class="moment">
+     <p>{{this.event[6].dateBegin}} - {{this.event[6].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[6].place}}</p>
+  </div>
+
+  <div class="event" id='{{this.event[7].eventId}}' [routerLink]="'/event/'+this.event[7].eventId" >
+    <img src="../../assets/{{this.event[7].image}}" alt="Event">
+    <h1>{{this.event[7].name}}</h1>
+    <div class="moment">
+      <p>{{this.event[7].dateBegin}} - {{this.event[7].dateEnd}}</p>
+    </div>
+    <p class="location">{{this.event[7].place}}</p>
+  </div>
+
 </div>

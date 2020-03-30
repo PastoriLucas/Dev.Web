@@ -28,13 +28,11 @@ export class GalleryComponent implements OnInit {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < result.length; i++) {
-          console.log(result[i].image);
           if ( i === 0) {
             this.image[0] = result[0].image;
           } else {
-            this.image[i] += result[i].image;
+            this.image[i] = result[i].image;
           }
-          console.log(this.image);
         }
         const img = document.getElementsByClassName('imgs');
         for (let r = this.image.length; r < img.length; r++ ) {
