@@ -1,0 +1,13 @@
+<div class="pageWeb">
+  <br>
+  <a href="/contact"><p>Déjà un compte ? Cliquez ici pour vous connecter</p></a>
+  <h1>Connectez-vous à votre compte</h1>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    Nom : <br>
+    <input type="text" required placeholder="Nom" id="name" formControlName="name"><br>
+    Mot de passe : <br>
+    <input type="password" required id="password" formControlName="password"><br>
+    <input type="submit" class="submit">
+  </form>
+  <br>
+</div>

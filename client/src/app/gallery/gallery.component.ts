@@ -24,6 +24,6 @@ export class GalleryComponent implements OnInit {
       .subscribe(result => {
         console.log(result);
         this.transition = result;
-      });
+    });
   }
 }
