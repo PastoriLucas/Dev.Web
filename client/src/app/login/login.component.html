@@ -3,10 +3,10 @@
   <a href="/contact"><p>Déjà un compte ? Cliquez ici pour vous connecter</p></a>
   <h1>Connectez-vous à votre compte</h1>
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
-    Nom : <br>
-    <input type="text" required placeholder="Nom" id="name" formControlName="name"><br>
+    E-mail : <br>
+    <input type="text" required placeholder="example@gmail.com" id="email" formControlName="email"><br>
     Mot de passe : <br>
-    <input type="password" required id="password" formControlName="password"><br>
+    <input type="password" required id="password" placeholder="password123" formControlName="password"><br>
     <input type="submit" class="submit">
   </form>
   <br>

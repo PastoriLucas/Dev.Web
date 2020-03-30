@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public http: HttpClient, private formBuilder: FormBuilder) {
     this.checkoutForm = this.formBuilder.group({
-      name: '',
+      email: '',
       password: ''
     });
   }
@@ -22,16 +22,15 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(res) {
     console.log(res);
-    /*const headers = new HttpHeaders()
+    const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/galerie`, '', {
+    this.http.post(`http://127.0.0.1:8888/welcome`, {email: res[0], password: res[1]}, {
       headers
     })
       .subscribe(result => {
         console.log(result);
-        this.transition = result;
-      });*/
+      });
   }
 
 }

@@ -82,27 +82,12 @@ app.post('/inscription',urlencodedParser, (req, res) => {
 app.get('/connect', (req, res) => {
 	res.sendFile(__dirname + '/connect.html');
 });
-// vérifie la connection
-app.post('/welcome',urlencodedParser, async (req, res) => {
-	// recupere les valeurs du formulaire
-	let mail = req.body.mail.toLowerCase();
-	let password = req.body.password;
-	// envoie une requete a la base de données avec le mail entré dans le formulaire
-	const { rows } = await pool.query('SELECT * FROM users WHERE mail = \''+ mail + '\'');
-	// si il y a une valeur renvoyée par la requete
-	if (connect(mail, password, rows)){
-		console.log('Connecté');
-		//renvoie vers la page de bienvenue
-		res.redirect('/welcome');
-		res.send(rows);
-	}
-	//sinon
-	else{
-		console.log('verify mail or password');
-		// redemande la connection
-		res.redirect('/connect');
-	}
-});
+
+
+
+
+
+
 
 //Récupère la liste des users dans la base de données
 app.get("/users",async function(req,res){
@@ -212,6 +197,11 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 	await pool.query(sql, (err, rows) => {
 		return res.json(rows.rows);
 	});
+});
+
+app.post('/welcome',urlencodedParser, (req, res) => {
+	const mail = req.body.email;
+	console.log(mail);
 });
 
 //ecoute sur le port 8888
