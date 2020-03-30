@@ -23,16 +23,9 @@ export class GalleryComponent implements OnInit {
     })
       .subscribe(result => {
         // @ts-ignore
-        console.log(result.length);
-        // tslint:disable-next-line:prefer-for-of no-unused-expression
-        // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < result.length; i++) {
-          if ( i === 0) {
-            this.image[0] = result[0].image;
-          } else {
             this.image[i] = result[i].image;
-          }
         }
         const img = document.getElementsByClassName('imgs');
         for (let r = this.image.length; r < img.length; r++ ) {
