@@ -7,6 +7,7 @@ import {FormBuilder} from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   public checkoutForm;
@@ -31,13 +32,12 @@ export class LoginComponent implements OnInit {
       },
       headers : headers
     })
-      .subscribe(result => {
-        if (result === false) {
-          console.log('User not found');
-        } else {
-          console.log('User ok');
-        }
-      });
+    .subscribe(result => {
+      if (result === false) {
+        console.log('User not found');
+      } else {
+        console.log('User ok');
+      }
+    });
   }
-
 }

@@ -14,9 +14,9 @@ import { EventidComponent } from './eventid/eventid.component';
 import { HomeComponent } from './home/home.component';
 import { RootComponent } from './root/root.component';
 import { GalleryDetailComponent } from './gallery-detail/gallery-detail.component';
-import { adminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -24,13 +24,13 @@ const appRoutes: Routes = [
   { path: 'presentation', component: PresentationComponent },
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '', component: HomeComponent },
-  { path: 'event/:id', component: EventidComponent},
-  { path: 'admin', component: adminComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent },
-  { path: '**',
-    redirectTo: '',
+  { path: 'home', component: HomeComponent },
+  { path: 'event/:id', component: EventidComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'inscription', component: InscriptionComponent}
+  /*{ path: '**',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];
@@ -52,11 +52,13 @@ const appRoutes: Routes = [
     PresentationComponent,
     ContactComponent,
     EventComponent,
+    EventidComponent,
     HomeComponent,
     RootComponent,
     GalleryDetailComponent,
+    AdminComponent,
     LoginComponent,
-    RegisterComponent
+    InscriptionComponent
   ],
   exports: [RouterModule],
   providers: [],

@@ -26,13 +26,11 @@ export class GalleryDetailComponent implements OnInit {
       headers: headers
     })
       .subscribe(result => {
-        console.log(result);
         this.paints = result;
         console.log('Current image loaded : Id ' + this.currentImage);
         this.url = Number(this.currentImage);
         this.url--;
         this.actualPaint = (this.paints[this.url]);
-        console.log(this.actualPaint);
       });
   }
 }

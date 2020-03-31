@@ -1,18 +1,12 @@
 <div class="pageEvent">
-  <div class="event" id='1' onclick="window.location='/event/'+ this.id">
-  <img src="../../assets/img/1.jpg" alt="Event">
-  <h1>Vernissage Sablon d'Art</h1>
-  <div class="moment">
-    <p>7 fevrier 2019</p>
+
+  <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
+    <img class="imgs" src="../../assets/{{oeuvre.image}}" alt="oeuvre">
+    <h1>{{oeuvre.name}}</h1>
+    <div class="moment">
+      <p>{{oeuvre.dateBegin}} - {{oeuvre.dateEnd}}</p>
+    </div>
+    <p class="location">{{oeuvre.place}}</p>
   </div>
-  <p class="location">Sablon</p>
-</div>
-<div class="event">
-  <img src="../../assets/img/2.jpg" alt="Event">
-  <h1>Vernissage Sablon d'Art</h1>
-  <div class="moment">
-    <p>7 fevrier 2019</p>
-  </div>
-  <p class="location">Sablon</p>
-</div>
+  
 </div>

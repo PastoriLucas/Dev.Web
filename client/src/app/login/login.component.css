@@ -1,4 +1,27 @@
 .pageWeb {
   margin: 0 5%;
   background-color: white;
+  padding: 1%;
+  font-size: 20px;
+}
+
+input {
+  background-color: #ededed;
+  border: none;
+  padding: 1%;
+  margin: 1%;
+  font-family: "Champagne & Limousines", sans-serif;
+  font-size: 20px;
+  width: 30%;
+}
+label {
+  margin-left: 1%;
+}
+
+#submit {
+  width: 15%;
+}
+
+#inscription {
+  width: 15%;
 }

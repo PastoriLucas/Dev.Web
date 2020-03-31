@@ -15,10 +15,10 @@ app.all("/*", function(req, res, next){
 
 //connection avec la db
 let pool = new pg.Pool({
-	user: 'postgres',
+	user: 'ValouKervyn',
 	host: '127.0.0.1',
-	database: 'dbValouKervyn',
-	password: 'dbpassword$$$',
+	database: 'postgres',
+	password: 'sql',
 	port: '5432'
 });
 pool.connect(function (err) {
@@ -200,20 +200,32 @@ function inscript(values){
 
 app.post('/evenement',urlencodedParser, async (req, res) => {
 	// recupere les valeurs du formulaire
-	let sql = 'SELECT "eventId" , name, to_char("dateBegin", \'DD MM YYYY\') as "dateBegin", to_char("dateEnd", \'DD MM YYYY\') as "dateEnd", place, description, image from events'
+	let sql = 'SELECT "eventId" , name, to_char("dateBegin", \'DD/MM/YYYY\') as "dateBegin", to_char("dateEnd", \'DD/MM/YYYY\') as "dateEnd", place, description, image from events ORDER BY "events"."dateBegin"';
 	await pool.query(sql, (err, rows) => {
+		console.log(rows.rows);
 		return res.json(rows.rows);
 	});
 });
 
 app.post('/galerie',urlencodedParser, async (req, res) => {
 	// recupere les valeurs du formulaire
-	let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image FROM paintings;';
+	let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image FROM paintings';
 	await pool.query(sql, (err, rows) => {
 		return res.json(rows.rows);
 	});
 });
 
+app.post('/test',urlencodedParser, async (req, res) => {
+	let sql = 'SELECT * FROM users WHERE "mail"=\''+ req.query.email + '\' AND password =\''+ req.query.password + '\'';
+	await pool.query(sql, (err,rows) => {
+		console.log(rows.rows.length);
+		if(err || rows.rows.length === 0) {
+			return res.send(false);
+		}
+		return res.send(true);
+	});
+});
+
+
 //ecoute sur le port 8888
 app.listen(8888);
-module.exports = app;
