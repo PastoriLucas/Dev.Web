@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   public checkoutForm;
 
-  constructor(public http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
     this.checkoutForm = this.formBuilder.group({
       email: '',
       password: ''
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(res) {
+    console.log(res);
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
@@ -34,9 +36,11 @@ export class LoginComponent implements OnInit {
     })
     .subscribe(result => {
       if (result === false) {
-        console.log('User not found');
+        // alert('Mauvais e-mail ou mot de passe');
+        console.log('Mauvais e-mail ou mot de passe');
       } else {
-        console.log('User ok');
+        console.log(result);
+        this.router.navigate(['/home']);
       }
     });
   }

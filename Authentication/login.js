@@ -226,6 +226,25 @@ app.post('/test',urlencodedParser, async (req, res) => {
 	});
 });
 
+app.post('/new',urlencodedParser, async (req, res) => {
+	let sql = 'SELECT * FROM users WHERE "mail"=\''+ req.query.email + '\' AND password =\''+ req.query.password + '\'';
+	await pool.query(sql, (err,rows) => {
+		console.log(rows.rows.length);
+		if(err || rows.rows.length === 0) {
+			console.log('You can create user');
+			let notification = false;
+			if (req.query.notification === 'yes') notification = true;
+			sql = 'INSERT INTO users (firstname, lastname, mail, password, notifications) ' +
+				'VALUES (\''+ req.query.firstname + '\', \''+ req.query.lastname+ '\', \''+ req.query.email+ '\', \''+req.query.password+ '\', \''+notification+ '\')';
+			pool.query(sql, (err,rows) => {
+				if (err) throw err;
+				console.log(rows);
+				return res.send(true);
+			});
+		} else {return res.send(false); }
+	});
+});
+
 
 //ecoute sur le port 8888
 app.listen(8888);

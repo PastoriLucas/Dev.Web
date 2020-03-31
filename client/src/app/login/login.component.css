@@ -14,6 +14,10 @@ input {
   font-size: 20px;
   width: 30%;
 }
+input:hover {
+  background-color: #e4e4e4;
+}
+
 label {
   margin-left: 1%;
 }
