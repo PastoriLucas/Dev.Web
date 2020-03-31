@@ -23,6 +23,6 @@ export class GalleryComponent implements OnInit {
     })
       .subscribe(result => {
         this.transition = result;
-      });
+    });
   }
 }

@@ -6,11 +6,11 @@ const app = express();
 // Create application/x-www-form-urlencoded parser
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.all("/*", function(req, res, next){
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-	next();
+app.all("/", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    next();
 });
 
 //connection avec la db
@@ -82,27 +82,12 @@ app.post('/inscription',urlencodedParser, (req, res) => {
 app.get('/connect', (req, res) => {
 	res.sendFile(__dirname + '/connect.html');
 });
-// vérifie la connection
-app.post('/welcome',urlencodedParser, async (req, res) => {
-	// recupere les valeurs du formulaire
-	let mail = req.body.mail.toLowerCase();
-	let password = req.body.password;
-	// envoie une requete a la base de données avec le mail entré dans le formulaire
-	const { rows } = await pool.query('SELECT * FROM users WHERE mail = \''+ mail + '\'');
-	// si il y a une valeur renvoyée par la requete
-	if (connect(mail, password, rows)){
-		console.log('Connecté');
-		//renvoie vers la page de bienvenue
-		res.redirect('/welcome');
-		res.send(rows);
-	}
-	//sinon
-	else{
-		console.log('verify mail or password');
-		// redemande la connection
-		res.redirect('/connect');
-	}
-});
+
+
+
+
+
+
 
 //Récupère la liste des users dans la base de données
 app.get("/users",async function(req,res){
@@ -212,6 +197,17 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 	await pool.query(sql, (err, rows) => {
 		return res.json(rows.rows);
 	});
+});
+
+app.post('/test',urlencodedParser, async (req, res) => {
+    let sql = 'SELECT * FROM users WHERE "mail"=' + req.query.email + ' AND password ='+ req.query.password + ';';
+    await pool.query(sql, (err,rows) => {
+        console.log(rows.rows.length);
+        if(err || rows.rows.length === 0) {
+            return res.send(false);
+        }
+        return res.send(true);
+    });
 });
 
 //ecoute sur le port 8888
