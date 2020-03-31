@@ -6,11 +6,11 @@ const app = express();
 // Create application/x-www-form-urlencoded parser
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.all("/*", function(req, res, next){
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-	next();
+app.all("/", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    next();
 });
 
 //connection avec la db
@@ -199,9 +199,15 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 	});
 });
 
-app.post('/welcome',urlencodedParser, (req, res) => {
-	const mail = req.body.email;
-	console.log(mail);
+app.post('/test',urlencodedParser, async (req, res) => {
+    let sql = 'SELECT * FROM users WHERE "mail"=' + req.query.email + ' AND password ='+ req.query.password + ';';
+    await pool.query(sql, (err,rows) => {
+        console.log(rows.rows.length);
+        if(err || rows.rows.length === 0) {
+            return res.send(false);
+        }
+        return res.send(true);
+    });
 });
 
 //ecoute sur le port 8888

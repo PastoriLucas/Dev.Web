@@ -21,15 +21,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(res) {
-    console.log(res);
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/welcome`, {email: res[0], password: res[1]}, {
-      headers
+    this.http.post('http://127.0.0.1:8888/test', '', {
+      params : {
+        email : res.email,
+        password : res.password
+      },
+      headers : headers
     })
       .subscribe(result => {
-        console.log(result);
+        if (result === false) {
+          console.log('User not found');
+        } else {
+          console.log('User ok');
+        }
       });
   }
 

@@ -16,6 +16,7 @@ import { RootComponent } from './root/root.component';
 import { GalleryDetailComponent } from './gallery-detail/gallery-detail.component';
 import { adminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'event/:id', component: EventidComponent},
   { path: 'admin', component: adminComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent },
   { path: '**',
     redirectTo: '',
     pathMatch: 'full'
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     HomeComponent,
     RootComponent,
     GalleryDetailComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   exports: [RouterModule],
   providers: [],
