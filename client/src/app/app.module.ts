@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,9 @@ import { EventidComponent } from './eventid/eventid.component';
 import { HomeComponent } from './home/home.component';
 import { RootComponent } from './root/root.component';
 import { GalleryDetailComponent } from './gallery-detail/gallery-detail.component';
-import { adminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -23,8 +25,10 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'event/:id', component: EventidComponent},
-  { path: 'admin', component: adminComponent}
+  { path: 'event/:id', component: EventidComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'inscription', component: InscriptionComponent}
   /*{ path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -36,10 +40,11 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(
-      appRoutes, {enableTracing: true }
+      appRoutes, {enableTracing: true}
     ),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -47,9 +52,13 @@ const appRoutes: Routes = [
     PresentationComponent,
     ContactComponent,
     EventComponent,
+    EventidComponent,
     HomeComponent,
     RootComponent,
-    GalleryDetailComponent
+    GalleryDetailComponent,
+    AdminComponent,
+    LoginComponent,
+    InscriptionComponent
   ],
   exports: [RouterModule],
   providers: [],

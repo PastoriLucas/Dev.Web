@@ -215,6 +215,17 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 	});
 });
 
+app.post('/test',urlencodedParser, async (req, res) => {
+	let sql = 'SELECT * FROM users WHERE "mail"=\''+ req.query.email + '\' AND password =\''+ req.query.password + '\'';
+	await pool.query(sql, (err,rows) => {
+		console.log(rows.rows.length);
+		if(err || rows.rows.length === 0) {
+			return res.send(false);
+		}
+		return res.send(true);
+	});
+});
+
+
 //ecoute sur le port 8888
 app.listen(8888);
-module.exports = app;
