@@ -5,7 +5,7 @@ body {
   margin: 0 -10px;
 }
 
-#logoValouKervyn {
+#logoValouKervynTop {
   width: 20%;
   float: left;
   margin: 20px;
@@ -62,9 +62,7 @@ body {
 .topnav {
   background-color: white;
   overflow: hidden;
-  margin-top: -10px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: -10px 5% 0%;
 }
 
 .topnav a:hover {
@@ -119,3 +117,32 @@ body {
   background-color: white;
 }
 
+.botnav {
+  background-color: white;
+  margin: 0 5% -10px;
+  text-align: center;
+}
+
+#logoValouKervynBot {
+  width: 20%;
+  margin: 20px 40%;
+}
+
+#facebook {
+  font-size: 20px;
+}
+
+.botnav img {
+  margin: 10px 2%;
+}
+
+#littleNav {
+  text-decoration: none;
+}
+
+.littlenav {
+  text-decoration: none;
+  color: black;
+  background-color: #e4e4e4;
+  padding: 5px 10px;
+}
