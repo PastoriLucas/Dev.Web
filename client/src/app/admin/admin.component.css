@@ -8,8 +8,12 @@
 input {
   background-color: #ededed;
   border: none;
-  padding: 2px;
+  padding: 1%;
+  margin-top: 1%;
 }
+input:hover{
+  background-color: #e4e4e4;
+ }
 
 .submit {
   padding: 5px;

@@ -17,8 +17,6 @@ import { GalleryDetailComponent } from './gallery-detail/gallery-detail.componen
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import {Register} from "ts-node";
-import {RegisterComponent} from "./register/register.component";
 
 const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
@@ -31,7 +29,6 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent},
-  { path: 'register', component: RegisterComponent},
   { path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

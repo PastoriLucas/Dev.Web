@@ -22,6 +22,7 @@ export class GalleryComponent implements OnInit {
       headers
     })
       .subscribe(result => {
+        console.log(result);
         this.transition = result;
     });
   }
