@@ -15,7 +15,7 @@ export class EventComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/evenement`, '', {
+    this.http.post(`https://127.0.0.1:8888/evenement`, '', {
       headers
     })
       .subscribe(result => {

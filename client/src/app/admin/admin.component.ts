@@ -41,7 +41,7 @@ export class AdminComponent implements OnInit {
     if (values.imageName) {
       // @ts-ignore
       const file = document.getElementById('imageFile').files[0].name;
-      this.http.post('http://127.0.0.1:8888/adminImg', '', {
+      this.http.post('https://127.0.0.1:8888/adminImg', '', {
         params: {
           imageName: values.imageName,
           imageSize: values.imageSize,
@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit {
     } else {
       // @ts-ignore
       const file = document.getElementById('eventFile').files[0].name;
-      this.http.post('http://127.0.0.1:8888/adminImg', '', {
+      this.http.post('https://127.0.0.1:8888/adminImg', '', {
         params: {
           eventName: values.eventName,
           eventBegin: values.eventBegin,

@@ -22,8 +22,8 @@ export class GalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/galerie`, '', {
-      headers: headers
+    this.http.post(`https://127.0.0.1:8888/galerie`, '', {
+      headers
     })
       .subscribe(result => {
         this.paints = result;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpInterceptor} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -27,17 +27,17 @@ export class LoginComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/test', '', {
+    this.http.post('https://127.0.0.1:8888/test', '', {
       params : {
         email : res.email,
         password : res.password
       },
-      headers : headers
+      headers
     })
     .subscribe(result => {
       if (result === false) {
         // alert('Mauvais e-mail ou mot de passe');
-        console.log('Mauvais e-mail ou mot de passe');
+        alert('Mauvais e-mail ou mot de passe');
       } else {
         console.log(result);
         this.router.navigate(['/home']);

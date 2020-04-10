@@ -32,7 +32,7 @@ export class InscriptionComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/new', '', {
+    this.http.post('https://127.0.0.1:8888/new', '', {
       params : {
         firstname: res.firstname,
         lastname: res.lastname,
