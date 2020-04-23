@@ -1,0 +1,8 @@
+ <div class="pageWeb">
+    <br>
+    <div class="blocImages">
+        <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.id">
+          <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
+        </a>
+  </div>
+</div>

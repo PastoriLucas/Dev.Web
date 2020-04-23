@@ -1,0 +1,53 @@
+/*img {
+  margin: 0.5%;
+  background-color: white;
+  border: 5px solid black;
+}*/
+
+#flecheGauche {
+  width: 100px;
+  height: 100px;
+  background-color: #ededed00;
+}
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+  z-index: 1;
+}
+#paraIntro {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-style: italic;
+  text-align: center;
+  font-size: 23px;
+}
+
+#blocImages {
+  text-align: center;
+  margin: 0 5%;
+  padding: 10px;
+}
+
+#imageDefilante {
+  width: 40%;
+}
+
+
+#flecheGauche {
+  width: 4%;
+  position: absolute;
+  margin-top: 220px;
+  margin-left: -75px;
+}
+
+#flecheDroite {
+  width: 4%;
+  position: absolute;
+  margin-top: 220px;
+  margin-right: -75px;
+}
+
+.horrow {
+  margin-left: 5%;
+  margin-right: 5%;
+}
