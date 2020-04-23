@@ -1,0 +1,16 @@
+.admin {
+  margin: 0 5%;
+  background-color: white;
+  padding: 1%;
+  font-size: 22px;
+}
+
+input {
+  background-color: #ededed;
+  border: none;
+  padding: 2px;
+}
+
+.submit {
+  padding: 5px;
+}

@@ -1,0 +1,38 @@
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+  padding: 1%;
+  font-size: 20px;
+  text-align: center;
+}
+
+input {
+  background-color: #ededed;
+  border: none;
+  padding: 1%;
+  margin: 1%;
+  font-family: "Champagne & Limousines", sans-serif;
+  font-size: 20px;
+  width: 30%;
+}
+label {
+  margin-left: 1%;
+}
+
+#submit {
+  position: relative;
+  width: 14%;
+  margin-right: 2%;
+  margin-bottom: 5px;
+}
+
+#inscription {
+  position :relative;
+  width: 14%;
+  margin-left: 2%;
+  margin-bottom: 5px;
+}
+
+.bouton:hover {
+  border-bottom: 3px solid black;
+}
