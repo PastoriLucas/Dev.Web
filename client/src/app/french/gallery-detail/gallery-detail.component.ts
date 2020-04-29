@@ -11,7 +11,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class FrGalleryDetailComponent implements OnInit {
   public url = 0;
   public currentImage = '';
-  public actualPaint;
+  public actualPaint = {id: '', name: '', size: '', creationdate: '', image: ''};
   public paints;
   constructor(private router: Router, private http: HttpClient) {}
 

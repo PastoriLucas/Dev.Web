@@ -111,7 +111,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(
-      appRoutes, {enableTracing: true}
+      appRoutes, {enableTracing: false}
     ),
     HttpClientModule,
     FormsModule,

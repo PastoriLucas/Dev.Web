@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128836e0-f1e8-4d48-ae1e-3ca45df455bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/presentation/presentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/presentation/presentation.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Dev.Web/client/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,21 +30,45 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+            <state relative-caret-position="544">
+              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1156">
+              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+                <element signature="e#621#684#0" expanded="true" />
+                <element signature="e#1884#1948#0" expanded="true" />
+                <element signature="e#3159#3221#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.css">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -70,7 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/app/english/header/header.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/english/footer/footer.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/english/event/event.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/english/eventid/eventid.component.html" />
@@ -84,7 +105,6 @@
         <option value="$PROJECT_DIR$/client/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/dutch/admin/admin.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/dutch/admin/admin.component.spec.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/app/dutch/contact/contact.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/dutch/contact/contact.component.spec.ts" />
         <option value="$PROJECT_DIR$/client/src/app/dutch/event/event.component.ts" />
@@ -120,7 +140,9 @@
         <option value="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" />
         <option value="$PROJECT_DIR$/client/login.js" />
         <option value="$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html" />
       </list>
     </option>
   </component>
@@ -132,7 +154,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
+    <option name="x" value="190" />
+    <option name="y" value="94" />
     <option name="width" value="981" />
     <option name="height" value="1032" />
   </component>
@@ -184,33 +207,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="french" type="462c0819:PsiDirectoryNode" />
-              <item name="gallery-detail" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetWebApresCasse" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="presentation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetWebApresCasse" type="462c0819:PsiDirectoryNode" />
-              <item name="Dev.Web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetWebApresCasse" type="462c0819:PsiDirectoryNode" />
-              <item name="Dev.Web" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetWebApresCasse" type="462c0819:PsiDirectoryNode" />
-              <item name="Dev.Web" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
@@ -287,11 +284,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12220000" />
+    <option name="totallyTimeSpent" value="14291000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -347,23 +343,6 @@
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1585069634646" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/register/register.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/register/register.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/english/gallery/gallery.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -638,18 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-            <element signature="e#621#684#0" expanded="true" />
-            <element signature="e#1884#1948#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/header.component.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -723,16 +690,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html">
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.css">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#621#684#0" expanded="true" />
+            <element signature="e#1884#1948#0" expanded="true" />
+            <element signature="e#3159#3221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        <state relative-caret-position="544">
+          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
         </state>
       </provider>
     </entry>
