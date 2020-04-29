@@ -26,10 +26,10 @@ app.all("/*", function(req, res, next){
 
 //connection avec la db
 let pool = new pg.Pool({
-	user: 'ValouKervyn',
+	user: 'postgres',
 	host: '127.0.0.1',
-	database: 'postgres',
-	password: 'sql',
+	database: 'dbValouKervyn',
+	password: 'dbpassword$$$',
 	port: '5432'
 });
 pool.connect(function (err) {
@@ -48,7 +48,7 @@ app.post('/evenement',urlencodedParser, async (req, res) => {
 });
 
 app.post('/galerie',urlencodedParser, async (req, res) => {
-	// recupere les valeurs du formulaire
+	console.log('Ca roule');
 	let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image FROM paintings';
 	await pool.query(sql, (err, rows) => {
 		return res.json(rows.rows);
@@ -129,4 +129,6 @@ app.post('/adminEvent', urlencodedParser, (req, res) => {
 
 
 //ecoute sur le port 8888
-httpsServer.listen(8888);
+app.listen(8888);
+//httpsServer.listen(8888);
+

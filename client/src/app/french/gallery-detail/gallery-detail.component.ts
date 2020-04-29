@@ -18,7 +18,7 @@ export class FrGalleryDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.currentImage = this.router.url.substr(9);
+    this.currentImage = this.router.url.substr(12);
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');

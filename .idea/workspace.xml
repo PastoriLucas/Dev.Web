@@ -2,129 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128836e0-f1e8-4d48-ae1e-3ca45df455bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/proxy.conf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/database.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/database.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/leftArrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/logo.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/logoFacebook.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/logoInstagram.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/logoV2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/logoValouKervyn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/rightArrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/verso-VK-CV-2019-ok.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/admin/admin.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/admin/admin.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/admin/admin.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/admin/admin.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/appfr/appfr.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/appfr/appfr.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/appfr/appfr.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/appfr/appfr.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/contact/contact.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/contact/contact.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/contact/contact.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/contact/contact.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/database.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/database.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/event/event.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/event/event.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/event/event.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/event/event.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/eventid/eventid.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/eventid/eventid.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/eventid/eventid.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/eventid/eventid.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/eventid/eventid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery-detail/gallery-detail.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery-detail/gallery-detail.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery-detail/gallery-detail.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery-detail/gallery-detail.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery/gallery.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery/gallery.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery/gallery.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/gallery/gallery.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/home/home.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/home/home.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/home/home.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/home/home.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/inscription/inscription.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/inscription/inscription.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/inscription/inscription.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/inscription/inscription.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/login/login.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/login/login.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/login/login.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/login/login.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/presentation/presentation.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/presentation/presentation.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/presentation/presentation.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/presentation/presentation.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/register/register.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/register/register.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/register/register.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/register/register.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dev.Web/client/src/app/root/root.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/admin/admin.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/admin/admin.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/admin/admin.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/event/event.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/eventid/eventid.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/gallery-detail/gallery-detail.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/gallery/gallery.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/inscription/inscription.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/inscription/inscription.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/inscription/inscription.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/inscription/inscription.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/login/login.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/login/login.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/login/login.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/presentation/presentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/presentation/presentation.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Dev.Web/client/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -142,56 +24,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
+        <entry file="file://$PROJECT_DIR$/client/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-                <element signature="e#621#684#0" expanded="true" />
-                <element signature="e#1884#1948#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="450">
+              <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/header.component.ts">
+        <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/header.component.spec.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="43" lean-forward="true" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/english/header/header.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="104" selection-start-line="9" selection-start-column="104" selection-end-line="9" selection-end-column="104" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/app/english/header/header.component.css">
+        <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/english/home/home.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
+            <state relative-caret-position="141">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -217,12 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/app/french/footer/footer.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/french/footer/footer.component.spec.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/french/header/header.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/french/header/header.component.spec.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/english/eventid/eventid.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/english/contact/contact.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/english/header/header.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/english/footer/footer.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/english/event/event.component.html" />
@@ -268,6 +115,12 @@
         <option value="$PROJECT_DIR$/client/src/app/dutch/header/header.component.spec.ts" />
         <option value="$PROJECT_DIR$/client/src/app/english/header/header.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/english/header/header.component.css" />
+        <option value="$PROJECT_DIR$/client/src/app/presentation/presentation.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/dutch/home/home.component.html" />
+        <option value="$PROJECT_DIR$/client/login.js" />
+        <option value="$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts" />
       </list>
     </option>
   </component>
@@ -290,6 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -321,7 +175,7 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="english" type="462c0819:PsiDirectoryNode" />
+              <item name="french" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
@@ -329,8 +183,16 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="english" type="462c0819:PsiDirectoryNode" />
-              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="french" type="462c0819:PsiDirectoryNode" />
+              <item name="gallery-detail" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projetWebApresCasse" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="presentation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projetWebApresCasse" type="b2602c69:ProjectViewProjectNode" />
@@ -365,7 +227,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -387,12 +248,12 @@
     <property name="ts.external.directory.path" value="C:\Users\luyck\Desktop\projetWebApresCasse\Dev.Web\client\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natha\Desktop\Web\client\src\assets\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\natha\Desktop\Web\Authentication" />
       <recent name="C:\Users\natha\Desktop\Web\client" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\natha\Desktop\Web\client\src\assets\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -426,7 +287,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10706000" />
+    <option name="totallyTimeSpent" value="12220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -486,68 +347,6 @@
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1585069634646" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/gallery-detail/gallery-detail.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/inscription/inscription.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/login/login.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/presentation/presentation.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/root/root.component.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/footer/footer.component.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/footer/footer.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/english/register/register.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/french/home/home.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/english/register/register.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -766,23 +565,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/headerfr.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/headerfr.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/headerfr.component.ts" />
+    <entry file="file://$PROJECT_DIR$/client/src/app/dutch/header/headerfr.component.spec.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/app/dutch/login/login.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -887,6 +671,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-136">
           <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/presentation/presentation.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dutch/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="45" lean-forward="true" selection-start-line="72" selection-start-column="45" selection-end-line="72" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery/gallery.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/gallery-detail/gallery-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
