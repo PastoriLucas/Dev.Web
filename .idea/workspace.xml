@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128836e0-f1e8-4d48-ae1e-3ca45df455bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Dev.Web/client/node_modules/" />
@@ -51,16 +50,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="85">
+              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
@@ -186,8 +185,8 @@
         <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/app/french/inscription/inscription.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/french/inscription/inscription.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.css" />
+        <option value="$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html" />
       </list>
     </option>
   </component>
@@ -335,12 +334,12 @@
       <workItem from="1587646466401" duration="717000" />
       <workItem from="1587647260744" duration="5247000" />
       <workItem from="1588188334981" duration="810000" />
-      <workItem from="1588232529268" duration="289000" />
+      <workItem from="1588232529268" duration="509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26335000" />
+    <option name="totallyTimeSpent" value="26555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -732,17 +731,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/french/presentation/presentation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
