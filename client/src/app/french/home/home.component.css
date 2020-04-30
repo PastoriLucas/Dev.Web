@@ -1,0 +1,26 @@
+.pageweb {
+  margin: 0 5%;
+  background-color: white;
+}
+#paraIntro {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-style: italic;
+  text-align: center;
+  font-size: 23px;
+}
+
+#blocImages {
+  text-align: center;
+  margin: 0 5%;
+  padding: 10px;
+}
+
+#imageDefilante {
+  width: 40%;
+}
+
+.horrow {
+  margin-left: 5%;
+  margin-right: 5%;
+}

@@ -1,0 +1,14 @@
+<app-headerfr></app-headerfr>
+  <div class="pageWeb">
+    <h1>Connectez-vous à votre compte</h1>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <label for="email">E-mail : </label><br><input type="email" required placeholder="example@gmail.com" id="email" formControlName="email"><br>
+      <label for="password">Mot de passe : </label><br><input type="password" required id="password" placeholder="password123" formControlName="password"><br>
+      <input type="submit" id="submit" value="Valider" class="bouton">
+      <a href="/fr/inscription"><input type="button" id="inscription" value="Inscription" class="bouton"></a>
+      <p>Password forgotten ?</p>
+      <br><br>
+    </form>
+    <br>
+  </div>
+<app-footerfr></app-footerfr>

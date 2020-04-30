@@ -9,7 +9,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor() { }
   title = 'Valou Kervyn - Artiste peintre';
-  /*showDb() {
-    this.getData
-  }*/
 }

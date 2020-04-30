@@ -1,0 +1,22 @@
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+}
+
+.blocImages {
+  width: 100%;
+  text-align: center;
+}
+
+.imgs:hover {
+  opacity: 0.8;
+}
+.imgs {
+  width: 20%;
+  margin: 3% 2%;
+}
+
+.horrow {
+  margin-left: 5%;
+  margin-right: 5%;
+}

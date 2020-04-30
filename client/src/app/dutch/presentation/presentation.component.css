@@ -1,0 +1,33 @@
+.pageWeb {
+  background-color: white;
+  margin: 0 5%;
+  padding: 1%;
+}
+#img1 {
+  width: 40%;
+  padding: 2% 3% 2% 8%;
+}
+#p1{
+  width: 45%;
+  padding: 2% 2% 2% 0%;
+}
+#p2{
+  width: 45%;
+  padding: 2% 8% 2% 20%;
+  text-align: right;
+}
+#img2{
+  padding: 2% 2% 2% 8%;
+  width: 10%;
+}
+#p3{
+  padding: 2% 5%;
+  text-align: center;
+}
+#paragraphe{
+  display: flex;
+  flex-wrap: wrap;
+}
+#titre {
+  padding: 0% 8%;
+}

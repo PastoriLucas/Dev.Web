@@ -1,0 +1,32 @@
+/*img {
+  margin: 0.5%;
+  background-color: white;
+  border: 5px solid black;
+}*/
+
+.pageWeb {
+  margin: 0 5%;
+  background-color: white;
+}
+
+.imageEtDetails {
+  background-color: white;
+  width: 100%;
+  margin-top: -1.5%;
+}
+#image {
+  text-align: left;
+  margin-left: 1.5%;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  width: 40%;
+}
+
+.details {
+  text-align: center;
+  background-color: #e4e4e4;
+  float: right;
+  margin-right: 3%;
+  margin-top: 1.5%;
+  width: 50%;
+}
