@@ -26,10 +26,10 @@ app.all("/*", function(req, res, next){
 
 //connection avec la db
 let pool = new pg.Pool({
-	user: 'postgres',
-	host: '127.0.0.1',
-	database: 'dbValouKervyn',
-	password: 'dbpassword$$$',
+	user: 'lucaspasto',
+	host: '51.178.40.75',
+	database: 'ValouKervyn',
+	password: 'Magnetique',
 	port: '5432'
 });
 pool.connect(function (err) {

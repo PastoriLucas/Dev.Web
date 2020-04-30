@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FrAdminComponent } from './admin.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClient, HttpHandler} from "@angular/common/http";
+import {FormBuilder} from "@angular/forms";
 
 describe('FrAdminComponent', () => {
   let component: FrAdminComponent;
@@ -8,7 +11,9 @@ describe('FrAdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrAdminComponent ]
+      declarations: [ FrAdminComponent ],
+      imports: [ RouterTestingModule],
+      providers: [HttpHandler, HttpClient, FormBuilder]
     })
     .compileComponents();
   }));

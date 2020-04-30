@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NlLoginComponent } from './login.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClient, HttpHandler} from "@angular/common/http";
 
 describe('NlLoginComponent', () => {
   let component: NlLoginComponent;
@@ -8,7 +10,9 @@ describe('NlLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NlLoginComponent ]
+      declarations: [ NlLoginComponent ],
+      imports: [RouterTestingModule],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
   }));

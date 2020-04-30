@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FrPresentationComponent } from './presentation.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClient, HttpHandler} from "@angular/common/http";
+import {FormBuilder} from "@angular/forms";
 
 describe('FrPresentationComponent', () => {
   let component: FrPresentationComponent;
@@ -8,7 +11,9 @@ describe('FrPresentationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrPresentationComponent ]
+      declarations: [ FrPresentationComponent ],
+      imports: [ RouterTestingModule],
+      providers: [HttpHandler, HttpClient, FormBuilder]
     })
     .compileComponents();
   }));

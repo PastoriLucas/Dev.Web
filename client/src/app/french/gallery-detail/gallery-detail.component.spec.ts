@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FrGalleryDetailComponent } from './gallery-detail.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClient, HttpHandler} from "@angular/common/http";
+import {FormBuilder} from "@angular/forms";
 
 describe('FrGalleryDetailComponent', () => {
   let component: FrGalleryDetailComponent;
@@ -8,7 +11,9 @@ describe('FrGalleryDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrGalleryDetailComponent ]
+      declarations: [ FrGalleryDetailComponent ],
+      imports: [ RouterTestingModule],
+      providers: [HttpHandler, HttpClient, FormBuilder]
     })
     .compileComponents();
   }));

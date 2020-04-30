@@ -24,7 +24,6 @@ import { FrLoginComponent } from './french/login/login.component';
 import { FrInscriptionComponent } from './french/inscription/inscription.component';
 import { FrRegisterComponent} from './french/register/register.component';
 import { FrFooterComponent } from './french/footer/footer.component';
-import { FrRootComponent } from './french/root/root.component';
 import { FrHeaderComponent} from './french/header/header.component';
 
 /* *****************************************************************************************
@@ -42,7 +41,6 @@ import { EnLoginComponent } from './english/login/login.component';
 import { EnInscriptionComponent } from './english/inscription/inscription.component';
 import { EnRegisterComponent} from './english/register/register.component';
 import { EnFooterComponent } from './english/footer/footer.component';
-import { EnRootComponent } from './english/root/root.component';
 import { EnHeaderComponent} from './english/header/header.component';
 
 /* *****************************************************************************************
@@ -60,7 +58,6 @@ import { NlLoginComponent } from './dutch/login/login.component';
 import { NlInscriptionComponent } from './dutch/inscription/inscription.component';
 import { NlRegisterComponent} from './dutch/register/register.component';
 import { NlFooterComponent } from './dutch/footer/footer.component';
-import { NlRootComponent } from './dutch/root/root.component';
 import { NlHeaderComponent} from './dutch/header/header.component';
 
 const appRoutes: Routes = [
@@ -126,7 +123,6 @@ const appRoutes: Routes = [
     FrEventComponent,
     FrEventidComponent,
     FrHomeComponent,
-    FrRootComponent,
     FrGalleryDetailComponent,
     FrAdminComponent,
     FrLoginComponent,
@@ -141,7 +137,6 @@ const appRoutes: Routes = [
     EnEventComponent,
     EnEventidComponent,
     EnHomeComponent,
-    EnRootComponent,
     EnGalleryDetailComponent,
     EnAdminComponent,
     EnLoginComponent,
@@ -156,7 +151,6 @@ const appRoutes: Routes = [
     NlEventComponent,
     NlEventidComponent,
     NlHomeComponent,
-    NlRootComponent,
     NlGalleryDetailComponent,
     NlAdminComponent,
     NlLoginComponent,
