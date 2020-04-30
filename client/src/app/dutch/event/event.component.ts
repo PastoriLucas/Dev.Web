@@ -20,7 +20,6 @@ export class NlEventComponent implements OnInit {
     })
       .subscribe(result => {
         this.transition = result;
-        console.log(this.transition);
     });
   }
 }

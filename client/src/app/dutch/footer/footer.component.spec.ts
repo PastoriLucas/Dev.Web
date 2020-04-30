@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+<<<<<<< HEAD:client/src/app/gallery/gallery.component.spec.ts
+import { GalleryComponent } from './gallery.component';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+=======
 import { NlFooterComponent } from './footer.component';
+>>>>>>> Luc.Pas:client/src/app/dutch/footer/footer.component.spec.ts
 
 describe('NlFooterComponent', () => {
   let component: NlFooterComponent;
@@ -8,7 +13,12 @@ describe('NlFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+<<<<<<< HEAD:client/src/app/gallery/gallery.component.spec.ts
+      declarations: [ GalleryComponent ],
+      providers: [HttpHandler, HttpClient]
+=======
       declarations: [ NlFooterComponent ]
+>>>>>>> Luc.Pas:client/src/app/dutch/footer/footer.component.spec.ts
     })
     .compileComponents();
   }));

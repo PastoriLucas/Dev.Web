@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true --ssl-key ssl/server.key --ssl-cert ssl/server.crt",
+    "start": "ng serve --ssl true --ssl-key ssl/server.key --ssl-cert ssl/server.crt && node login.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,7 +19,9 @@
     "@angular/platform-browser": "~9.0.5",
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
+    "bcrypt": "^4.0.1",
     "crypto-js": "^4.0.0",
+    "pg": "^8.0.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

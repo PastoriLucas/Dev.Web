@@ -28,9 +28,16 @@ export class NlGalleryDetailComponent implements OnInit {
       .subscribe(result => {
         this.paints = result;
         console.log('Current image loaded : Id ' + this.currentImage);
-        this.url = Number(this.currentImage);
-        this.url--;
-        this.actualPaint = (this.paints[this.url]);
+        console.log(result);
+        // tslint:disable-next-line:forin
+        for (let i of this.paints) {
+          console.log(i.id);
+          console.log(this.currentImage);
+          if (this.currentImage === i.id.toString()) {
+            console.log(i);
+            this.actualPaint = i;
+          }
+          }
       });
   }
 }
