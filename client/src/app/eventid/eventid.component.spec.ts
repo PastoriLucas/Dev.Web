@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventidComponent } from './eventid.component';
+import {HttpClient, HttpHandler} from '@angular/common/http';
 
 describe('EventComponent', () => {
   let component: EventidComponent;
@@ -8,7 +9,8 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventidComponent ]
+      declarations: [ EventidComponent ],
+      providers: [HttpHandler, HttpClient]
     })
     .compileComponents();
   }));

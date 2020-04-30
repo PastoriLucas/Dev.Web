@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GalleryComponent } from './gallery.component';
+import {HttpClient, HttpHandler} from '@angular/common/http';
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
@@ -8,7 +9,8 @@ describe('GalleryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GalleryComponent ]
+      declarations: [ GalleryComponent ],
+      providers: [HttpHandler, HttpClient]
     })
     .compileComponents();
   }));

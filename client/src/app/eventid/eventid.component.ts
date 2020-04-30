@@ -8,8 +8,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class EventidComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {  }
 
   public event;
 
@@ -24,13 +23,10 @@ export class EventidComponent implements OnInit {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < result.length; i++) {
-          // @ts-ignore
           const page = window.location.pathname.split('/').pop();
-          console.log('page : ' + page);
-          console.log(result[i].eventId.toString() === page);
-          // tslint:disable-next-line:radix
           if (result[i].eventId.toString() === page) {
             this.event = result[i];
+            return this.event;
           }
         }
       });
