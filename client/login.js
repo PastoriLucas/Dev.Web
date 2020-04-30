@@ -48,7 +48,6 @@ app.post('/evenement',urlencodedParser, async (req, res) => {
 });
 
 app.post('/galerie',urlencodedParser, async (req, res) => {
-	console.log('Ca roule');
 	let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image FROM paintings';
 	await pool.query(sql, (err, rows) => {
 		return res.json(rows.rows);
@@ -56,18 +55,15 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 });
 
 app.post('/test',urlencodedParser, async (req, res) => {
-	let sql = 'SELECT * FROM users WHERE "mail"=\''+ req.query.email + '\'';
+	let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
 	await pool.query(sql, (err,rows) => {
+	  console.log(rows.rows);
 		if(rows.rows.length > 0) {
-			console.log(bcrypt.compareSync(req.query.password, rows.rows[0].password));
-			if(bcrypt.compareSync(req.query.password, rows.rows[0].password) === true){
-				console.log('ok');
+			if(req.query.password === rows.rows[0].password) {
 				return res.send(true);
 			}
-			console.log(' mdp ko');
 			return res.send(false);
 		}
-		console.log(' mdp ko');
 		return res.send(false);
 	});
 });

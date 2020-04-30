@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class FrLoginComponent implements OnInit {
 
   public checkoutForm;
 
-  constructor(public http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
     this.checkoutForm = this.formBuilder.group({
       email: '',
       password: ''
@@ -34,9 +35,9 @@ export class FrLoginComponent implements OnInit {
     })
     .subscribe(result => {
       if (result === false) {
-        console.log('User not found');
+        alert('E-mail ou Mot de passe incorrect.\nVeuillez réessayer.');
       } else {
-        console.log('User ok');
+        this.router.navigate(['/fr/home']);
       }
     });
   }
