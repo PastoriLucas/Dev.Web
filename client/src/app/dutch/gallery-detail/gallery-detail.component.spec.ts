@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import { NlGalleryDetailComponent } from './gallery-detail.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('NlGalleryDetailComponent', () => {
   let component: NlGalleryDetailComponent;
@@ -10,7 +11,8 @@ describe('NlGalleryDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [HttpHandler, HttpClient],
-      declarations: [ NlGalleryDetailComponent ]
+      declarations: [ NlGalleryDetailComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   }));

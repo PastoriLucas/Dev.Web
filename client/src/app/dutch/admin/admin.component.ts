@@ -13,6 +13,5 @@ export class NlAdminComponent implements OnInit {
   }
   send(values) {
     console.log(values);
-    alert(values);
   }
 }

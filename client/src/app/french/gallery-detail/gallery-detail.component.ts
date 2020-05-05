@@ -11,7 +11,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class FrGalleryDetailComponent implements OnInit {
   public url = 0;
   public currentImage = '';
-  public actualPaint = {id: '', name: '', size: '', creationdate: '', image: ''};
+  public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -23,14 +23,22 @@ export class FrGalleryDetailComponent implements OnInit {
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
     this.http.post(`http://127.0.0.1:8888/galerie`, '', {
-      headers: headers
+      headers
     })
       .subscribe(result => {
         this.paints = result;
         console.log('Current image loaded : Id ' + this.currentImage);
         this.url = Number(this.currentImage);
-        this.url--;
-        this.actualPaint = (this.paints[this.url]);
+        console.log(this.url);
+        // this.url--;
+        console.log(this.paints);
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.paints.length; i++){
+          if (this.paints[i].id === this.url) {
+            this.actualPaint = (this.paints[i]);
+          }
+        }
+        console.log(this.actualPaint);
       });
   }
 }

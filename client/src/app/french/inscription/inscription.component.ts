@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -11,10 +12,10 @@ import {Router} from '@angular/router';
 
 export class FrInscriptionComponent implements OnInit {
 
-  public checkoutForm;
+  register;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
-    this.checkoutForm = this.formBuilder.group({
+    this.register = this.formBuilder.group({
       firstname: '',
       lastname: '',
       email: '',
@@ -26,13 +27,13 @@ export class FrInscriptionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onsubmit(res) {
+  onSubmit(res) {
     console.log(res);
     if (res.password === res.confirm) {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('http://127.0.0.1:8888/new', '', {
+      this.http.post('https://127.0.0.1:8888/new', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -40,10 +41,10 @@ export class FrInscriptionComponent implements OnInit {
           password: res.password,
           notification: res.notification
         },
-        headers: headers
+        headers
       })
         .subscribe(result => {
-          console.log(result);
+          console.log('resultat : ' + result);
           if (result === false) {
             alert('Cet utilisateur existe déjà');
           } else {
@@ -51,5 +52,8 @@ export class FrInscriptionComponent implements OnInit {
           }
         });
     } else { alert('Check password'); }
+  }
+  shwPassword() {
+    document.getElementById('pwd1').setAttribute('type', 'text');
   }
 }

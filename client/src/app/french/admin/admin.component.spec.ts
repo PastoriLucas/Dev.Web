@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FrAdminComponent } from './admin.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormsModule} from '@angular/forms';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {By} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('FrAdminComponent', () => {
   let component: FrAdminComponent;
@@ -12,7 +13,7 @@ describe('FrAdminComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FrAdminComponent ],
-      imports: [ RouterTestingModule],
+      imports: [FormsModule, RouterTestingModule],
       providers: [HttpHandler, HttpClient, FormBuilder]
     })
     .compileComponents();
@@ -26,5 +27,12 @@ describe('FrAdminComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call onSubmit on form submit from event', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const getForm = fixture.debugElement.query(By.css('#evnt'));
+    expect(getForm.triggerEventHandler('submit', compiled)).toBeUndefined();
   });
 });

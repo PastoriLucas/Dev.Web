@@ -8,7 +8,11 @@
         <h2>Nom : {{this.actualPaint.name}}</h2>
         <h2>Taille : {{this.actualPaint.size}}</h2>
         <h2>Date de création : {{this.actualPaint.creationdate}}</h2>
+        <div id="like">
+          <h2><a id="like_img" href="/fr/gallery/{{this.actualPaint.id}}"><img src="../../assets/img/heart_empty.png" width="20px" alt="like"></a>  {{this.actualPaint.likes}}</h2>
+        </div>
       </div>
+
     </div>
     <br>
   </div>

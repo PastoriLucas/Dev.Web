@@ -59,6 +59,7 @@ import { NlInscriptionComponent } from './dutch/inscription/inscription.componen
 import { NlRegisterComponent} from './dutch/register/register.component';
 import { NlFooterComponent } from './dutch/footer/footer.component';
 import { NlHeaderComponent} from './dutch/header/header.component';
+import {AgmCoreModule} from '@agm/core';
 
 const appRoutes: Routes = [
   /*FRENCH*/
@@ -110,6 +111,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes, {enableTracing: false}
     ),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCq4TvPKogUIilCh_38VgrV4URD5o1a8xk'
+    }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

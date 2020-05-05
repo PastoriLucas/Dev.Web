@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NlLoginComponent } from './login.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClient, HttpHandler} from "@angular/common/http";
+import {FormBuilder} from '@angular/forms';
 
 describe('NlLoginComponent', () => {
   let component: NlLoginComponent;
@@ -12,7 +13,7 @@ describe('NlLoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ NlLoginComponent ],
       imports: [RouterTestingModule],
-      providers: [HttpClient, HttpHandler]
+      providers: [HttpClient, HttpHandler, FormBuilder]
     })
     .compileComponents();
   }));
