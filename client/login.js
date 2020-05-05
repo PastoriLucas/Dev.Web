@@ -160,10 +160,13 @@ app.post('/adminEvent', urlencodedParser, (req, res) => {
 	file = '../../assets/img/' +req.query.imageFile;
 	let sql = "INSERT INTO event (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
 	pool.query(sql, (err, rows) => {
-	  console.log(rows);
 		if (err) {return err}
 		return rows;
 	})
+});
+
+app.post('/like', urlencodedParser, (req, res) => {
+  pool.query('update paintings set likes = likes + 1 where id = '+ req.query.painting);
 });
 
 passport.serializeUser(function (user, done) {

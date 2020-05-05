@@ -27,18 +27,27 @@ export class FrGalleryDetailComponent implements OnInit {
     })
       .subscribe(result => {
         this.paints = result;
-        console.log('Current image loaded : Id ' + this.currentImage);
         this.url = Number(this.currentImage);
-        console.log(this.url);
-        // this.url--;
-        console.log(this.paints);
         // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.paints.length; i++){
+        for (let i = 0; i < this.paints.length; i++) {
           if (this.paints[i].id === this.url) {
             this.actualPaint = (this.paints[i]);
           }
         }
-        console.log(this.actualPaint);
       });
+  }
+
+  likes() {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post(`http://127.0.0.1:8888/like`, '', {
+      headers,
+      params: {
+        likes : '1',
+        painting : this.currentImage
+      }
+    }).subscribe();
+    location.reload();
   }
 }
