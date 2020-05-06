@@ -24,3 +24,11 @@ label {
 #notif input, label {
   width: auto;
 }
+
+#error {
+  margin: 0 5%;
+  background-color: white;
+  padding: 1%;
+  font-size: 20px;
+  display: none;
+}

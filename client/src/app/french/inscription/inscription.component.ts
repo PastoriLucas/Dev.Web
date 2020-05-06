@@ -45,14 +45,25 @@ export class FrInscriptionComponent implements OnInit {
         .subscribe(result => {
           console.log('resultat : ' + result);
           if (result === false) {
-            alert('Cet utilisateur existe déjà');
             console.log('Cet utilisateur existe déjà');
             location.reload();
-          } else {
+          } else if (result === true) {
             this.router.navigate(['/login']);
+          } else {
+            // @ts-ignore
+            console.log(result.errors);
+            document.getElementById('error').innerText = '';
+            // @ts-ignore
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < result.errors.length; i++) {
+              // @ts-ignore
+              document.getElementById('error').innerHTML += result.errors[i].msg + '<br>';
+              document.getElementById('error').style.display = 'flex';
+            }
           }
         });
-    } else { alert('Check password'); }
+    } else { document.getElementById('error').innerText = 'Veuillez indiquer 2 fois le même mot de passe ! ';
+             document.getElementById('error').style.display = 'flex'; }
   }
   shwPassword() {
     if (document.getElementById('pwd1').getAttribute('type') === 'password' ) {

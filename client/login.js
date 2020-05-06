@@ -89,14 +89,16 @@ app.post('/test',urlencodedParser, async (req, res) => {
 
 app.post('/new', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
+  check('firstname', 'Firstname must only include MAJ and low').isAlpha(),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
+  check('lastname', 'Lastname must only include MAJ and low').isAlpha(),
   check('email', 'Email must have @ and . ').isEmail(),
   check('password', 'Password length must be between 8 and 50').isLength({min: 8, max : 50}),
   check('password', 'Password must include spécial, number, Maj and Low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,}$/, 'i')
 ], (req, res) =>{
-  console.log('bjr je teste');
   const errors = validationResult(req);
   if(!errors.isEmpty()){
+    return res.send(errors);
     return res.status(422).json({errors: errors.array()});
   } else {
     const query = "INSERT INTO users (firstname, lastname, mail, password, notifications) VALUES ($1,$2,$3,$4,$5)"
