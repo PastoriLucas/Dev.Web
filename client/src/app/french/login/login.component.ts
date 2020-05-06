@@ -37,7 +37,7 @@ export class FrLoginComponent implements OnInit {
       if (result === false) {
         alert('E-mail ou Mot de passe incorrect.\nVeuillez réessayer.');
       } else {
-        this.router.navigate(['/fr/home']);
+        this.router.navigate(['/fr/gallery']);
       }
     });
   }

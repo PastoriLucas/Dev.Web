@@ -12,6 +12,13 @@ app.use(cookieParser());
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 
+let httpsServer = https.createServer(credentials, app);
+const saltRounds = 5;
+
+let isConnected = false;
+let userConnected;
+
+
 app.all("/*", function(req, res, next){
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'PUT,POST,DELETE,OPTIONS');
@@ -54,6 +61,32 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 ///////////////////// ROUTAGE /////////////////////
+
+app.post('/connection',urlencodedParser, async (req, res) => {
+  let sql = 'SELECT firstname, lastname, mail FROM users';
+  if(isConnected === false) {
+    return 0;
+  } else {
+    await pool.query(sql, (err, rows) => {
+      return res.json(rows.rows);
+    });
+  }
+});
+
+
+
+
+/*
+app.post('/connection', urlencodedParser, async (req,res) => {
+  if(isConnected === false) {
+    console.log(isConnected);
+    return res.isConnected;
+  }
+  else {
+    console.log(userConnected);
+    return res.userConnected;
+  }
+});*/
 
 app.post('/evenement',urlencodedParser, async (req, res) => {
 	// recupere les valeurs du formulaire
