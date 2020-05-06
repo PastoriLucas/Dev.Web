@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
     "bcrypt": "^4.0.1",
+    "connect-pg-simple": "^6.1.0",
     "cookie-parser": "^1.4.5",
     "crypto-js": "^4.0.0",
     "express-session": "^1.17.1",

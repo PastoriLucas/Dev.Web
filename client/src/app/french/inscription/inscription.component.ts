@@ -28,12 +28,11 @@ export class FrInscriptionComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(res) {
-    console.log(res);
     if (res.password === res.confirm) {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('https://127.0.0.1:8888/new', '', {
+      this.http.post('http://127.0.0.1:8888/new', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -47,6 +46,8 @@ export class FrInscriptionComponent implements OnInit {
           console.log('resultat : ' + result);
           if (result === false) {
             alert('Cet utilisateur existe déjà');
+            console.log('Cet utilisateur existe déjà');
+            location.reload();
           } else {
             this.router.navigate(['/login']);
           }
