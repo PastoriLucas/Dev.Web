@@ -55,6 +55,13 @@ export class FrInscriptionComponent implements OnInit {
     } else { alert('Check password'); }
   }
   shwPassword() {
-    document.getElementById('pwd1').setAttribute('type', 'text');
+    if (document.getElementById('pwd1').getAttribute('type') === 'password' ) {
+      document.getElementById('pwd1').setAttribute('type', 'text');
+      document.getElementById('pwd2').setAttribute('type', 'text');
+    } else {
+      document.getElementById('pwd1').setAttribute('type', 'password');
+      document.getElementById('pwd2').setAttribute('type', 'password');
+    }
+
   }
 }

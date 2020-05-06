@@ -73,7 +73,6 @@ app.post('/galerie',urlencodedParser, async (req, res) => {
 app.post('/test',urlencodedParser, async (req, res) => {
   let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
   await pool.query(sql, (err,rows) => {
-    console.log(rows.rows);
     if(rows.rows.length > 0) {
       bcrypt.compare(req.query.password, rows.rows[0].password, (err, match) => {
         if (match){
@@ -93,67 +92,36 @@ app.post('/new', [
   check('lastname', 'Lastname cannot be empty').notEmpty(),
   check('email', 'Email must have @ and . ').isEmail(),
   check('password', 'Password length must be between 8 and 50').isLength({min: 8, max : 50}),
-  check('password', 'Password must include number Maj and Low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,}$/, 'i')
+  check('password', 'Password must include spécial, number, Maj and Low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,}$/, 'i')
 ], (req, res) =>{
-
+  console.log('bjr je teste');
   const errors = validationResult(req);
   if(!errors.isEmpty()){
     return res.status(422).json({errors: errors.array()});
   } else {
-    const firstname = req.query.firstname;
-    const lastname = req.query.lastname;
-    const email = req.query.email;
-
+    const query = "INSERT INTO users (firstname, lastname, mail, password, notifications) VALUES ($1,$2,$3,$4,$5)"
     let notification = false;
     if (req.query.notification === 'yes') notification = true;
     bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(req.query.password, salt, (err, hash) => {
-        pool.query('INSERT INTO users (firstname, lastname, mail, password, notifications) ' +
-          'VALUES (\''+firstname+'\', \''+lastname+'\', \''+email+'\', \''+hash+'\', \''+notification+'\')', (err) => {
-          if (err) return false;
+      bcrypt.hash(req.query.password, salt, async (err, hash) => {
+        let valeur = [req.query.firstname, req.query.lastname, req.query.email, hash, notification];
+        await pool.query(query, valeur, (err) => {
+          if (err) return res.send(false);
 
-          pool.query('SELECT CURRVAL(pg_get_serial_sequence(\'users\',\'userId\')) as user_id', (err, res) => {
-            console.log(res);
-            if (err) return false;
-            console.log(res.rows[0]);
-            const user_id = res.rows[0];
+          pool.query('SELECT CURRVAL(pg_get_serial_sequence(\'users\',\'userId\')) as user_id', (err, rows) => {
+            if (err) return res.send(false);
+            console.log(rows.rows[0]);
+            const user_id = rows.rows[0];
             req.login(user_id, () => {
-              return true;
+              return res.send(true);
             });
           });
         })
       });
     });
   }
-
 });
 
-app.post('/register',urlencodedParser, async (req, res) => {
-
-  const errors = req.validationErrors();
-  if (errors) {
-    res.send(false);
-  }
-  let sql = 'SELECT * FROM users WHERE "mail"=\''+ req.query.email + '\' AND password =\''+ req.query.password + '\'';
-  await pool.query(sql, (err,rows) => {
-    if(err || rows.rows.length === 0) {
-      console.log('You can create user');
-      let notification = false;
-      if (req.query.notification === 'yes') notification = true;
-      bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(req.query.password, salt, function(err, hash) {
-          // Store hash in your password DB.
-          sql = 'INSERT INTO users (firstname, lastname, mail, password, notifications) ' +
-            'VALUES (\''+ req.query.firstname + '\', \''+ req.query.lastname+ '\', \''+ req.query.email+ '\', \''+ hash + '\', \''+notification+ '\')';
-          pool.query(sql, (err) => {
-            if (err) throw err;
-            return res.send(true);
-          });
-        });
-      });
-    } else {return res.send(false); }
-  });
-});
 
 app.post('/adminImg', urlencodedParser, (req) => {
 
@@ -211,3 +179,4 @@ passport.deserializeUser(function (user_id, done) {
 //ecoute sur le port 8888
 app.listen(8888);
 //httpsServer.listen(8888);
+
