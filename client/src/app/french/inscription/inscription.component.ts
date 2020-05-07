@@ -57,7 +57,7 @@ export class FrInscriptionComponent implements OnInit {
             // tslint:disable-next-line:prefer-for-of
             for (let i = 0; i < result.errors.length; i++) {
               // @ts-ignore
-              document.getElementById('error').innerHTML += result.errors[i].msg + '<br>';
+              document.getElementById('error').innerHTML += '- ' + result.errors[i].msg + '<br>';
               document.getElementById('error').style.display = 'flex';
             }
           }
