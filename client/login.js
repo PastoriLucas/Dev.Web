@@ -55,7 +55,7 @@ app.use(passport.session());
 
 ///////////////////// ROUTAGE /////////////////////
 
-app.post('/evenement',urlencodedParser, async (req, res) => {
+app.post('/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
   let sql = 'SELECT "eventId" , name, to_char("dateBegin", \'DD/MM/YYYY\') as "dateBegin", to_char("dateEnd", \'DD/MM/YYYY\') as "dateEnd", place, description, image from events ORDER BY "events"."dateBegin"';
   await pool.query(sql, (err, rows) => {
