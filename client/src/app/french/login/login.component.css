@@ -36,3 +36,10 @@ label {
 .bouton:hover {
   border-bottom: 3px solid black;
 }
+
+#error {
+  /*background-color: #FF000055;
+  border: red 1px solid;*/
+  position: relative;
+  display: none;
+}

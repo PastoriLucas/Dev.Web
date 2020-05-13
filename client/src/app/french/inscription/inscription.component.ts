@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
-import {Router} from '@angular/router';
-
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-inscription',
@@ -13,8 +13,10 @@ import {Router} from '@angular/router';
 export class FrInscriptionComponent implements OnInit {
 
   register;
+  private cookieValue: string;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private cookieService: CookieService, private router: Router) {
     this.register = this.formBuilder.group({
       firstname: '',
       lastname: '',
@@ -27,6 +29,7 @@ export class FrInscriptionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit(res) {
     if (res.password === res.confirm) {
       const headers = new HttpHeaders()
@@ -44,15 +47,17 @@ export class FrInscriptionComponent implements OnInit {
       })
         .subscribe(result => {
           console.log('resultat : ' + result);
+          document.getElementById('error').innerText = '';
           if (result === false) {
-            console.log('Cet utilisateur existe déjà');
-            location.reload();
+            document.getElementById('error').innerText = 'L\'utilisateur existe déjà';
+            document.getElementById('error').style.display = 'flex';
           } else if (result === true) {
-            this.router.navigate(['/login']);
+            document.getElementById('error').innerText = 'Va vers login';
+            document.getElementById('error').style.display = 'flex';
+            this.cookieService.set(result.toString(), 'value', 1000 * 60 * 60 * 24 * 2 );
+            this.cookieValue = this.cookieService.get('name');
+            this.router.navigate(['/fr/login']);
           } else {
-            // @ts-ignore
-            console.log(result.errors);
-            document.getElementById('error').innerText = '';
             // @ts-ignore
             // tslint:disable-next-line:prefer-for-of
             for (let i = 0; i < result.errors.length; i++) {
@@ -73,6 +78,5 @@ export class FrInscriptionComponent implements OnInit {
       document.getElementById('pwd1').setAttribute('type', 'password');
       document.getElementById('pwd2').setAttribute('type', 'password');
     }
-
   }
 }
