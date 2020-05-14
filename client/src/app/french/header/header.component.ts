@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-headerfr',
@@ -9,7 +10,7 @@ import {CookieService} from 'ngx-cookie-service';
 export class FrHeaderComponent implements OnInit {
   login: any;
 
-  constructor(public cookieService: CookieService) { }
+  constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   ngOnInit(): void {
     console.log(this.cookieService.getAll());
@@ -19,5 +20,20 @@ export class FrHeaderComponent implements OnInit {
     } else {
       this.login = 'Connexion';
     }
+  }
+
+  logout() {
+    console.log('logout');
+    this.cookieService.delete('login');
+    localStorage.clear();
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('http://127.0.0.1:8888/logout', '', {
+      headers
+    })
+      .subscribe(result => {
+        console.log(result);
+      });
   }
 }

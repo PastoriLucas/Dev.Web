@@ -33,7 +33,7 @@ app.use(session({
       tableName: 'session'}),
   resave: false,
   saveUninitialized: false,
-  cookie: {secure : true, maxAge: 30 * 24 * 60 * 1000 } //30 days
+  cookie: {secure : true, maxAge: 30 * 24 * 60 * 1000, SameSite:'None'} //30 days
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,7 +46,8 @@ passport.use(new LocalStrategy('local',
       bcrypt.compare(password, rows.rows[0].password, (err, res) => {
         if(err) return err;
         if(res) {
-          return( done(null, rows.rows[0].userId));
+          console.log(rows.rows[0]);
+          return( done(null, rows.rows[0]));
         }
         return done(null, false, { message : 'Verify password'});
       });
@@ -72,9 +73,15 @@ app.post('/login',function(req, res, next) {
     if (!user) { return res.send(info); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.send(user.toString());
+      return res.send(user);
     });
   })(req, res, next);
+});
+
+app.get('/logout', (req, res) => {
+  console.log(req, res);
+  req.logout();
+  return res.send(true);
 });
 
 app.post('/evenement', async (req, res) => {
@@ -172,8 +179,24 @@ app.post('/adminEvent', (req) => {
   })
 });
 
-app.post('/like', (req) => {
-  pool.query('update paintings set likes = likes + 1 where id = '+ req.query.painting);
+app.post('/like', async (req) => {
+  console.log(req.query);
+  await pool.query(
+    'update paintings set likes = likes + 1 where id = '+ req.query.painting + ';' +
+    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+      if (err) throw err;
+      return res;
+    });
+});
+
+app.post('/dislike', async (req) => {
+  console.log(req.query);
+  await pool.query(
+    'UPDATE paintings SET likes = likes - 1 WHERE id = '+ req.query.painting + ';' +
+    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+      if (err) throw err;
+      return res;
+    });
 });
 
 passport.serializeUser(function (user_id, done) {

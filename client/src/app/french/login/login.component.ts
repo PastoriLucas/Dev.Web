@@ -23,6 +23,7 @@ export class FrLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit(res) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
@@ -45,7 +46,9 @@ export class FrLoginComponent implements OnInit {
         document.getElementById('error').style.display = 'inherit';
       } else {
         // @ts-ignore
-        this.cookieService.set('login', result);
+        this.cookieService.set('login', result.userId);
+        // @ts-ignore
+        localStorage.setItem('likes', result.likes);
         location.replace('/fr/home');
       }
     });

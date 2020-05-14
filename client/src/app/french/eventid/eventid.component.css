@@ -1,30 +1,28 @@
 #evenement {
   margin: 0 5%;
   background-color: white;
-  padding: 1%;
-  min-height: 1000px;
+  padding: 2%;
   font-size: 20px;
+  min-height: auto;
+  box-sizing: border-box;
 }
-
-#imagesArea {
-  width: 50%;
-  float: left;
-  border-right: solid #e4e4e4 3px;
+#droite{
+  float: right;
+  width: 49%;
+}
+#imageArea {
+  width: 49%;
+}
+#textArea {
   text-align: center;
+  background-color: #e4e4e4;
 }
-iframe {
-  width: 90%;
-  height: 300px;
-  border: 0;
+#mapArea {
+  size: auto;
 }
 img {
-  width: 90%;
-  margin-top: 20px;
-}
-
-#textArea {
-  width: 50%;
-  float: right;
-  text-align: center;
-  margin-top: -900px;
+  height: 100%;
+  width: 100%;
+  min-height: 200px;
+  min-width: 200px;
 }

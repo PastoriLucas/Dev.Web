@@ -23,6 +23,6 @@ export class FrGalleryComponent implements OnInit {
     })
       .subscribe(result => {
         this.transition = result;
-    });
+      });
   }
 }
