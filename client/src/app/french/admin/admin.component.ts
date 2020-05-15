@@ -40,7 +40,7 @@ export class FrAdminComponent implements OnInit {
     if (values.imageName) {
       // @ts-ignore
       const file = document.getElementById('imageFile').files[0].name;
-      this.http.post('http://127.0.0.1:8888/adminImg', '', {
+      this.http.post('http://51.178.40.75:8888/adminImg', '', {
         params: {
           imageName: values.imageName,
           imageSize: values.imageSize,
@@ -58,7 +58,7 @@ export class FrAdminComponent implements OnInit {
     } else {
       // @ts-ignore
       const file = document.getElementById('eventFile').files[0].name;
-      this.http.post('http://127.0.0.1:8888/adminEvent', '', {
+      this.http.post('http://51.178.40.75:8888/adminEvent', '', {
         params: {
           eventName: values.eventName,
           eventBegin: values.eventBegin,
