@@ -1,13 +1,17 @@
 <app-headerfr></app-headerfr>
   <div id="evenement">
-    <div id="imagesArea">
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCq4TvPKogUIilCh_38VgrV4URD5o1a8xk&q=Place+du+Sablon+2,Bruxelles+Belgique" aria-hidden="false" tabindex="0"></iframe>
-      <img src="../../assets{{this.event.image}}" alt="image">
+    <div id="droite">
+      <div id="textArea">
+        <h1 class="titre">{{this.event.name}}</h1>
+        <p class="description">{{this.event.description}}</p>
+        <p class="date">{{this.event.dateBegin}} - {{this.event.dateEnd}}</p>
+      </div>
+      <div id="mapArea">
+        <!--<iframe id="map" src="{{this.place}}" aria-hidden="false" tabindex="0"></iframe>-->
+      </div>
     </div>
-    <div id="textArea">
-      <h1 class="titre">{{this.event.name}}</h1>
-      <p class="description">{{this.event.description}}</p>
-      <p class="date">{{this.event.dateBegin}} - {{this.event.dateEnd}}</p>
+    <div id="imageArea">
+      <img id="image" src="" alt="image">
     </div>
   </div>
 <app-footerfr></app-footerfr>

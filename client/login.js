@@ -4,20 +4,12 @@ const bodyParser = require('body-parser');
 const pg = require('pg');
 const fs = require('fs');
 const { check, validationResult} = require('express-validator');
-
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const pgSession = require('connect-pg-simple')(session);
 
 const app = express();
-app.use(cookieParser());
-// Create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-
-app.all("/*", function(req, res, next){
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  next();
-});
 
 //connection avec la db
 let pool = new pg.Pool({
@@ -31,29 +23,66 @@ pool.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'azefrgtbdiu',
+  store: new pgSession({
+      pool: pool,
+      tableName: 'session'}),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {secure : true, maxAge: 30 * 24 * 60 * 1000, SameSite:'None'} //30 days
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy('local',
+  async (username, password, done) => {
+    await pool.query('SELECT * FROM users WHERE mail = \''+ username + '\'', (err, rows) => {
+      if (rows.rowCount < 1) {
+        return done(null, false, { message : 'User not found'});
+      }
+      bcrypt.compare(password, rows.rows[0].password, (err, res) => {
+        if(err) return err;
+        if(res) {
+          console.log(rows.rows[0]);
+          return( done(null, rows.rows[0]));
+        }
+        return done(null, false, { message : 'Verify password'});
+      });
+    })
+}));
+
+app.all("/*", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  next();
+});
+
 // Password encryption for DB
 const bcrypt = require('bcrypt');
 const saltRounds = 5;
 
-// auth packages
-const session = require('express-session');
-const passport = require('passport');
-const pgSession = require('connect-pg-simple')(session);
-
-app.use(session({
-  secret: 'azefrgtbdiu',
-  store: new pgSession({
-    pool: pool,
-    tableName: 'session'
-  }),
-  resave: false,
-  saveUninitialized: false,
-  cookie: {secure : true, maxAge: 30 * 24 * 60 * 1000 } //30 days
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 ///////////////////// ROUTAGE /////////////////////
+
+app.post('/login',function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.send(info); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.send(user);
+    });
+  })(req, res, next);
+});
+
+app.get('/logout', (req, res) => {
+  console.log(req, res);
+  req.logout();
+  return res.send(true);
+});
 
 app.post('/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
@@ -63,14 +92,14 @@ app.post('/evenement', async (req, res) => {
   });
 });
 
-app.post('/galerie',urlencodedParser, async (req, res) => {
+app.post('/galerie', async (req, res) => {
   let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY id';
   await pool.query(sql, (err, rows) => {
     return res.json(rows.rows);
   });
 });
 
-app.post('/test',urlencodedParser, async (req, res) => {
+app.post('/test', async (req, res) => {
   let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
   await pool.query(sql, (err,rows) => {
     if(rows.rows.length > 0) {
@@ -99,9 +128,8 @@ app.post('/new', [
   const errors = validationResult(req);
   if(!errors.isEmpty()){
     return res.send(errors);
-    return res.status(422).json({errors: errors.array()});
   } else {
-    const query = "INSERT INTO users (firstname, lastname, mail, password, notifications) VALUES ($1,$2,$3,$4,$5)"
+    const query = "INSERT INTO users (firstname, lastname, mail, password, notifications) VALUES ($1,$2,$3,$4,$5)";
     let notification = false;
     if (req.query.notification === 'yes') notification = true;
     bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -109,23 +137,15 @@ app.post('/new', [
         let valeur = [req.query.firstname, req.query.lastname, req.query.email, hash, notification];
         await pool.query(query, valeur, (err) => {
           if (err) return res.send(false);
-
-          pool.query('SELECT CURRVAL(pg_get_serial_sequence(\'users\',\'userId\')) as user_id', (err, rows) => {
-            if (err) return res.send(false);
-            console.log(rows.rows[0]);
-            const user_id = rows.rows[0];
-            req.login(user_id, () => {
-              return res.send(true);
-            });
-          });
-        })
+          return res.send(true);
+        });
       });
-    });
+    })
   }
 });
 
 
-app.post('/adminImg', urlencodedParser, (req) => {
+app.post('/adminImg', (req) => {
 
   let file = req.query.imageFile;
   let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
@@ -143,7 +163,7 @@ app.post('/adminImg', urlencodedParser, (req) => {
   return true;
 });
 
-app.post('/adminEvent', urlencodedParser, (req) => {
+app.post('/adminEvent', (req) => {
 
   let file = req.query.imageFile;
   let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
@@ -159,8 +179,24 @@ app.post('/adminEvent', urlencodedParser, (req) => {
   })
 });
 
-app.post('/like', urlencodedParser, (req) => {
-  pool.query('update paintings set likes = likes + 1 where id = '+ req.query.painting);
+app.post('/like', async (req) => {
+  console.log(req.query);
+  await pool.query(
+    'update paintings set likes = likes + 1 where id = '+ req.query.painting + ';' +
+    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+      if (err) throw err;
+      return res;
+    });
+});
+
+app.post('/dislike', async (req) => {
+  console.log(req.query);
+  await pool.query(
+    'UPDATE paintings SET likes = likes - 1 WHERE id = '+ req.query.painting + ';' +
+    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+      if (err) throw err;
+      return res;
+    });
 });
 
 passport.serializeUser(function (user_id, done) {
@@ -169,14 +205,6 @@ passport.serializeUser(function (user_id, done) {
 passport.deserializeUser(function (user_id, done) {
   done(null, user_id);
 });
-
-
-//let privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
-//let certificate = fs.readFileSync('ssl/server.crt', 'utf8');
-//let credentials = {key: privateKey, cert: certificate};
-
-//let httpsServer = https.createServer(credentials, app);
-
 
 //ecoute sur le port 8888
 app.listen(8888);

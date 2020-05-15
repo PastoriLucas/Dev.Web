@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +23,6 @@ import { FrContactComponent } from './french/contact/contact.component';
 import { FrAdminComponent } from './french/admin/admin.component';
 import { FrLoginComponent } from './french/login/login.component';
 import { FrInscriptionComponent } from './french/inscription/inscription.component';
-import { FrRegisterComponent} from './french/register/register.component';
 import { FrFooterComponent } from './french/footer/footer.component';
 import { FrHeaderComponent} from './french/header/header.component';
 
@@ -73,7 +73,6 @@ const appRoutes: Routes = [
   { path: 'fr/admin', component: FrAdminComponent },
   { path: 'fr/login', component: FrLoginComponent },
   { path: 'fr/inscription', component: FrInscriptionComponent},
-  { path: 'fr/register', component: FrRegisterComponent},
   /*ENGLISH*/
   { path: 'en/gallery', component: EnGalleryComponent },
   { path: 'en/gallery/:id', component: EnGalleryDetailComponent },
@@ -133,7 +132,6 @@ const appRoutes: Routes = [
     FrInscriptionComponent,
     FrFooterComponent,
     FrHeaderComponent,
-    FrRegisterComponent,
     /*ENGLISH*/
     EnGalleryComponent,
     EnPresentationComponent,
@@ -164,7 +162,7 @@ const appRoutes: Routes = [
     NlRegisterComponent
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

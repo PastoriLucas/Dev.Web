@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,31 +14,42 @@ export class FrLoginComponent implements OnInit {
 
   public checkoutForm;
 
-  constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
     this.checkoutForm = this.formBuilder.group({
-      email: '',
+      username: '',
       password: ''
     });
   }
 
   ngOnInit(): void {
   }
+
   onSubmit(res) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/test', '', {
+    this.http.post('http://127.0.0.1:8888/login', '', {
       params : {
-        email : res.email,
+        username : res.username,
         password : res.password
       },
-      headers : headers
+      headers
     })
     .subscribe(result => {
-      if (result === false) {
-        alert('E-mail ou Mot de passe incorrect.\nVeuillez réessayer.');
+      console.log(result);
+      // @ts-ignore
+      document.getElementById('error').innerText = '';
+      // @ts-ignore
+      if (result.message) {
+        // @ts-ignore
+        document.getElementById('error').innerText = result.message;
+        document.getElementById('error').style.display = 'inherit';
       } else {
-        this.router.navigate(['/fr/home']);
+        // @ts-ignore
+        this.cookieService.set('login', result.userId);
+        // @ts-ignore
+        localStorage.setItem('likes', result.likes);
+        location.replace('/fr/home');
       }
     });
   }

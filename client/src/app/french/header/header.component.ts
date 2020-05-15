@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CookieService} from 'ngx-cookie-service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-headerfr',
@@ -6,10 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class FrHeaderComponent implements OnInit {
+  login: any;
 
-  constructor() { }
+  constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    console.log(this.cookieService.getAll());
+    if (this.cookieService.getAll().login) {
+      this.login = 'Mon compte';
+      document.getElementById('logout').style.display = 'inherit';
+    } else {
+      this.login = 'Connexion';
+    }
   }
 
+  logout() {
+    console.log('logout');
+    this.cookieService.delete('login');
+    localStorage.clear();
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('http://127.0.0.1:8888/logout', '', {
+      headers
+    })
+      .subscribe(result => {
+        console.log(result);
+      });
+  }
 }
