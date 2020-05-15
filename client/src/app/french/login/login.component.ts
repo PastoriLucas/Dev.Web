@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
+
 import {CookieService} from 'ngx-cookie-service';
 
 @Component({
@@ -28,7 +29,7 @@ export class FrLoginComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/login', '', {
+    this.http.post('http://51.178.40.75:8888/login', '', {
       params : {
         username : res.username,
         password : res.password

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -29,7 +30,7 @@ export class FrHeaderComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/logout', '', {
+    this.http.post('http://51.178.40.75:8888/logout', '', {
       headers
     })
       .subscribe(result => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+// @ts-ignore
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -35,7 +36,7 @@ export class FrInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('http://127.0.0.1:8888/new', '', {
+      this.http.post('http://51.178.40.75:8888/new', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,

@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+// @ts-ignore
 import {CookieService} from 'ngx-cookie-service';
 
 @Component({
@@ -26,7 +27,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/galerie`, '', {
+    this.http.post(`http://51.178.40.75:8888/galerie`, '', {
       headers
     })
       .subscribe(result => {
@@ -44,7 +45,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
   connect() {
     if (localStorage.length > 0) {
-      let likes = localStorage.getItem('likes').split(',');
+      const likes = localStorage.getItem('likes').split(',');
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < likes.length; i++) {
         // si déjà liké
@@ -84,7 +85,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://127.0.0.1:8888/like`, '', {
+    this.http.post(`http://51.178.40.75:8888/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
@@ -96,7 +97,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   delLike() {
-    let likes = localStorage.getItem('likes').split(',');
+    const likes = localStorage.getItem('likes').split(',');
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
       if (likes[l] === this.currentImage) {
@@ -105,7 +106,7 @@ export class FrGalleryDetailComponent implements OnInit {
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`http://127.0.0.1:8888/dislike`, '', {
+        this.http.post(`http://51.178.40.75:8888/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
