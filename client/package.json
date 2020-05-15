@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl true --ssl-key ssl/server.key --ssl-cert ssl/server.crt && node login.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,6 +23,7 @@
     "bcrypt": "^4.0.1",
     "connect-pg-simple": "^6.1.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
     "express-pg-session": "^1.1.0",
     "express-session": "^1.17.1",

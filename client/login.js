@@ -8,8 +8,11 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pgSession = require('connect-pg-simple')(session);
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 //connection avec la db
 let pool = new pg.Pool({
