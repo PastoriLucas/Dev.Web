@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
 
+import { FileComponent } from './file/file.component';
 
 /* *****************************************************************************************
                                         FRENCH
@@ -62,6 +63,7 @@ import { NlHeaderComponent} from './dutch/header/header.component';
 import {AgmCoreModule} from '@agm/core';
 
 const appRoutes: Routes = [
+  { path: 'fr/file', component: FileComponent},
   /*FRENCH*/
   { path: 'fr/gallery', component: FrGalleryComponent },
   { path: 'fr/gallery/:id', component: FrGalleryDetailComponent },
@@ -119,6 +121,7 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
+    FileComponent,
     /*FRENCH*/
     FrGalleryComponent,
     FrPresentationComponent,

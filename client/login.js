@@ -8,7 +8,10 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pgSession = require('connect-pg-simple')(session);
-
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart({
+  uploadDir: './src/assets/img'
+});
 const app = express();
 
 //connection avec la db
@@ -25,7 +28,10 @@ pool.connect(function (err) {
 });
 
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(session({
   secret: 'azefrgtbdiu',
   store: new pgSession({
@@ -147,10 +153,11 @@ app.post('/new', [
 
 app.post('/adminImg', (req) => {
 
-  let file = req.query.imageFile;
+  let file = req.query.imageDest;
   let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
-  file = 'C:\\Users\\natha\\OneDrive\\Images\\'+ file;
+  // file = '../../assets/img/'+ file;
 
+  console.log(file);
   fs.copyFile(file, newPath, (err)=> {
     if (err) throw err;
   });
@@ -163,20 +170,23 @@ app.post('/adminImg', (req) => {
   return true;
 });
 
-app.post('/adminEvent', (req) => {
+app.post('/adminEvent', (req, res) => {
 
-  let file = req.query.imageFile;
-  let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
-  file = 'C:\\Users\\natha\\OneDrive\\Images\\'+ file;
-
+  let file = req.query.eventDest;
   console.log(file);
-  fs.rename(file, newPath);
-  file = '../../assets/img/' +req.query.imageFile;
-  let sql = "INSERT INTO event (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
-  pool.query(sql, (err, rows) => {
-    if (err) {return err}
-    return rows;
-  })
+
+  let form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+    console.log(fields);
+    console.log(files);
+    let oldpath = files.eventFile.path;
+    let newpath = '../../assets/img/' + files.eventFile.name;
+    fs.rename(oldpath, newpath, function (err) {
+      if (err) throw err;
+      res.send('File uploaded and moved!');
+      res.end();
+    });
+  });
 });
 
 app.post('/like', async (req) => {
@@ -199,6 +209,12 @@ app.post('/dislike', async (req) => {
     });
 });
 
+app.post('/api/upload', multipartMiddleware, (req, res) => {
+  res.json({
+    'message': 'File uploaded succesfully.'
+  });
+});
+
 passport.serializeUser(function (user_id, done) {
   done(null, user_id);
 });
@@ -210,3 +226,16 @@ passport.deserializeUser(function (user_id, done) {
 app.listen(8888);
 //httpsServer.listen(8888);
 
+/*
+* let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
+  // file = 'C:\\Users\\natha\\OneDrive\\Images\\'+ file;
+
+  console.log(file);
+  fs.rename(file, newPath);
+  file = '../../assets/img/' +req.query.imageFile;
+  let sql = "INSERT INTO event (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
+  pool.query(sql, (err, rows) => {
+    if (err) {return err}
+    return rows;
+  })
+  * */
