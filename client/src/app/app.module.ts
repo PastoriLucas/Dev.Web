@@ -159,7 +159,7 @@ const appRoutes: Routes = [
     NlInscriptionComponent,
     NlFooterComponent,
     NlHeaderComponent,
-    NlRegisterComponent
+    NlRegisterComponent,
   ],
   exports: [RouterModule],
   providers: [CookieService],
