@@ -1,10 +1,10 @@
 <div class="admin">
   <div id="gallery">
     <h1>Ajouter une image à la gallerie</h1>
-    <form name="gallery" id="img" enctype="multipart/form-data" method="post" [formGroup]="checkoutFormImage" (ngSubmit)="onSubmit(checkoutFormImage.value)">
-      Nom : <input type="text" required placeholder="Nom" id="imageName" formControlName="imageName"><br>
-      Taille de la toile : <input type="text" required placeholder="Taille" id="imageSize" formControlName="imageSize"><br>
-      Image : <input type="file" required id="imageFile" formControlName="imageFile"><br>
+    <form name="gallery" id="img" enctype="multipart/form-data" method="post" [formGroup]="checkoutFormGallery" (ngSubmit)="onSubmit(checkoutFormGallery.value)">
+      Nom : <input type="text" required placeholder="Nom" id="galleryName" formControlName="galleryName"><br>
+      Taille de la toile : <input type="text" required placeholder="Taille" id="gallerySize" formControlName="gallerySize"><br>
+      Image : <input type="file" required id="galleryFile" formControlName="galleryFile"><br>
       <input type="submit" class="submit">
     </form>
   </div>
