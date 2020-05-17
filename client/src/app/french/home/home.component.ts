@@ -10,6 +10,7 @@ export class FrHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

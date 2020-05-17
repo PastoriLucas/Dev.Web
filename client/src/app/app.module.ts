@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -165,7 +165,7 @@ const appRoutes: Routes = [
     NlRegisterComponent,
   ],
   exports: [RouterModule],
-  providers: [CookieService],
+  providers: [CookieService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
