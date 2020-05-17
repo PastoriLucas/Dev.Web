@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
-import {Router} from '@angular/router';
-
+import { Router } from '@angular/router';
+// @ts-ignore
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-inscription',
@@ -13,8 +14,10 @@ import {Router} from '@angular/router';
 export class FrInscriptionComponent implements OnInit {
 
   register;
+  private cookieValue: string;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private cookieService: CookieService, private router: Router) {
     this.register = this.formBuilder.group({
       firstname: '',
       lastname: '',
@@ -27,12 +30,13 @@ export class FrInscriptionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit(res) {
     if (res.password === res.confirm) {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('http://127.0.0.1:8888/new', '', {
+      this.http.post('http://51.178.40.75:8888/new', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -44,17 +48,36 @@ export class FrInscriptionComponent implements OnInit {
       })
         .subscribe(result => {
           console.log('resultat : ' + result);
+          document.getElementById('error').innerText = '';
           if (result === false) {
-            alert('Cet utilisateur existe déjà');
-            console.log('Cet utilisateur existe déjà');
-            location.reload();
+            document.getElementById('error').innerText = 'L\'utilisateur existe déjà';
+            document.getElementById('error').style.display = 'flex';
+          } else if (result === true) {
+            document.getElementById('error').innerText = 'Va vers login';
+            document.getElementById('error').style.display = 'flex';
+            this.cookieService.set(result.toString(), 'value', 1000 * 60 * 60 * 24 * 2 );
+            this.cookieValue = this.cookieService.get('name');
+            this.router.navigate(['/fr/login']);
           } else {
-            this.router.navigate(['/login']);
+            // @ts-ignore
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < result.errors.length; i++) {
+              // @ts-ignore
+              document.getElementById('error').innerHTML += '- ' + result.errors[i].msg + '<br>';
+              document.getElementById('error').style.display = 'flex';
+            }
           }
         });
-    } else { alert('Check password'); }
+    } else { document.getElementById('error').innerText = 'Veuillez indiquer 2 fois le même mot de passe ! ';
+             document.getElementById('error').style.display = 'flex'; }
   }
   shwPassword() {
-    document.getElementById('pwd1').setAttribute('type', 'text');
+    if (document.getElementById('pwd1').getAttribute('type') === 'password' ) {
+      document.getElementById('pwd1').setAttribute('type', 'text');
+      document.getElementById('pwd2').setAttribute('type', 'text');
+    } else {
+      document.getElementById('pwd1').setAttribute('type', 'password');
+      document.getElementById('pwd2').setAttribute('type', 'password');
+    }
   }
 }

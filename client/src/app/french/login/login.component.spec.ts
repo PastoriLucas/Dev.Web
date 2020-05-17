@@ -27,4 +27,8 @@ describe('ContactComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  /*it('should add user', () => {
+    expect(component.onSubmit({username: 'Paul', password: 'DIoizef'})
+  })*/
 });

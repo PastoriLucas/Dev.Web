@@ -124,6 +124,7 @@ body {
   background-color: white;
   margin: 0 5% -10px;
   text-align: center;
+  float: none;
 }
 
 #logoValouKervynBot {

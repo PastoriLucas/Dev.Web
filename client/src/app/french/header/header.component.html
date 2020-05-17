@@ -1,11 +1,12 @@
 <div class="topnav">
   <div id="divSelectLanguage">
-    <a class="selectLanguage" href="nl/home">NL</a>
+    <a class="selectLanguage" href="fr/file">NL</a>
     <a class="selectLanguage" href="en/home">EN</a>
     <a class="selectLanguage" href="fr/home">FR</a>
   </div>
   <div id="loginDiv">
-    <a id="login" href="fr/login">Mon Compte</a>
+    <a id="logout" href="fr/home" (click)="logout()">Déconnexion</a>
+    <a id="login" href="fr/login">{{this.login}}</a>
   </div>
   <a href=""><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
   <div id="toolbar">

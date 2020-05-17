@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
 
+import { FileComponent } from './file/file.component';
 
 /* *****************************************************************************************
                                         FRENCH
@@ -22,7 +24,6 @@ import { FrContactComponent } from './french/contact/contact.component';
 import { FrAdminComponent } from './french/admin/admin.component';
 import { FrLoginComponent } from './french/login/login.component';
 import { FrInscriptionComponent } from './french/inscription/inscription.component';
-import { FrRegisterComponent} from './french/register/register.component';
 import { FrFooterComponent } from './french/footer/footer.component';
 import { FrHeaderComponent} from './french/header/header.component';
 
@@ -62,6 +63,7 @@ import { NlHeaderComponent} from './dutch/header/header.component';
 import {AgmCoreModule} from '@agm/core';
 
 const appRoutes: Routes = [
+  { path: 'fr/file', component: FileComponent},
   /*FRENCH*/
   { path: 'fr/gallery', component: FrGalleryComponent },
   { path: 'fr/gallery/:id', component: FrGalleryDetailComponent },
@@ -73,7 +75,6 @@ const appRoutes: Routes = [
   { path: 'fr/admin', component: FrAdminComponent },
   { path: 'fr/login', component: FrLoginComponent },
   { path: 'fr/inscription', component: FrInscriptionComponent},
-  { path: 'fr/register', component: FrRegisterComponent},
   /*ENGLISH*/
   { path: 'en/gallery', component: EnGalleryComponent },
   { path: 'en/gallery/:id', component: EnGalleryDetailComponent },
@@ -120,6 +121,7 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
+    FileComponent,
     /*FRENCH*/
     FrGalleryComponent,
     FrPresentationComponent,
@@ -133,7 +135,6 @@ const appRoutes: Routes = [
     FrInscriptionComponent,
     FrFooterComponent,
     FrHeaderComponent,
-    FrRegisterComponent,
     /*ENGLISH*/
     EnGalleryComponent,
     EnPresentationComponent,
@@ -161,10 +162,10 @@ const appRoutes: Routes = [
     NlInscriptionComponent,
     NlFooterComponent,
     NlHeaderComponent,
-    NlRegisterComponent
+    NlRegisterComponent,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

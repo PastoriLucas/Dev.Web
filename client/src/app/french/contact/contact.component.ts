@@ -26,7 +26,7 @@ export class FrContactComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://127.0.0.1:8888/contact', '', {
+    this.http.post('http://51.178.40.75/contact', '', {
       params : {
         name : res.formName,
         envoyeur : res.formMail,
