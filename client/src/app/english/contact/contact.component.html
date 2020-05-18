@@ -1,6 +1,34 @@
 <app-headeren></app-headeren>
-  <div class="pageWeb">
-    <h1>Contact</h1>
-    <p>Rien de fou par ici pour le moment... Revenez plus tard !</p>
+<div class="pageContact">
+  <div class="contactGauche">
+    <div class="espaceGauche">
+      <h3 id="phone">Phone Number </h3>
+      <div class="separator"></div>
+      <p>0473/66.32.41</p>
+    </div>
+    <div class="espaceGauche">
+      <h3 id="mail">E-mail </h3>
+      <div class="separator"></div>
+      <p>varmotiv0@gmail.com</p>
+    </div>
   </div>
+  <div class="contactDroit">
+    <form id="form" [formGroup]="mailForm" (ngSubmit)="onSubmit(mailForm.value)">
+      <div id="formSuperieur">
+        <label id="nameLabel" for="formName" >Name </label><br>
+        <label id="mailLabel" for="formMail">E-mail </label><br>
+        <input type="text" id="formName" name="formName" formControlName="formName"><br><br>
+        <input type="text" id="formMail" name="formMail" formControlName="formMail"><br><br>
+      </div>
+      <div class="separator"></div>
+      <label for="formSjt">Subject</label><br>
+      <input type="text" id="formSjt" name="formSjt" formControlName="formSjt"><br><br>
+      <div class="separator"></div>
+      <label for="formMsg">Your message</label><br>
+      <input type="text" id="formMsg" name="formMsg" formControlName="formMsg"><br><br>
+      <input type="submit" id="sbt">
+      <input type="reset" id="rst">
+    </form>
+  </div>
+</div>
 <app-footeren></app-footeren>

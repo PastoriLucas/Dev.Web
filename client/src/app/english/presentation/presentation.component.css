@@ -3,3 +3,32 @@
   margin: 0 5%;
   padding: 1%;
 }
+#img1 {
+  width: 40%;
+  padding: 2% 3% 2% 8%;
+  height: 600px;
+}
+#p1{
+  width: 45%;
+  padding: 2% 2% 2% 0%;
+  font-size: 14px;
+}
+
+#paragraphe{
+  display: flex;
+  flex-wrap: wrap;
+}
+#titre {
+  padding: 0% 8%;
+}
+.italique {
+  font-style: italic;
+  color: #b2b2b2;
+  font-size: 16px;
+}
+.nom {
+  font-size: 22px;
+}
+.gris {
+  color: #b2b2b2;
+}

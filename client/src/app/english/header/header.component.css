@@ -1,5 +1,3 @@
-/* Add a black background color to the top navigation */
-
 body {
   background-color: #ededed;
   margin: 0 -10px;
@@ -29,17 +27,20 @@ body {
 
 #hoverGallery {
   position: absolute;
-  margin-left: 18%;
+  /*margin-left: 18%;*/
+  margin-left: 17%;
 }
 
 #hoverPresentation {
   position: absolute;
-  margin-left: 37%;
+  /*margin-left: 37%;*/
+  margin-left: 34%;
 }
 
 #hoverEvent {
   position: absolute;
-  margin-left: 62.5%;
+  /*margin-left: 62.5%;*/
+  margin-left: 57%;
 }
 
 #hoverContact {
@@ -94,7 +95,6 @@ body {
   margin-right: 3%;
   background: #ededed;
   text-align: center;
-  margin-top: 10px;
 }
 
 #login {
@@ -104,10 +104,10 @@ body {
   text-align: center;
   color: black;
   padding: 10px;
-
+  float: right;
 }
 
-#login:hover {
+#login:hover, #logout:hover {
   background-color: #e4e4e4;
 }
 
@@ -145,4 +145,15 @@ body {
   color: black;
   background-color: #e4e4e4;
   padding: 5px 10px;
+}
+
+#logout {
+  background-color: #ededed;
+  font-size: 15px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  float: right;
+  display: none;
 }
