@@ -3,27 +3,28 @@
     <div class="header">
       <h1>Angular File Upload</h1>
     </div>
-    <div class="row margin25">
-
-      <div class="col-md-4">
-
-      </div>
-      <div class="col-md-4">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span  class="input-group-text upload"  (click)="upload()"  id="btnUpload">Upload</span>
-          </div>
-          <div class="custom-file">
-            <form action="/api/upload" method="post" enctype="multipart/form-data">
-              <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
-            </form>
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-
-      </div>
+    <div class="paintings">
+      <h1>Galerie</h1>
+      <form method="post" enctype="multipart/form-data" [formGroup]="gallery" (ngSubmit)="sendPainting(this.gallery)">
+        <input type="text" required name="name" formControlName="name">
+        <input type="text" required name="size" formControlName="size">
+        <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
+        <input type="submit">
+      </form>
+      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    </div>
+    <div class="events">
+      <h1>Evenement</h1>
+      <form method="post" enctype="multipart/form-data" [formGroup]="event" (ngSubmit)="sendEvent(this.event)">
+        <input type="text" required name="name" formControlName="name">
+        <input type="date" required name="dateBegin" formControlName="dateBegin">
+        <input type="date" required name="dateEnd" formControlName="dateEnd">
+        <input type="text" required name="place" formControlName="place">
+        <input type="text" required name="description" formControlName="description">
+        <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="file"  aria-describedby="inputGroupFileAddon01">
+        <input type="submit">
+      </form>
+      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
     </div>
   </div>
 </div>
