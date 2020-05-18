@@ -27,7 +27,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/galerie`, '', {
+    this.http.post(`/api/galerie`, '', {
       headers
     })
       .subscribe(result => {

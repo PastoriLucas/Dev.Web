@@ -12,10 +12,10 @@ export class FrEventidComponent implements OnInit {
   }
 
   public event = {
-    dateBegin: '',
-    dateEnd: '',
+    begin: '',
+    end: '',
     description: '',
-    eventId: null,
+    id: null,
     image: '',
     name: '',
     place: ''
@@ -27,7 +27,7 @@ export class FrEventidComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/evenement`, '', {
+    this.http.post(`/api/evenement`, '', {
       headers
     })
       .subscribe(async result => {
@@ -37,7 +37,7 @@ export class FrEventidComponent implements OnInit {
           // @ts-ignore
           const page = window.location.pathname.split('/').pop();
           // tslint:disable-next-line:radix
-          if (result[i].eventId.toString() === page) {
+          if (result[i].id.toString() === page) {
             this.place = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCq4TvPKogUIilCh_38VgrV4URD5o1a8xk&q=' + result[i].place;
             // document.getElementById('map').setAttribute('src', this.place);
             this.event = result[i];
