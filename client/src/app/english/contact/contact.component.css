@@ -1,5 +1,64 @@
-.pageWeb {
-  background-color: white;
+.pageContact {
   margin: 0 5%;
-  padding: 1%;
+  background-color: white;
+  z-index: 1;
+  height: 800px;
+}
+.contactDroit{
+  float: right;
+  width: 65%;
+  padding: 35px 0px;
+}
+
+.contactGauche{
+  float: left;
+  width: 25% ;
+  margin: 0 2%;
+}
+.separator{
+  display: block;
+  height: 1px;
+  width: 95%;
+  border-top: 2px dashed #b2b2b2;
+  margin: 2% 0%;
+}
+
+.espaceGauche {
+  padding: 15px 0px;
+}
+
+#formName {
+  align-content: flex-start;
+  width: 45%;
+  float :left;
+  height: 20%;
+}
+#formMail{
+  width: 45%;
+  margin-left: 4%;
+  height: 20%;
+}
+#formSjt{
+  margin: 2% 0%;
+  width: 95%;
+}
+#formMsg{
+  width: 95%;
+  height: 250px;
+}
+#formSuperieur{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#sbt{
+  margin-right: 20px;
+}
+#mailLabel{
+  width: 50%;
+  height: 40%;
+}
+#nameLabel{
+  width: 50%;
+  height: 40%;
 }

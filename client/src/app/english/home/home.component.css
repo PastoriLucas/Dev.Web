@@ -1,18 +1,6 @@
-/*img {
-  margin: 0.5%;
-  background-color: white;
-  border: 5px solid black;
-}*/
-
-#flecheGauche {
-  width: 100px;
-  height: 100px;
-  background-color: #ededed00;
-}
-.pageWeb {
+.pageweb {
   margin: 0 5%;
   background-color: white;
-  z-index: 1;
 }
 #paraIntro {
   margin-left: 5%;
@@ -28,26 +16,39 @@
   padding: 10px;
 }
 
-#imageDefilante {
-  width: 40%;
-}
-
-
-#flecheGauche {
-  width: 4%;
-  position: absolute;
-  margin-top: 220px;
-  margin-left: -75px;
-}
-
-#flecheDroite {
-  width: 4%;
-  position: absolute;
-  margin-top: 220px;
-  margin-right: -75px;
-}
-
 .horrow {
   margin-left: 5%;
   margin-right: 5%;
 }
+div#slider {
+  margin-left: 33% ;
+  width: 35%;
+  max-width: 600px;
+}
+div#slider figure {
+  position: relative;
+  width: 400%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
+
+div#slider figure img {
+  width: 25%;
+  float: left;
+}
+
+div#slider { overflow: hidden; }
+
+@keyframes slidy {
+  0% { left: 0%; }
+  28% { left: 0%; }
+  33% { left: -100%; }
+  61% { left: -100%; }
+  66% { left: -200%; }
+  94% { left: -200%; }
+  100% { left: -300%; }
+}
+
