@@ -16,6 +16,7 @@ export class FrGalleryComponent implements OnInit {
 
   ngOnInit() {
     this.http.post('/api/galerie', '', {
+      responseType : 'json',
     })
       .subscribe(result => {
         console.log(result);
