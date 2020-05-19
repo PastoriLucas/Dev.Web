@@ -28,7 +28,8 @@ export class FrEventidComponent implements OnInit {
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
     this.http.post(`/api/evenement`, '', {
-      headers
+      headers,
+      responseType : 'json'
     })
       .subscribe(async result => {
         // @ts-ignore

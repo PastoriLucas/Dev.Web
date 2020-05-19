@@ -35,7 +35,8 @@ export class FrGalleryDetailComponent implements OnInit {
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
     this.http.post(`/api/galerie`, '', {
-      headers
+      headers,
+      responseType : 'text'
     })
       .subscribe(result => {
         this.paints = result;
