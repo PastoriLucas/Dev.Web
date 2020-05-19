@@ -96,15 +96,16 @@ app.get('/api/logout', (req, res) => {
 
 app.post('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
-  let sql = 'SELECT id , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin"';
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin"';
   await pool.query(sql, (err, rows) => {
     return res.json(rows.rows);
   });
 });
 
 app.post('/api/galerie', async (req, res) => {
-  let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY id';
+  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
+    if (err) throw err;
     return res.json(rows.rows);
   });
 });
@@ -229,9 +230,25 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
   let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
     "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
   pool.query(sql, (err, rows) => {
-    console.log(rows, err);
     if (err) {return err}
     return rows;
+  })
+});
+
+app.post('/api/getComment', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ req.query.painting;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
+app.post('/api/addComment', async (req, res) => {
+  let query = req.query;
+  let sql = 'INSERT INTO comments ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
+  pool.query(sql, (err) => {
+    if (err) throw err;
+    return res.send(true);
   })
 });
 
@@ -244,18 +261,4 @@ passport.deserializeUser(function (user_id, done) {
 
 //ecoute sur le port 8888
 app.listen(8888);
-//httpsServer.listen(8888);
 
-/*
-* let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
-  // file = 'C:\\Users\\natha\\OneDrive\\Images\\'+ file;
-
-  console.log(file);
-  fs.rename(file, newPath);
-  file = '../../assets/img/' +req.query.imageFile;
-  let sql = "INSERT INTO event (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
-  pool.query(sql, (err, rows) => {
-    if (err) {return err}
-    return rows;
-  })
-  * */

@@ -4,7 +4,7 @@
     <div *ngIf="true"><p>Content to render when condition is true.</p></div>
       <br>
       <div class="blocImages">
-          <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.id">
+          <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.paintingId">
             <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
           </a>
     </div>

@@ -10,7 +10,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class FrGalleryComponent implements OnInit {
 
   public transition;
-  public isConnected = false;
 
   constructor(private http: HttpClient) {
   }
@@ -19,6 +18,7 @@ export class FrGalleryComponent implements OnInit {
     this.http.post('/api/galerie', '', {
     })
       .subscribe(result => {
+        console.log(result);
         this.transition = result;
       });
   }
