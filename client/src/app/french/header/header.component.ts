@@ -10,11 +10,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class FrHeaderComponent implements OnInit {
   login: any;
+  page: any;
 
   constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    console.log(this.cookieService.getAll());
+    this.page = location.pathname.split('/fr/').pop();
+    console.log(this.page);
     if (this.cookieService.getAll().login) {
       this.login = 'Mon compte';
       document.getElementById('logout').style.display = 'inherit';
@@ -24,17 +26,14 @@ export class FrHeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('logout');
     localStorage.clear();
     this.cookieService.delete('login');
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/logout', '', {
+    this.http.post('/api/logout', '', {
       headers
     })
-      .subscribe(result => {
-        console.log(result);
-      });
+      .subscribe();
   }
 }

@@ -10,19 +10,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class FrGalleryComponent implements OnInit {
 
   public transition;
-  public isConnected = false;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/galerie`, '', {
-      headers
+    this.http.post('/api/galerie', '', {
     })
       .subscribe(result => {
+        console.log(result);
         this.transition = result;
       });
   }

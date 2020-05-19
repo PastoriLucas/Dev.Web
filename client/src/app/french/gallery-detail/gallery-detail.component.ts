@@ -2,8 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// @ts-ignore
 import {CookieService} from 'ngx-cookie-service';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-gallery-detail',
@@ -19,15 +19,22 @@ export class FrGalleryDetailComponent implements OnInit {
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   public param = '';
+  comments: any;
+  checkoutForm: any;
 
-  constructor(private router: Router, private http: HttpClient, public cookieService: CookieService) {}
+  constructor(private router: Router, private http: HttpClient, public cookieService: CookieService, private formBuilder: FormBuilder) {
+    this.checkoutForm = this.formBuilder.group({
+      comment: ''
+    });
+  }
 
   ngOnInit() {
-    this.currentImage = this.router.url.substr(12);
+    this.currentImage = location.pathname.split('/').pop();
+    this.comment();
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/galerie`, '', {
+    this.http.post(`/api/galerie`, '', {
       headers
     })
       .subscribe(result => {
@@ -35,7 +42,7 @@ export class FrGalleryDetailComponent implements OnInit {
         this.url = Number(this.currentImage);
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.paints.length; i++) {
-          if (this.paints[i].id === this.url) {
+          if (this.paints[i].paintingId === this.url) {
             this.actualPaint = (this.paints[i]);
           }
         }
@@ -43,6 +50,7 @@ export class FrGalleryDetailComponent implements OnInit {
       // vérifie connexion
     this.connect();
   }
+
   connect() {
     if (localStorage.length > 0) {
       const likes = localStorage.getItem('likes').split(',');
@@ -85,7 +93,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/like`, '', {
+    this.http.post(`/api/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
@@ -106,11 +114,11 @@ export class FrGalleryDetailComponent implements OnInit {
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`http://51.178.40.75:8888/dislike`, '', {
+        this.http.post(`/api/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
-            likes : likes,
+            likes,
             painting : this.currentImage
           }
         }).subscribe();
@@ -118,6 +126,44 @@ export class FrGalleryDetailComponent implements OnInit {
         document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
       }
     }
+  }
+
+  comment() {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('/api/getComment', '', {
+      headers,
+      params: {
+        painting: this.currentImage
+      }
+    })
+      .subscribe(result => {
+        console.log(result);
+        this.comments = result;
+      });
+  }
+
+  newComment(res) {
+    if (!this.cookieService.get('login')) {
+      alert('Connectez vous');
+      return false;
+    }
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('/api/addComment', '', {
+      headers,
+      params: {
+        user: this.cookieService.get('login'),
+        painting: this.currentImage,
+        comment: res.comment
+      }
+    })
+      .subscribe(result => {
+        console.log(result);
+      });
+    location.reload();
   }
 }
 

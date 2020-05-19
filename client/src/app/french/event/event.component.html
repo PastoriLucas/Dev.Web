@@ -1,10 +1,10 @@
 <app-headerfr></app-headerfr>
   <div class="pageEvent">
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
-      <img class="imgs" src="../../assets/{{oeuvre.image}}" alt="oeuvre">
+      <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
       <h1>{{oeuvre.name}}</h1>
       <div class="moment">
-        <p>{{oeuvre.dateBegin}} - {{oeuvre.dateEnd}}</p>
+        <p>{{oeuvre.begin}} - {{oeuvre.end}}</p>
       </div>
       <p class="location">{{oeuvre.place}}</p>
     </div>
