@@ -35,7 +35,7 @@ export class FrLoginComponent implements OnInit {
         password : res.password
       },
       headers,
-      responseType : 'text'
+      responseType : 'json'
     })
     .subscribe(result => {
       console.log(result);

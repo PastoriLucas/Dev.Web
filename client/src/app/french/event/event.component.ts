@@ -17,7 +17,7 @@ export class FrEventComponent implements OnInit {
       .set('Content-Type', 'application/json');
     this.http.post(`/api/evenement`, '', {
       headers,
-      responseType : 'text',
+      responseType : 'json',
     })
       .subscribe(result => {
         this.transition = result;
