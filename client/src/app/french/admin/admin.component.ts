@@ -26,8 +26,7 @@ export class FrAdminComponent implements OnInit {
       eventEnd: '',
       eventDescription: '',
       eventLocation: '',
-      eventFile: '',
-      eventDest: ''
+      eventFile: ''
     });
   }
 
@@ -41,15 +40,16 @@ export class FrAdminComponent implements OnInit {
       .set('Content-Type', 'application/json');
     if (values.galleryName) {
       // @ts-ignore
-      const file = document.getElementById('imageFile').files[0].name;
-      this.http.post('http://51.178.40.75:8888/adminImg', '', {
+      console.log( document.getElementById('galleryFile').files[0].name);
+      // @ts-ignore
+      const file = document.getElementById('galleryFile').files[0].name;
+      this.http.post('/api/adminPaintings', '', {
         params: {
           imageName: values.galleryName,
           imageSize: values.gallerySize,
-          imageFile: values.galleryFile,
-          imageDest: file
+          imageFile: file
         },
-        headers: headers
+        headers
       })
         .subscribe(result => {
         if (result === false) {
@@ -62,15 +62,14 @@ export class FrAdminComponent implements OnInit {
       console.log('autre ' + values.eventFile);
       // @ts-ignore
       const file = document.getElementById('eventFile').files[0].name;
-      this.http.post('http://51.178.40.75:8888/adminEvent', '', {
+      this.http.post('/api/adminEvent', '', {
         params: {
           eventName: values.eventName,
           eventBegin: values.eventBegin,
           eventEnd: values.eventEnd,
           eventDescription: values.eventDescription,
           eventLocation: values.eventLocation,
-          eventFile: values.eventFile,
-          eventDest: file
+          eventFile: file
         },
         headers
       })

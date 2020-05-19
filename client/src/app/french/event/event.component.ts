@@ -15,7 +15,7 @@ export class FrEventComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/evenement`, '', {
+    this.http.post(`/api/evenement`, '', {
       headers
     })
       .subscribe(result => {

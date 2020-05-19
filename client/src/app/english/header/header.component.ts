@@ -10,11 +10,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class EnHeaderComponent implements OnInit {
   login: any;
+  page: any;
 
   constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    console.log(this.cookieService.getAll());
+    this.page = location.pathname.split('/en/').pop();
+    console.log(this.page);
     if (this.cookieService.getAll().login) {
       this.login = 'Mon compte';
       document.getElementById('logout').style.display = 'inherit';

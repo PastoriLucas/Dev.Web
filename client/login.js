@@ -64,7 +64,7 @@ passport.use(new LocalStrategy('local',
     })
 }));
 
-app.all("/'*'", function(req, res, next){
+app.all("/api/*", function(req, res, next){
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
@@ -77,7 +77,7 @@ const saltRounds = 5;
 
 ///////////////////// ROUTAGE /////////////////////
 
-app.post('/login',function(req, res, next) {
+app.post('/api/login',function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
     if (!user) { return res.send(info); }
@@ -88,28 +88,29 @@ app.post('/login',function(req, res, next) {
   })(req, res, next);
 });
 
-app.get('/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
   console.log(req, res);
   req.logout();
   return res.send(true);
 });
 
-app.post('/evenement', async (req, res) => {
+app.post('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("dateBegin", \'DD/MM/YYYY\') as "dateBegin", to_char("dateEnd", \'DD/MM/YYYY\') as "dateEnd", place, description, image from events ORDER BY "events"."dateBegin"';
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin"';
   await pool.query(sql, (err, rows) => {
     return res.json(rows.rows);
   });
 });
 
-app.post('/galerie', async (req, res) => {
-  let sql = 'SELECT id, name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY id';
+app.post('/api/galerie', async (req, res) => {
+  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
+    if (err) throw err;
     return res.json(rows.rows);
   });
 });
 
-app.post('/test', async (req, res) => {
+app.post('/api/test', async (req, res) => {
   let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
   await pool.query(sql, (err,rows) => {
     if(rows.rows.length > 0) {
@@ -126,7 +127,7 @@ app.post('/test', async (req, res) => {
   });
 });
 
-app.post('/new', [
+app.post('/api/new', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
   check('firstname', 'Firstname must only include MAJ and low').isAlpha(),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
@@ -166,11 +167,7 @@ app.post('/adminImg', (req) => {
     if (err) throw err;
   });
   file = '../../assets/img/' +req.query.imageFile;
-  let sql = "INSERT INTO paintings (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
-  pool.query(sql, (err) => {
-    console.log('sent '+ err);
-    if (err) return false;
-  });
+
   return true;
 });
 
@@ -193,7 +190,7 @@ app.post('/adminEvent', (req, res) => {
   });
 });
 
-app.post('/like', async (req) => {
+app.post('/api/like', async (req) => {
   console.log(req.query);
   await pool.query(
     'update paintings set likes = likes + 1 where id = '+ req.query.painting + ';' +
@@ -203,7 +200,7 @@ app.post('/like', async (req) => {
     });
 });
 
-app.post('/dislike', async (req) => {
+app.post('/api/dislike', async (req) => {
   console.log(req.query);
   await pool.query(
     'UPDATE paintings SET likes = likes - 1 WHERE id = '+ req.query.painting + ';' +
@@ -213,10 +210,46 @@ app.post('/dislike', async (req) => {
     });
 });
 
-app.post('/api/upload', multipartMiddleware, (req, res) => {
+app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
   res.json({
     'message': 'File uploaded succesfully.'
   });
+  let file = '../../assets/img/' + req.query.galleryFile;
+  pool.query("INSERT INTO paintings (name, size, creationdate, image) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "')", (err, rows) => {
+    if (err) throw err;
+    return res.end(true);
+  })
+});
+
+app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
+  res.json({
+    'message': 'File uploaded succesfully.'
+  });
+  let file = '../../assets/img/' + req.query.eventFile;
+  console.log(req.query.dateBegin);
+  let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
+    "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
+  pool.query(sql, (err, rows) => {
+    if (err) {return err}
+    return rows;
+  })
+});
+
+app.post('/api/getComment', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ req.query.painting;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
+app.post('/api/addComment', async (req, res) => {
+  let query = req.query;
+  let sql = 'INSERT INTO comments ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
+  pool.query(sql, (err) => {
+    if (err) throw err;
+    return res.send(true);
+  })
 });
 
 passport.serializeUser(function (user_id, done) {
@@ -228,18 +261,4 @@ passport.deserializeUser(function (user_id, done) {
 
 //ecoute sur le port 8888
 app.listen(8888);
-//httpsServer.listen(8888);
 
-/*
-* let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
-  // file = 'C:\\Users\\natha\\OneDrive\\Images\\'+ file;
-
-  console.log(file);
-  fs.rename(file, newPath);
-  file = '../../assets/img/' +req.query.imageFile;
-  let sql = "INSERT INTO event (name, size, creationdate, image) VALUES ('"+req.query.imageName+"', '"+req.query.imageSize+"', current_date, '"+file+"')";
-  pool.query(sql, (err, rows) => {
-    if (err) {return err}
-    return rows;
-  })
-  * */

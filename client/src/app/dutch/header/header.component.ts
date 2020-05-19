@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NlHeaderComponent implements OnInit {
 
+  page: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.page = location.pathname.split('/nl/').pop();
+    console.log(this.page);
   }
 
 }

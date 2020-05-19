@@ -3,6 +3,7 @@
     <br>
     <div class="imageEtDetails">
       <img id="image" src="{{this.actualPaint.image}}" alt="oeuvre">
+      <div class="right">
       <div class="details">
         <h1>Details de l'oeuvre :</h1>
         <h2>Nom : {{this.actualPaint.name}}</h2>
@@ -12,7 +13,19 @@
           <h2><img id="likeImage" src="../../assets/img/heart_empty.png" (click)="likes()" width="20px" alt="like"> {{this.actualPaint.likes}}</h2>
         </div>
       </div>
-
+      <div id="comments">
+        <div id="commentList" *ngFor="let comment of comments">
+          <h1 id="name">{{comment.lastname}} {{comment.firstname}}</h1>
+          <p>{{comment.comment}}</p>
+        </div>
+        <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="newComment(checkoutForm.value)">
+          <label>
+            <input type="text" formControlName="comment">
+          </label>
+          <input type="submit">
+        </form>
+      </div>
+      </div>
     </div>
     <br>
   </div>
