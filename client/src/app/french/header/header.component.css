@@ -4,35 +4,90 @@ body {
 
 #topnav {
   background-color: white;
-  overflow: hidden;
-  margin: 0 5%;
+  overflow: visible;
+  margin: 0 5% 2%;
 }
 
-#topnav a:hover {
+.itemToolbar:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid 3px black;
+}
+
+.itemSelectLanguage:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid 3px black;
+}
+
+.log:hover {
   background-color: #e4e4e4;
   border-bottom: solid 3px black;
 }
 
 #logoValouKervynTop {
   width: 22%;
-  float: left;
-  margin: 2%;
+  margin-left: 6%;
+  margin-top: 2%;
 }
 
 #toolbar {
   width: 71%;
   margin-left: 27%;
-  margin-top: 7%;
+  margin-top: -5%;
   text-align: center;
 }
 
 .itemToolbar {
+  position: relative;
   color: black;
   background-color: #ededed;
-  margin: 0 2%;
+  margin: 0 1%;
   padding: 1.5% 3%;
   text-decoration: none;
   font-size: 1.55vw;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: #ededed;
+  padding: 1.5% 3%;
+  overflow: visible;
+  font-size: 1.55vw;
+}
+
+.dropdown:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid black 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin-left: -22%;
+  margin-top: 10%;
+  background-color: #e4e4e4;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.itemDropdown {
+  border-bottom: solid #e4e4e4 3px;
+  font-size: 1.2vw;
+}
+
+.itemDropdown:hover {
+  border-bottom: solid black 3px;
 }
 
 #divSelectLanguage {
@@ -43,17 +98,12 @@ body {
 }
 
 .itemSelectLanguage {
-  /*position: absolute;
-  color: black;
-  background-color: #ededed;
-  padding: 3% 6%;
-  text-decoration: none;
-  font-size: 1.55vw;*/
   background-color: #ededed;
   font-size: 1.5vw;
   text-decoration: none;
   color: black;
   padding: 2% 4%;
+  margin-top: 10px;
 }
 
 #fr {
@@ -83,6 +133,7 @@ body {
   text-decoration: none;
   color: black;
   padding: 2% 4%;
+  margin-top: 10px;
 }
 
 #login {
@@ -97,7 +148,14 @@ body {
 
 }
 
-
 #login:hover, #logout:hover {
   background-color: #e4e4e4;
+}
+
+#espace {
+  position: relative;
+  background-color: white;
+  height: 10px;
+  margin-top: 1%;
+  margin-left: -20%;
 }

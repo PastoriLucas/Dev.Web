@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-// @ts-ignore
-import {CookieService} from 'ngx-cookie-service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-headerfr',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class FrHeaderComponent implements OnInit {
   login: any;
   page: any;
