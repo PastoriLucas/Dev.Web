@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
@@ -61,6 +60,7 @@ import { NlRegisterComponent} from './dutch/register/register.component';
 import { NlFooterComponent } from './dutch/footer/footer.component';
 import { NlHeaderComponent} from './dutch/header/header.component';
 import {AgmCoreModule} from '@agm/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'fr/file', component: FileComponent},
@@ -117,7 +117,8 @@ const appRoutes: Routes = [
     }),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NoopAnimationsModule
   ],
   declarations: [
     AppComponent,

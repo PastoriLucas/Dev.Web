@@ -13,10 +13,25 @@
   <a href=""><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
   <div id="toolbar">
       <a class="itemToolbar" href="fr/home">Acceuil</a>
-      <a class="itemToolbar" href="fr/gallery">Galerie</a>
+      <div class="dropdown">
+        <a id="galerie">Galerie</a>
+        <div class="dropdown-content">
+          <a href="/fr/gallery" class="itemDropdown">In spires</a>
+          <a href="/fr/gallery" class="itemDropdown">Pins and needles</a>
+          <a href="/fr/gallery" class="itemDropdown">Patchy</a>
+          <a href="/fr/gallery" class="itemDropdown">Splash</a>
+          <a href="/fr/gallery" class="itemDropdown">Other</a>
+          <a href="/fr/gallery" class="itemDropdown">Staging paintings</a>
+        </div>
+        <!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>-->
+      </div>
       <a class="itemToolbar" href="fr/presentation">Présentation</a>
       <a class="itemToolbar" href="fr/event">Evenements</a>
       <a class="itemToolbar" href="fr/contact">Contact</a>
+    <div id="espace"></div>
   </div>
 </div>
-<br>
