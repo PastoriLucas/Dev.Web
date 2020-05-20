@@ -33,3 +33,25 @@
   float: right;
   width: 50%;
 }
+
+#comments {
+  background-color: #e4e4e4;
+  margin-right: 3%;
+}
+.commentList {
+  border-bottom: 1px gray solid;
+  margin: 2% 5%;
+  font-size: 125%;
+}
+
+.commentList h1 {
+  margin: 0;
+}
+
+.name {
+  color: #323232;
+  text-decoration: underline gray ;
+}
+#commentAdd {
+  padding: 2%;
+}

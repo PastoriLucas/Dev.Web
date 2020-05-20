@@ -65,8 +65,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes: Routes = [
   { path: 'fr/file', component: FileComponent},
   /*FRENCH*/
-  { path: 'fr/gallery', component: FrGalleryComponent },
-  { path: 'fr/gallery/:id', component: FrGalleryDetailComponent },
+  { path: 'fr/gallery/:style', component: FrGalleryComponent },
+  { path: 'fr/gallery/:style/:id', component: FrGalleryDetailComponent },
   { path: 'fr/presentation', component: FrPresentationComponent },
   { path: 'fr/event', component: FrEventComponent },
   { path: 'fr/contact', component: FrContactComponent },
