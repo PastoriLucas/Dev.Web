@@ -1,11 +1,12 @@
-.pageWeb {
-  background-color: white;
-  margin: 0 5%;
-  padding: 1%;
+body {
+  background-color: #ededed;
 }
 
-#paragraphe{
-  width: 100%;
+#pageWeb {
+  background-color: white;
+  margin-left : 5%;
+  margin-right: 5%;
+  padding: 1%;
 }
 
 #img1 {
