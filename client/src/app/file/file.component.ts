@@ -43,7 +43,7 @@ export class FileComponent implements OnInit {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('/api/adminPainting', formData, {
+      this.http.post('http://51.178.40.75:8888/api/adminPainting', formData, {
         params: {
           galleryName: res.value.name,
           gallerySize: res.value.size,
@@ -62,7 +62,7 @@ export class FileComponent implements OnInit {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('/api/adminEvent', formData, {
+      this.http.post('http://51.178.40.75:8888/api/adminEvent', formData, {
         params: {
           eventName: res.value.name,
           eventBegin: res.value.dateBegin.toString(),
