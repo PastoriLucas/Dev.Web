@@ -25,10 +25,6 @@ describe('FrAdminComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should call onSubmit on form submit from event', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

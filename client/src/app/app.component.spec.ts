@@ -28,8 +28,4 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
-
-  it(`should have as title 'Valou Kervyn - Artiste peintre'`, () => {
-    expect(component.title).toEqual('Valou Kervyn - Artiste peintre');
-  });
 });

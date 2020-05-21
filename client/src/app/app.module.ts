@@ -36,10 +36,8 @@ import { EnPresentationComponent } from './english/presentation/presentation.com
 import { EnEventComponent } from './english/event/event.component';
 import { EnEventidComponent } from './english/eventid/eventid.component';
 import { EnContactComponent } from './english/contact/contact.component';
-import { EnAdminComponent } from './english/admin/admin.component';
 import { EnLoginComponent } from './english/login/login.component';
 import { EnInscriptionComponent } from './english/inscription/inscription.component';
-import { EnRegisterComponent} from './english/register/register.component';
 import { EnFooterComponent } from './english/footer/footer.component';
 import { EnHeaderComponent} from './english/header/header.component';
 
@@ -53,17 +51,16 @@ import { NlPresentationComponent } from './dutch/presentation/presentation.compo
 import { NlEventComponent } from './dutch/event/event.component';
 import { NlEventidComponent } from './dutch/eventid/eventid.component';
 import { NlContactComponent } from './dutch/contact/contact.component';
-import { NlAdminComponent } from './dutch/admin/admin.component';
 import { NlLoginComponent } from './dutch/login/login.component';
 import { NlInscriptionComponent } from './dutch/inscription/inscription.component';
-import { NlRegisterComponent} from './dutch/register/register.component';
 import { NlFooterComponent } from './dutch/footer/footer.component';
 import { NlHeaderComponent} from './dutch/header/header.component';
+
 import {AgmCoreModule} from '@agm/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
-  { path: 'fr/file', component: FileComponent},
+  { path: 'admin', component: FileComponent},
   /*FRENCH*/
   { path: 'fr/gallery/:style', component: FrGalleryComponent },
   { path: 'fr/gallery/:style/:id', component: FrGalleryDetailComponent },
@@ -83,10 +80,8 @@ const appRoutes: Routes = [
   { path: 'en/contact', component: EnContactComponent },
   { path: 'en/home', component: EnHomeComponent },
   { path: 'en/event/:id', component: EnEventidComponent },
-  { path: 'en/admin', component: EnAdminComponent },
   { path: 'en/login', component: EnLoginComponent },
   { path: 'en/inscription', component: EnInscriptionComponent},
-  { path: 'en/register', component: EnRegisterComponent},
   /*DUTCH*/
   { path: 'nl/gallery', component: NlGalleryComponent },
   { path: 'nl/gallery/:id', component: NlGalleryDetailComponent },
@@ -95,10 +90,8 @@ const appRoutes: Routes = [
   { path: 'nl/contact', component: NlContactComponent },
   { path: 'nl/home', component: NlHomeComponent },
   { path: 'nl/event/:id', component: NlEventidComponent },
-  { path: 'nl/admin', component: NlAdminComponent },
   { path: 'nl/login', component: NlLoginComponent },
   { path: 'nl/inscription', component: NlInscriptionComponent},
-  { path: 'nl/register', component: NlRegisterComponent},
   { path: '**',
     redirectTo: 'fr/home',
     pathMatch: 'full'
@@ -144,12 +137,10 @@ const appRoutes: Routes = [
     EnEventidComponent,
     EnHomeComponent,
     EnGalleryDetailComponent,
-    EnAdminComponent,
     EnLoginComponent,
     EnInscriptionComponent,
     EnFooterComponent,
     EnHeaderComponent,
-    EnRegisterComponent,
     /*DUTCH*/
     NlGalleryComponent,
     NlPresentationComponent,
@@ -158,12 +149,10 @@ const appRoutes: Routes = [
     NlEventidComponent,
     NlHomeComponent,
     NlGalleryDetailComponent,
-    NlAdminComponent,
     NlLoginComponent,
     NlInscriptionComponent,
     NlFooterComponent,
     NlHeaderComponent,
-    NlRegisterComponent,
   ],
   exports: [RouterModule],
   providers: [CookieService, Title],
