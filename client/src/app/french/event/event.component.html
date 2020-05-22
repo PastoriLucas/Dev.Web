@@ -1,12 +1,14 @@
 <app-headerfr></app-headerfr>
-  <div class="pageEvent">
+  <div id="pageWeb">
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
       <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
-      <h1>{{oeuvre.name}}</h1>
-      <div class="moment">
-        <p>{{oeuvre.begin}} - {{oeuvre.end}}</p>
+      <div class="text">
+        <h1>{{oeuvre.name}}</h1>
+        <div class="moment">
+          <p>{{oeuvre.begin}} - {{oeuvre.end}}</p>
+        </div>
+        <p class="location">{{oeuvre.place}}</p>
       </div>
-      <p class="location">{{oeuvre.place}}</p>
     </div>
   </div>
 <app-footerfr></app-footerfr>

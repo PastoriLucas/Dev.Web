@@ -39,7 +39,7 @@ export class FrEventidComponent implements OnInit {
           // tslint:disable-next-line:radix
           if (result[i].eventId.toString() === page) {
             this.place = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCq4TvPKogUIilCh_38VgrV4URD5o1a8xk&q=' + result[i].place;
-            // document.getElementById('map').setAttribute('src', this.place);
+            document.getElementById('map').setAttribute('src', this.place);
             this.event = result[i];
             this.image = '../../assets' + result[i].image;
             document.getElementById('image').setAttribute('src', this.image);
