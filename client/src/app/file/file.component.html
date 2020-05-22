@@ -15,6 +15,16 @@
         <label>Image :
           <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
         </label><br>
+        <label>Categorie :
+          <select formControlName="category">
+            <option value="inSpires">In spires</option>
+            <option value="pinsAndNeedles">Pins and needles</option>
+            <option value="patchy">Patchy</option>
+            <option value="splash">Splash</option>
+            <option value="other">Other</option>
+            <option value="stagingPaintings">Staging Paintings</option>
+          </select>
+        </label><br>
         <input type="submit">
       </form>
     </div>
@@ -38,7 +48,7 @@
         </label><br>
         <label>
           <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="file"  aria-describedby="inputGroupFileAddon01">
-        </label>
+        </label><br>
         <input type="submit">
       </form>
     </div>

@@ -20,7 +20,6 @@ import { FrPresentationComponent } from './french/presentation/presentation.comp
 import { FrEventComponent } from './french/event/event.component';
 import { FrEventidComponent } from './french/eventid/eventid.component';
 import { FrContactComponent } from './french/contact/contact.component';
-import { FrAdminComponent } from './french/admin/admin.component';
 import { FrLoginComponent } from './french/login/login.component';
 import { FrInscriptionComponent } from './french/inscription/inscription.component';
 import { FrFooterComponent } from './french/footer/footer.component';
@@ -69,7 +68,6 @@ const appRoutes: Routes = [
   { path: 'fr/contact', component: FrContactComponent },
   { path: 'fr/home', component: FrHomeComponent },
   { path: 'fr/event/:id', component: FrEventidComponent },
-  { path: 'fr/admin', component: FrAdminComponent },
   { path: 'fr/login', component: FrLoginComponent },
   { path: 'fr/inscription', component: FrInscriptionComponent},
   /*ENGLISH*/
@@ -124,7 +122,6 @@ const appRoutes: Routes = [
     FrEventidComponent,
     FrHomeComponent,
     FrGalleryDetailComponent,
-    FrAdminComponent,
     FrLoginComponent,
     FrInscriptionComponent,
     FrFooterComponent,

@@ -16,7 +16,8 @@ export class FileComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {
     this.gallery = this.formBuilder.group({
       name : '',
-      size : ''
+      size : '',
+      category : ''
     });
     this.event = this.formBuilder.group({
       name : '',
@@ -47,7 +48,8 @@ export class FileComponent implements OnInit {
         params: {
           galleryName: res.value.name,
           gallerySize: res.value.size,
-          galleryFile: this.uploadedFiles[i].name
+          galleryFile: this.uploadedFiles[i].name,
+          category : res.value.category
         }
       })
         .subscribe((response) => {

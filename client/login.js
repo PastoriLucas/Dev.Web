@@ -181,7 +181,8 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
     'message': 'File uploaded succesfully.'
   });
   let file = '../../assets/img/' + req.query.galleryFile;
-  pool.query("INSERT INTO paintings (name, size, creationdate, image) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "')", (err, rows) => {
+  pool.query("INSERT INTO paintings (name, size, creationdate, image, category) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "', '"+ req.query.category +"')",
+    (err) => {
     if (err) throw err;
     return res.end(true);
   })
