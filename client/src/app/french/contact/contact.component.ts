@@ -38,8 +38,10 @@ export class FrContactComponent implements OnInit {
       .subscribe(result => {
         if (result === false) {
           console.log('Mail not ok');
+          return false;
         } else {
           console.log('Mail ok');
+          return true;
         }
       });
   }

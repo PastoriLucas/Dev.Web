@@ -102,8 +102,9 @@ app.post('/api/evenement', async (req, res) => {
   });
 });
 
-app.post('/api/galerie', async (req, res) => {
-  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY "paintingId"';
+app.post('/api/galerie/:style', async (req, res) => {
+  let style = req.url.split('/galerie/').pop();
+  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings WHERE category = \'' + style +'\' ORDER BY "paintingId"' ;
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
@@ -155,45 +156,10 @@ app.post('/api/new', [
   }
 });
 
-
-app.post('/adminImg', (req) => {
-
-  let file = req.query.imageDest;
-  let newPath = 'C:/Users/natha/Documents/web/client/src/assets/img/'+ file;
-  // file = '../../assets/img/'+ file;
-
-  console.log(file);
-  fs.copyFile(file, newPath, (err)=> {
-    if (err) throw err;
-  });
-  file = '../../assets/img/' +req.query.imageFile;
-
-  return true;
-});
-
-app.post('/adminEvent', (req, res) => {
-
-  let file = req.query.eventDest;
-  console.log(file);
-
-  let form = new formidable.IncomingForm();
-  form.parse(req, function (err, fields, files) {
-    console.log(fields);
-    console.log(files);
-    let oldpath = files.eventFile.path;
-    let newpath = '../../assets/img/' + files.eventFile.name;
-    fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      res.send('File uploaded and moved!');
-      res.end();
-    });
-  });
-});
-
 app.post('/api/like', async (req) => {
   console.log(req.query);
   await pool.query(
-    'update paintings set likes = likes + 1 where id = '+ req.query.painting + ';' +
+    'update paintings set likes = likes + 1 where "paintingId" = '+ req.query.painting + ';' +
     'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
       if (err) throw err;
       return res;
@@ -203,7 +169,7 @@ app.post('/api/like', async (req) => {
 app.post('/api/dislike', async (req) => {
   console.log(req.query);
   await pool.query(
-    'UPDATE paintings SET likes = likes - 1 WHERE id = '+ req.query.painting + ';' +
+    'UPDATE paintings SET likes = likes - 1 WHERE "paintingId" = '+ req.query.painting + ';' +
     'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
       if (err) throw err;
       return res;
@@ -215,7 +181,8 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
     'message': 'File uploaded succesfully.'
   });
   let file = '../../assets/img/' + req.query.galleryFile;
-  pool.query("INSERT INTO paintings (name, size, creationdate, image) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "')", (err, rows) => {
+  pool.query("INSERT INTO paintings (name, size, creationdate, image, category) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "', '"+ req.query.category +"')",
+    (err) => {
     if (err) throw err;
     return res.end(true);
   })
@@ -236,7 +203,7 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
 });
 
 app.post('/api/getComment', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ req.query.painting;
+  let sql = 'SELECT  users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ parseInt(req.query.painting);
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);

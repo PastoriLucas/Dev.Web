@@ -14,12 +14,11 @@ export class FrGalleryComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
+  style = '/api/galerie' + location.href.split('/gallery').pop();
   ngOnInit() {
-    this.http.post('http://51.178.40.75:8888/api/galerie', '', {
-      responseType : 'json',
+    this.http.post(this.style, '', {
     })
       .subscribe(result => {
-        console.log(result);
         this.transition = result;
       });
   }

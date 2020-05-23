@@ -14,8 +14,7 @@ export class FrGalleryDetailComponent implements OnInit {
 
   @ViewChild('container', {static: true} ) container: ElementRef;
 
-  public url = 0;
-  public currentImage = '';
+  public currentImage: number;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   public param = '';
@@ -29,21 +28,19 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentImage = location.pathname.split('/').pop();
+    this.currentImage = Number(location.pathname.split('/').pop());
     this.comment();
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/api/galerie`, '', {
-      headers,
-      responseType : 'json'
+    this.http.post(`/api/galerie/` + location.pathname.split('/').splice(3, 1).pop(), '', {
+      headers
     })
       .subscribe(result => {
         this.paints = result;
-        this.url = Number(this.currentImage);
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.paints.length; i++) {
-          if (this.paints[i].paintingId === this.url) {
+          if (this.paints[i].paintingId === this.currentImage) {
             this.actualPaint = (this.paints[i]);
           }
         }
@@ -99,7 +96,7 @@ export class FrGalleryDetailComponent implements OnInit {
       params: {
         user: this.cookieService.get('login'),
         likes: likes.toString(),
-        painting: this.currentImage
+        painting: this.currentImage.toString()
       }
     }).subscribe();
     location.reload();
@@ -109,7 +106,8 @@ export class FrGalleryDetailComponent implements OnInit {
     const likes = localStorage.getItem('likes').split(',');
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
-      if (likes[l] === this.currentImage) {
+      // tslint:disable-next-line:radix
+      if (parseInt(likes[l]) === this.currentImage) {
         likes.splice(l, 1);
         localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
@@ -120,7 +118,7 @@ export class FrGalleryDetailComponent implements OnInit {
           params: {
             user: this.cookieService.get('login'),
             likes,
-            painting : this.currentImage
+            painting : this.currentImage.toString()
           }
         }).subscribe();
         location.reload();
@@ -136,11 +134,10 @@ export class FrGalleryDetailComponent implements OnInit {
     this.http.post('/api/getComment', '', {
       headers,
       params: {
-        painting: this.currentImage
+        painting: this.currentImage.toString()
       }
     })
       .subscribe(result => {
-        console.log(result);
         this.comments = result;
       });
   }
@@ -157,7 +154,7 @@ export class FrGalleryDetailComponent implements OnInit {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        painting: this.currentImage,
+        painting: this.currentImage.toString(),
         comment: res.comment
       }
     })

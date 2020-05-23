@@ -1,30 +1,56 @@
 <div class="mainContainer">
   <div class="content">
     <div class="header">
-      <h1>Angular File Upload</h1>
+      <h1>Admin</h1>
     </div>
     <div class="paintings">
       <h1>Galerie</h1>
       <form method="post" enctype="multipart/form-data" [formGroup]="gallery" (ngSubmit)="sendPainting(this.gallery)">
-        <input type="text" required name="name" formControlName="name">
-        <input type="text" required name="size" formControlName="size">
-        <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
+        <label>Nom :
+          <input type="text" required name="name" formControlName="name" placeholder="Nom">
+        </label><br>
+        <label>Taille :
+          <input type="text" required name="size" formControlName="size" placeholder="Taille">
+        </label><br>
+        <label>Image :
+          <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
+        </label><br>
+        <label>Categorie :
+          <select formControlName="category">
+            <option value="inSpires">In spires</option>
+            <option value="pinsAndNeedles">Pins and needles</option>
+            <option value="patchy">Patchy</option>
+            <option value="splash">Splash</option>
+            <option value="other">Other</option>
+            <option value="stagingPaintings">Staging Paintings</option>
+          </select>
+        </label><br>
         <input type="submit">
       </form>
-      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
     </div>
     <div class="events">
       <h1>Evenement</h1>
       <form method="post" enctype="multipart/form-data" [formGroup]="event" (ngSubmit)="sendEvent(this.event)">
-        <input type="text" required name="name" formControlName="name">
-        <input type="date" required name="dateBegin" formControlName="dateBegin">
-        <input type="date" required name="dateEnd" formControlName="dateEnd">
-        <input type="text" required name="place" formControlName="place">
-        <input type="text" required name="description" formControlName="description">
-        <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="file"  aria-describedby="inputGroupFileAddon01">
+        <label>Nom :
+          <input type="text" required name="name" formControlName="name" placeholder="Nom">
+        </label><br>
+        <label>Dates :
+          <input type="date" required name="dateBegin" formControlName="dateBegin" placeholder="Debut">
+        </label> -
+        <label>
+          <input type="date" required name="dateEnd" formControlName="dateEnd" placeholder="Fin">
+        </label><br>
+        <label>Lieu :
+          <input type="text" required name="place" formControlName="place" placeholder="Place">
+        </label><br>
+        <label>Description :
+          <input type="text" required name="description" formControlName="description" placeholder="Description">
+        </label><br>
+        <label>
+          <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="file"  aria-describedby="inputGroupFileAddon01">
+        </label><br>
         <input type="submit">
       </form>
-      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
     </div>
   </div>
 </div>
