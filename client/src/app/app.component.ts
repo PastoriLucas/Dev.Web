@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {NavigationEnd, Router} from '@angular/router';
+
+// tslint:disable-next-line:ban-types
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -8,7 +12,17 @@ import {Title} from '@angular/platform-browser';
 })
 
 export class AppComponent implements OnInit {
-  public constructor(private titleService: Title) { }
+  public constructor(private titleService: Title, public router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'UA-167111235-1',
+          {
+            page_path: event.urlAfterRedirects
+          }
+        );
+      }
+    });
+  }
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
