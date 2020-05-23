@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-file',
@@ -13,7 +14,7 @@ export class FileComponent implements OnInit {
   gallery: any;
   event: any;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, public cookieService: CookieService) {
     this.gallery = this.formBuilder.group({
       name : '',
       size : '',
@@ -29,7 +30,19 @@ export class FileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('/api/admin', '', {
+      params : {
+        id : this.cookieService.getAll().login
+      },
+      headers
+    }).subscribe((result) => {
+      if (result === false ) {
+        location.replace('/fr/home');
+      }
+    });
   }
 
   fileChange(element) {
