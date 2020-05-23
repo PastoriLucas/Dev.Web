@@ -96,7 +96,7 @@ app.get('/api/logout', (req, res) => {
 
 app.post('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin"';
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin" DESC';
   await pool.query(sql, (err, rows) => {
     return res.json(rows.rows);
   });
@@ -216,6 +216,16 @@ app.post('/api/addComment', async (req, res) => {
   pool.query(sql, (err) => {
     if (err) throw err;
     return res.send(true);
+  })
+});
+
+app.post('/api/admin', async (req, res) => {
+  pool.query('SELECT * FROM users WHERE "userId" = '+ parseInt(req.query.id), (err, rows) => {
+    if (err) throw err;
+    if (rows.rows.firstname === 'Valou' && rows.rows.lastname === 'Kervyn' && rows.rows.mail === 'valoukervyn@gmail.com' && rows.rows.id === 1) {
+      return res.send(true);
+    }
+    return res.send(false);
   })
 });
 

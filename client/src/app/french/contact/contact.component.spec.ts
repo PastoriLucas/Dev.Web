@@ -23,8 +23,4 @@ describe('FrContactComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should send mail',  () => {
-    expect(component.onSubmit('paul')).toBeFalse();
-  });
 });
