@@ -23,11 +23,6 @@ describe('ContactComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   /*it('should add user', () => {
     expect(component.onSubmit({username: 'Paul', password: 'DIoizef'})
   })*/

@@ -96,7 +96,7 @@ export class FrGalleryDetailComponent implements OnInit {
       params: {
         user: this.cookieService.get('login'),
         likes: likes.toString(),
-        painting: this.currentImage
+        painting: this.currentImage.toString()
       }
     }).subscribe();
     location.reload();
@@ -106,7 +106,8 @@ export class FrGalleryDetailComponent implements OnInit {
     const likes = localStorage.getItem('likes').split(',');
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
-      if (likes[l] === this.currentImage) {
+      // tslint:disable-next-line:radix
+      if (parseInt(likes[l]) === this.currentImage) {
         likes.splice(l, 1);
         localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
@@ -117,7 +118,7 @@ export class FrGalleryDetailComponent implements OnInit {
           params: {
             user: this.cookieService.get('login'),
             likes,
-            painting : this.currentImage
+            painting : this.currentImage.toString()
           }
         }).subscribe();
         location.reload();
@@ -146,7 +147,7 @@ export class FrGalleryDetailComponent implements OnInit {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        painting: this.currentImage,
+        painting: this.currentImage.toString(),
         comment: res.comment
       }
     })

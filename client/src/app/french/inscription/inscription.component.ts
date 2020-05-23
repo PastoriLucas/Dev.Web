@@ -4,6 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 // @ts-ignore
 import { CookieService } from 'ngx-cookie-service';
+import {resolveFileWithPostfixes} from "@angular/compiler-cli/ngcc/src/utils";
 
 @Component({
   selector: 'app-inscription',
@@ -44,7 +45,8 @@ export class FrInscriptionComponent implements OnInit {
           password: res.password,
           notification: res.notification
         },
-        headers
+        headers,
+        responseType : 'json'
       })
         .subscribe(result => {
           console.log('resultat : ' + result);

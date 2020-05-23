@@ -5,7 +5,6 @@
       <img id="image" src="{{this.actualPaint.image}}" alt="oeuvre">
       <div class="right">
       <div class="details">
-        <h1>Details de l'oeuvre :</h1>
         <h2>Nom : {{this.actualPaint.name}}</h2>
         <h2>Taille : {{this.actualPaint.size}}</h2>
         <h2>Date de création : {{this.actualPaint.creationdate}}</h2>
@@ -14,8 +13,8 @@
         </div>
       </div>
       <div id="comments">
-        <div id="commentList" *ngFor="let comment of comments">
-          <h1 id="name">{{comment.lastname}} {{comment.firstname}}</h1>
+        <div class="commentList" *ngFor="let comment of comments">
+          <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
           <p>{{comment.comment}}</p>
         </div>
         <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="newComment(checkoutForm.value)">

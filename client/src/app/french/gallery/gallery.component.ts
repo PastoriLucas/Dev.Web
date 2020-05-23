@@ -14,6 +14,7 @@ export class FrGalleryComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
+  style = '/api/galerie' + location.href.split('/gallery').pop();
   ngOnInit() {
     this.http.get('/api/galerie')
       .subscribe(result => {

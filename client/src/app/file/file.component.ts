@@ -16,7 +16,8 @@ export class FileComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {
     this.gallery = this.formBuilder.group({
       name : '',
-      size : ''
+      size : '',
+      category : ''
     });
     this.event = this.formBuilder.group({
       name : '',
@@ -43,11 +44,12 @@ export class FileComponent implements OnInit {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('/api/adminPainting', formData, {
+      this.http.post('http://51.178.40.75:8888/api/adminPainting', formData, {
         params: {
           galleryName: res.value.name,
           gallerySize: res.value.size,
-          galleryFile: this.uploadedFiles[i].name
+          galleryFile: this.uploadedFiles[i].name,
+          category : res.value.category
         }
       })
         .subscribe((response) => {
@@ -62,7 +64,7 @@ export class FileComponent implements OnInit {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('/api/adminEvent', formData, {
+      this.http.post('http://51.178.40.75:8888/api/adminEvent', formData, {
         params: {
           eventName: res.value.name,
           eventBegin: res.value.dateBegin.toString(),
