@@ -20,8 +20,8 @@ export class FrEventidComponent implements OnInit {
     name: '',
     place: ''
   };
-  private place;
-  private image;
+  public place;
+  public image;
 
   ngOnInit() {
     const headers = new HttpHeaders()

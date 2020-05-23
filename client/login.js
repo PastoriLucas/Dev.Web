@@ -94,7 +94,7 @@ app.get('/api/logout', (req, res) => {
   return res.send(true);
 });
 
-app.post('/api/evenement', async (req, res) => {
+app.get('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
   let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin"';
   await pool.query(sql, (err, rows) => {
@@ -102,7 +102,7 @@ app.post('/api/evenement', async (req, res) => {
   });
 });
 
-app.post('/api/galerie', async (req, res) => {
+app.get('/api/galerie', async (req, res) => {
   let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
@@ -127,7 +127,7 @@ app.post('/api/test', async (req, res) => {
   });
 });
 
-app.post('/api/new', [
+app.post('/api/users', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
   check('firstname', 'Firstname must only include MAJ and low').isAlpha(),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
@@ -235,15 +235,7 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
   })
 });
 
-app.post('/api/getComment', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ req.query.painting;
-  pool.query(sql, (err, rows) => {
-    if (err) throw err;
-    return res.send(rows.rows);
-  })
-});
-
-app.post('/api/addComment', async (req, res) => {
+app.post('/api/comments', async (req, res) => {
   let query = req.query;
   let sql = 'INSERT INTO comments ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
   pool.query(sql, (err) => {
@@ -251,6 +243,15 @@ app.post('/api/addComment', async (req, res) => {
     return res.send(true);
   })
 });
+
+app.get('/api/comments/:id', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = ' + req.params.id;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
 
 passport.serializeUser(function (user_id, done) {
   done(null, user_id);

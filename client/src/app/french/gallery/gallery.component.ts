@@ -15,10 +15,8 @@ export class FrGalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.post('/api/galerie', '', {
-    })
+    this.http.get('/api/galerie')
       .subscribe(result => {
-        console.log(result);
         this.transition = result;
       });
   }

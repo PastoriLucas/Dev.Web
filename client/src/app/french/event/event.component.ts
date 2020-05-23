@@ -12,12 +12,10 @@ export class FrEventComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
-    const headers = new HttpHeaders()
+    /*const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');
-    this.http.post(`/api/evenement`, '', {
-      headers
-    })
+      .set('Content-Type', 'application/json');*/
+    this.http.get(`/api/evenement`)
       .subscribe(result => {
         this.transition = result;
         console.log(this.transition);
