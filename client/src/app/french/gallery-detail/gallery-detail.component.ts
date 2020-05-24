@@ -14,7 +14,8 @@ export class FrGalleryDetailComponent implements OnInit {
 
   @ViewChild('container', {static: true} ) container: ElementRef;
 
-  public nbrUrl = 0;
+  public nbrUrl;
+  public urlStyle;
   public currentImage: number;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
@@ -30,10 +31,12 @@ export class FrGalleryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.currentImage = Number(location.pathname.split('/').pop());
+    this.nbrUrl = Number(location.pathname.split('/').pop());
+    this.urlStyle = location.pathname.split('/')[3];
     /*const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');*/
-    this.http.get(`/api/galerie`)
+    this.http.get(`/api/galerie/` + this.urlStyle)
       .subscribe(result => {
         this.paints = result;
         // tslint:disable-next-line:prefer-for-of
@@ -43,7 +46,6 @@ export class FrGalleryDetailComponent implements OnInit {
           }
         }
       });
-    this.nbrUrl = Number(this.router.url.substr(12));
     this.comment();
     // vérifie connexion
     this.connect();
@@ -143,7 +145,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/addComment', '', {
+    this.http.post('/api/comments', '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
