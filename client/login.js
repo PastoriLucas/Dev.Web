@@ -8,6 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pgSession = require('connect-pg-simple')(session);
+const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const multipart = require('connect-multiparty');
@@ -253,6 +254,33 @@ app.post('/api/admin', async (req, res) => {
   })
 });
 
+app.post('/api/contact', async (req,res) => {
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'lpastori0606@gmail.com',
+      pass: 'PastoPower1'
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  var mailOptions = {
+    from: "lpastori0606@gmail.com",
+    to: 'lpastori0606@gmail.com',
+    subject: req.query.objet + " - " + req.query.envoyeur + " (" + req.query.name + ")",
+    text: req.query.texte
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+});
 passport.serializeUser(function (user_id, done) {
   done(null, user_id);
 });
