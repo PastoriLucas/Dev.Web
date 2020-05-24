@@ -13,6 +13,7 @@ describe('FrEventComponent', () => {
     {eventId: 2, name: 'Test2', begin: 'Test2', end: 'Test2', place: 'Test2', image: 'Test2', description: 'Test2'},
     {eventId: 5, name: 'efzrg', begin: '18/05/2020', end: '18/05/2020', place: 'Test3', image: 'Test3', description: 'Test3'}
   ];
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ FrEventComponent ],
@@ -37,5 +38,4 @@ describe('FrEventComponent', () => {
     const req = httpTestingController.expectOne('/api/evenement');
     expect(req.request.method).toEqual('POST');
   });
-
 });

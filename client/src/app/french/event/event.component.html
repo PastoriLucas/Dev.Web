@@ -1,5 +1,15 @@
 <app-headerfr></app-headerfr>
-  <div id="pageWeb">
+  <div class="pageEvent">
+    <div class="tri">
+      <label>
+        <select>
+          <option value="name">Nom</option>
+          <option value="begin">Date de debut</option>
+          <option value="end">Date de fin</option>
+        </select>
+      </label>
+      <input type="submit">
+    </div>
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
       <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
       <div class="text">
