@@ -1,16 +1,28 @@
-#pageWeb {
+.pageWeb {
   margin: 0 5%;
   background-color: white;
   padding: 2%;
 }
 
 #image {
-  width: 30%;
+  padding: 3% 5% 0.5% 5%;
+  width: 40%;
 }
-#rightSide {
-  width: 60%;
-  margin-left: 33%;
-  margin-top: -27%;
+
+#nomEvenement {
+
+}
+
+#details {
+  position: relative;
+  padding: 3%;
+  width: 39%;
+  margin-left: 50%;
+  margin-top: -41%;
+  text-align: left;
+  background-color: #ededed;
+  font-size: 1.7vw;
+  border-bottom: solid 3px black;
 }
 
 #textArea {
@@ -19,4 +31,38 @@
 }
 #mapArea {
   size: auto;
+}
+
+#comments {
+  padding: 2% 3%;
+  background-color: #ededed;
+  margin-top: 18%;
+  margin-left: 5%;
+  width: 84%;
+}
+.commentList {
+  border-bottom: 1px solid slategrey;
+  margin: 2% 5%;
+  font-size: 1.5vw;
+}
+
+.name {
+  color: #323232;
+  text-decoration: underline gray ;
+}
+
+#commentAdd {
+  padding: 3%;
+  font-size: 2vw;
+}
+
+#inputComment {
+  margin-left: 1%;
+  width: 98%;
+  font-size: 1.5vw;
+}
+#submitComment {
+  float: right;
+  width: 20%;
+  font-size: 1.7vw;
 }

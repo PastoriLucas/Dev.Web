@@ -226,17 +226,34 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
   })
 });
 
-app.post('/api/comments', async (req, res) => {
+app.post('/api/commentsgallery', async (req, res) => {
   let query = req.query;
-  let sql = 'INSERT INTO comments ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
+  let sql = 'INSERT INTO commentsGallery ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
   pool.query(sql, (err) => {
     if (err) throw err;
     return res.send(true);
   })
 });
 
-app.get('/api/comments/:id', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = ' + req.params.id;
+app.get('/api/commentsgallery/:id', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, commentsGallery.comment FROM commentsGallery JOIN users on commentsGallery."userId" = users."userId" where "paintingId" = ' + req.params.id;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
+app.post('/api/commentsevent', async (req, res) => {
+  let query = req.query;
+  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.event)+")";
+  pool.query(sql, (err) => {
+    if (err) throw err;
+    return res.send(true);
+  })
+});
+
+app.get('/api/commentsevent/:id', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id;
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);
