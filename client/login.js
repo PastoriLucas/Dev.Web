@@ -9,6 +9,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pgSession = require('connect-pg-simple')(session);
 const nodemailer = require('nodemailer');
+const https = require('https');
+var http = require('http');
 const cors = require('cors');
 
 const multipart = require('connect-multiparty');
@@ -304,6 +306,16 @@ passport.serializeUser(function (user_id, done) {
 passport.deserializeUser(function (user_id, done) {
   done(null, user_id);
 });
+
+https.createServer({
+  key: fs.readFileSync('https/server.key'),
+  cert: fs.readFileSync('https/server.cert')
+}, app)
+  .listen(3000, function () {
+    console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+  });
+
+http.createServer(app).listen(80);
 
 //ecoute sur le port 8888
 app.listen(8888);
