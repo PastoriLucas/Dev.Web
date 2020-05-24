@@ -7,7 +7,7 @@ describe('AppComponent', () => {
   // tslint:disable-next-line:prefer-const
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -17,15 +17,11 @@ describe('AppComponent', () => {
       ],
       providers: [HttpClient, HttpHandler]
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create the app', () => {
-    expect(component).toBeTruthy();
   });
 });

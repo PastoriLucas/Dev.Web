@@ -48,7 +48,7 @@ export class FrLoginComponent implements OnInit {
         document.getElementById('error').style.display = 'inherit';
       } else {
         // @ts-ignore
-        this.cookieService.set('login', result.userId);
+        this.cookieService.set('login', result.userId, 24 * 60 * 60 * 1000, '/');
         // @ts-ignore
         localStorage.setItem('likes', result.likes);
         location.replace('/fr/home');

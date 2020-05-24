@@ -10,15 +10,19 @@ export class FrEventComponent implements OnInit {
 
   public transition;
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
+
+  public sendValues(result) {
+    this.transition = result;
+  }
+
   ngOnInit(): void {
     /*const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');*/
     this.http.get(`/api/evenement`)
       .subscribe(result => {
-        this.transition = result;
-        console.log(this.transition);
+        this.sendValues(result);
     });
   }
 }
