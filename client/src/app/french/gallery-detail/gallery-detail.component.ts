@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-gallery-detail',
@@ -30,7 +30,6 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentImage = Number(location.pathname.split('/').pop());
     this.nbrUrl = Number(location.pathname.split('/').pop());
     this.urlStyle = location.pathname.split('/')[3];
     /*const headers = new HttpHeaders()
@@ -149,7 +148,7 @@ export class FrGalleryDetailComponent implements OnInit {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        painting: this.currentImage.toString(),
+        painting: this.nbrUrl.toString(),
         comment: res.comment
       }
     })

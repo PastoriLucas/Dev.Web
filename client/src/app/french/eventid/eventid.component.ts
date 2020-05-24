@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -8,9 +10,10 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class FrEventidComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
-  }
-
+  public nbrUrl;
+  public param = '';
+  comments: any;
+  checkoutForm: any;
   public event = {
     begin: '',
     end: '',
@@ -22,15 +25,18 @@ export class FrEventidComponent implements OnInit {
   };
   public place;
   public image;
+  constructor(private http: HttpClient, public cookieService: CookieService, private formBuilder: FormBuilder) {
+    this.checkoutForm = this.formBuilder.group({
+      comment: ''
+    });
+  }
 
   ngOnInit() {
+    this.nbrUrl = Number(location.pathname.split('/').pop());
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/api/evenement`, '', {
-      headers,
-      responseType : 'json'
-    })
+    this.http.get(`http://localhost:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -48,5 +54,36 @@ export class FrEventidComponent implements OnInit {
           }
         }
       });
+    this.comment();
+  }
+
+  comment() {
+    const urlGet = '/api/commentsevent/' + this.nbrUrl;
+    this.http.get(urlGet)
+      .subscribe(result => {
+        this.comments = result;
+      });
+  }
+
+  newComment(res) {
+    if (!this.cookieService.get('login')) {
+      alert('Connectez vous');
+      return false;
+    }
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('/api/commentsevent', '', {
+      headers,
+      params: {
+        user: this.cookieService.get('login'),
+        event: this.nbrUrl.toString(),
+        comment: res.comment
+      }
+    })
+      .subscribe(result => {
+        console.log(result);
+      });
+    location.reload();
   }
 }
