@@ -219,6 +219,23 @@ app.get('/api/commentsgallery/:id', async (req, res) => {
   })
 });
 
+app.post('/api/commentsevent', async (req, res) => {
+  let query = req.query;
+  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.event)+")";
+  pool.query(sql, (err) => {
+    if (err) throw err;
+    return res.send(true);
+  })
+});
+
+app.get('/api/commentsevent/:id', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
 
 app.post('/api/admin', async (req, res) => {
   pool.query('SELECT * FROM users WHERE "userId" = '+ parseInt(req.query.id), (err, rows) => {
