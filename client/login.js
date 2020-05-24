@@ -245,12 +245,13 @@ app.get('/api/comments/:id', async (req, res) => {
 
 
 app.post('/api/admin', async (req, res) => {
-  pool.query('SELECT * FROM users WHERE "userId" = '+ parseInt(req.query.id), (err, rows) => {
+  pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\'', (err, rows) => {
     if (err) throw err;
-    if (rows.rows.firstname === 'Valou' && rows.rows.lastname === 'Kervyn' && rows.rows.mail === 'valoukervyn@gmail.com' && rows.rows.id === 1) {
-      return res.send(true);
-    }
-    return res.send(false);
+    console.log(rows.rows[0]);
+    bcrypt.compare(req.query.password, rows.rows[0].password, (err, values) => {
+      if (err) throw err;
+      return res.send(values);
+    });
   })
 });
 

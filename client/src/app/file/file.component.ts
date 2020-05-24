@@ -30,25 +30,22 @@ export class FileComponent implements OnInit {
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');
+    const pwd = window.prompt('Mot de passe administrateur : ', '');
     this.http.post('/api/admin', '', {
-      params : {
-        id : this.cookieService.getAll().login
-      },
-      headers
-    }).subscribe((result) => {
-      if (result === false ) {
-        location.replace('/fr/home');
+      params: {
+        password: pwd
       }
-    });
+    })
+      .subscribe(result => {
+        console.log(result);
+        if (result === false) {
+          location.replace('/fr/home');
+        }
+      });
   }
 
   fileChange(element) {
     this.uploadedFiles = element.target.files;
-    console.log(element.target.files[0]);
-    console.log(element.target.files[0].name);
   }
 
   sendPainting(res) {
