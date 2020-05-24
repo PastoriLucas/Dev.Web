@@ -130,7 +130,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   comment() {
-    const urlGet = '/api/comments/' + this.nbrUrl;
+    const urlGet = '/api/commentsgallery/' + this.nbrUrl;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -145,7 +145,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/comments', '', {
+    this.http.post('/api/commentsgallery', '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
