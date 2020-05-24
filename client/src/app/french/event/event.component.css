@@ -9,7 +9,7 @@
   min-height: 16vw;
   background-color: white;
   border-radius: 5px;
-  margin: 0 2% 5%;
+  margin: 60px 2% 5%;
   border: 1px solid white;
 }
 
@@ -45,7 +45,39 @@ iframe{
   border-radius: 5px;
 }
 
+#tri {
+  width: 50%;
+}
+
+#tri p {
+  font-size: 1.5vw;
+}
+
+#selectTri {
+  float: left;
+  width: 120px;
+  position: relative;
+}
+
+#submitTri {
+  float: left;
+  width: 70px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
 #year {
   display: none;
 }
 
+#selectYear {
+  float: left;
+  width: 70px;
+  position: relative;
+}
+
+#submitTriAnnee {
+  float: left;
+  width: 70px;
+  position: relative;
+}
