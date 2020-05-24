@@ -1,47 +1,38 @@
-.pageEvent {
+#pageWeb {
   margin: 0 5%;
   background-color: white;
   padding: 1%;
 }
 
-.order{
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-bottom: 1%;
-}
-.order a{
-  border: 0;
-  background-color: #e4e4e4;
-  margin: 1% 5%;
-  font-size: 20px;
-  padding: 0 5%;
-  position: center;
-  float: contour;
-}
-.order a:hover{
-  border-bottom: 3px black solid;
-  background-color: #ededed;
-}
-
-
 .event{
   position: center;
-  height: 150px;
-  background-color: #ededed;
+  min-height: 10vw;
+  background-color: white;
   border-radius: 5px;
-  margin: 0 10px 10px 10px;
+  margin: 1%;
+  border: 1px solid white;
 }
+
+.event:hover{
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+.text {
+  margin-left: 17%;
+}
+
 img{
   float: left;
   margin-right: 10px;
   border-radius: 5px 0 0 5px;
-  width: 150px;
-  height: 150px;
+  width: 10vw;
 }
 
 h1{
   margin-top: 0;
   margin-bottom: 2px;
+  font-size: 2vw;
 }
 
 iframe{
@@ -50,7 +41,7 @@ iframe{
   border-radius: 5px;
 }
 
-
-.event:hover{
-  background-color: #e4e4e4;
+#year {
+  display: none;
 }
+

@@ -94,17 +94,40 @@ app.get('/api/logout', (req, res) => {
   return res.send(true);
 });
 
-app.post('/api/evenement', async (req, res) => {
+app.get('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin" DESC';
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = 2020) ORDER BY "events"."begin" DESC';
   await pool.query(sql, (err, rows) => {
+    if (err) throw err;
     return res.json(rows.rows);
   });
 });
 
-app.post('/api/galerie/:style', async (req, res) => {
+app.get('/api/evenement/annee/:tri', async (req, res) => {
+  let tri = parseInt(req.url.split('/annee/').pop());
+  // recupere les valeurs du formulaire
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = '+tri+') ORDER BY "events"."begin" DESC';
+  await pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.json(rows.rows);
+  });
+});
+
+app.get('/api/evenement/:tri', async (req, res) => {
+  let tri = req.url.split('/evenement/').pop();
+  // recupere les valeurs du formulaire
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '"';
+  await pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.json(rows.rows);
+  });
+});
+
+
+
+app.get('/api/galerie/:style', async (req, res) => {
   let style = req.url.split('/galerie/').pop();
-  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings WHERE category = \'' + style +'\' ORDER BY "paintingId"' ;
+  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings WHERE category = \'' + style + '\' ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
@@ -128,7 +151,7 @@ app.post('/api/test', async (req, res) => {
   });
 });
 
-app.post('/api/new', [
+app.post('/api/users', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
   check('firstname', 'Firstname must only include MAJ and low').isAlpha(),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
@@ -202,15 +225,7 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
   })
 });
 
-app.post('/api/getComment', async (req, res) => {
-  let sql = 'SELECT  users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = '+ parseInt(req.query.painting);
-  pool.query(sql, (err, rows) => {
-    if (err) throw err;
-    return res.send(rows.rows);
-  })
-});
-
-app.post('/api/addComment', async (req, res) => {
+app.post('/api/comments', async (req, res) => {
   let query = req.query;
   let sql = 'INSERT INTO comments ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
   pool.query(sql, (err) => {
@@ -218,6 +233,15 @@ app.post('/api/addComment', async (req, res) => {
     return res.send(true);
   })
 });
+
+app.get('/api/comments/:id', async (req, res) => {
+  let sql = 'select users.lastname, users.firstname, comments.comment FROM comments JOIN users on comments."userId" = users."userId" where "paintingId" = ' + req.params.id;
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.send(rows.rows);
+  })
+});
+
 
 app.post('/api/admin', async (req, res) => {
   pool.query('SELECT * FROM users WHERE "userId" = '+ parseInt(req.query.id), (err, rows) => {

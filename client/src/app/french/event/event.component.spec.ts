@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FrEventComponent } from './event.component';
-import {HttpClient, HttpHandler} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('FrEventComponent', () => {
@@ -32,10 +31,10 @@ describe('FrEventComponent', () => {
     expect(component.transition).toBe(events);
   });
 
-  it('should make post request', () => {
+  it('should make get request', () => {
     component.ngOnInit();
     const req = httpTestingController.expectOne('/api/evenement');
-    expect(req.request.method).toEqual('POST');
+    expect(req.request.method).toEqual('GET');
   });
 
 });

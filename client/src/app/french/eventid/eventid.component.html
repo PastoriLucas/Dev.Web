@@ -1,17 +1,17 @@
 <app-headerfr></app-headerfr>
-  <div id="evenement">
-    <div id="droite">
+  <div id="pageWeb">
+    <div id="leftSide">
+      <img id="image" src="{{this.image}}" alt="image">
+    </div>
+    <div id="rightSide">
       <div id="textArea">
         <h1 class="titre">{{this.event.name}}</h1>
         <p class="description">{{this.event.description}}</p>
         <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
       </div>
-      <div id="mapArea">
-        <!--<iframe id="map" src="{{this.place}}" aria-hidden="false" tabindex="0"></iframe>-->
-      </div>
-    </div>
-    <div id="imageArea">
-      <img id="image" src="" alt="image">
+      <!--<div id="mapArea">
+        <iframe id="map" src="{{this.place}}" aria-hidden="false" tabindex="0"></iframe>
+      </div>-->
     </div>
   </div>
 <app-footerfr></app-footerfr>

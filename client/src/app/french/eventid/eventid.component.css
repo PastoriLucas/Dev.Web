@@ -1,28 +1,22 @@
-#evenement {
+#pageWeb {
   margin: 0 5%;
   background-color: white;
   padding: 2%;
-  font-size: 20px;
-  min-height: auto;
-  box-sizing: border-box;
 }
-#droite{
-  float: right;
-  width: 49%;
+
+#image {
+  width: 30%;
 }
-#imageArea {
-  width: 49%;
+#rightSide {
+  width: 60%;
+  margin-left: 33%;
+  margin-top: -27%;
 }
+
 #textArea {
   text-align: center;
   background-color: #e4e4e4;
 }
 #mapArea {
   size: auto;
-}
-img {
-  height: 100%;
-  width: 100%;
-  min-height: 200px;
-  min-width: 200px;
 }
