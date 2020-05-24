@@ -96,11 +96,34 @@ app.get('/api/logout', (req, res) => {
 
 app.get('/api/evenement', async (req, res) => {
   // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image from events ORDER BY "events"."begin" DESC';
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = 2020) ORDER BY "events"."begin" DESC';
   await pool.query(sql, (err, rows) => {
+    if (err) throw err;
     return res.json(rows.rows);
   });
 });
+
+app.get('/api/evenement/annee/:tri', async (req, res) => {
+  let tri = parseInt(req.url.split('/annee/').pop());
+  // recupere les valeurs du formulaire
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = '+tri+') ORDER BY "events"."begin" DESC';
+  await pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.json(rows.rows);
+  });
+});
+
+app.get('/api/evenement/:tri', async (req, res) => {
+  let tri = req.url.split('/evenement/').pop();
+  // recupere les valeurs du formulaire
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '"';
+  await pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    return res.json(rows.rows);
+  });
+});
+
+
 
 app.get('/api/galerie/:style', async (req, res) => {
   let style = req.url.split('/galerie/').pop();

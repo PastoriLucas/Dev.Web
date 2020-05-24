@@ -1,14 +1,27 @@
 <app-headerfr></app-headerfr>
   <div class="pageEvent">
     <div class="tri">
+      <div>
       <label>
         <select>
           <option value="name">Nom</option>
           <option value="begin">Date de debut</option>
+          <option value="year">Par année</option>
           <option value="end">Date de fin</option>
         </select>
       </label>
-      <input type="submit">
+      <input type="submit" id="submitTri" (click)="tri()">
+      </div>
+      <div id="year">
+      <label>
+        <select>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+        </select>
+      </label>
+      <input type="submit" id="submitTriAnnee" (click)="triAnnee()">
+      </div>
     </div>
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
       <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">

@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FrEventComponent } from './event.component';
-import {HttpClient, HttpHandler} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('FrEventComponent', () => {
@@ -13,15 +12,14 @@ describe('FrEventComponent', () => {
     {eventId: 2, name: 'Test2', begin: 'Test2', end: 'Test2', place: 'Test2', image: 'Test2', description: 'Test2'},
     {eventId: 5, name: 'efzrg', begin: '18/05/2020', end: '18/05/2020', place: 'Test3', image: 'Test3', description: 'Test3'}
   ];
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrEventComponent ],
-      imports: [ RouterTestingModule],
-      providers: [HttpClientTestingModule, FormBuilder]
-    })
-    .compileComponents();
-  }));
+      providers: [ FrEventComponent ],
+      imports: [HttpClientTestingModule]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    component = TestBed.inject(FrEventComponent);
+  });
 
 
   afterEach(() => {
@@ -33,9 +31,10 @@ describe('FrEventComponent', () => {
     expect(component.transition).toBe(events);
   });
 
-  it('should make post request', () => {
+  it('should make get request', () => {
     component.ngOnInit();
     const req = httpTestingController.expectOne('/api/evenement');
-    expect(req.request.method).toEqual('POST');
+    expect(req.request.method).toEqual('GET');
   });
+
 });

@@ -41,4 +41,7 @@ iframe{
   border-radius: 5px;
 }
 
+#year {
+  display: none;
+}
 
