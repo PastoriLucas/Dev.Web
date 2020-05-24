@@ -57,7 +57,6 @@ passport.use(new LocalStrategy('local',
       bcrypt.compare(password, rows.rows[0].password, (err, res) => {
         if(err) return err;
         if(res) {
-          console.log(rows.rows[0]);
           return( done(null, rows.rows[0]));
         }
         return done(null, false, { message : 'Verify password'});
@@ -90,7 +89,6 @@ app.post('/api/login',function(req, res, next) {
 });
 
 app.get('/api/logout', (req, res) => {
-  console.log(req, res);
   req.logout();
   return res.send(true);
 });
@@ -181,7 +179,6 @@ app.post('/api/users', [
 });
 
 app.post('/api/like', async (req) => {
-  console.log(req.query);
   await pool.query(
     'update paintings set likes = likes + 1 where "paintingId" = '+ req.query.painting + ';' +
     'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
@@ -191,7 +188,6 @@ app.post('/api/like', async (req) => {
 });
 
 app.post('/api/dislike', async (req) => {
-  console.log(req.query);
   await pool.query(
     'UPDATE paintings SET likes = likes - 1 WHERE "paintingId" = '+ req.query.painting + ';' +
     'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
@@ -217,7 +213,6 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
     'message': 'File uploaded succesfully.'
   });
   let file = '../../assets/img/' + req.query.eventFile;
-  console.log(req.query.dateBegin);
   let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
     "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
   pool.query(sql, (err, rows) => {
@@ -264,7 +259,6 @@ app.get('/api/commentsevent/:id', async (req, res) => {
 app.post('/api/admin', async (req, res) => {
   pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\'', (err, rows) => {
     if (err) throw err;
-    console.log(rows.rows[0]);
     bcrypt.compare(req.query.password, rows.rows[0].password, (err, values) => {
       if (err) throw err;
       return res.send(values);

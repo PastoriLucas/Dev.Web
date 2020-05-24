@@ -32,8 +32,8 @@ export class FrEventidComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(`http://localhost:8888/api/evenement`)
     this.nbrUrl = Number(location.pathname.split('/').pop());
+    this.http.get(`http://localhost:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of

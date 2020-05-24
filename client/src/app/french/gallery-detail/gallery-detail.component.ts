@@ -16,7 +16,6 @@ export class FrGalleryDetailComponent implements OnInit {
 
   public nbrUrl;
   public urlStyle;
-  public currentImage: number;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   public param = '';
@@ -57,7 +56,7 @@ export class FrGalleryDetailComponent implements OnInit {
       for (let i = 0; i < likes.length; i++) {
         // si déjà liké
         console.log(Number(likes[i]));
-        if (likes[i] === this.currentImage.toString()) {
+        if (likes[i] === this.nbrUrl.toString()) {
           console.log('liké');
           // @ts-ignore
           likes[i] = Number(likes[i]);
@@ -87,7 +86,7 @@ export class FrGalleryDetailComponent implements OnInit {
 
 
   addLike(likes) {
-    likes.push(Number(this.currentImage));
+    likes.push(Number(this.nbrUrl));
     localStorage.setItem('likes', likes.toString());
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
@@ -97,7 +96,7 @@ export class FrGalleryDetailComponent implements OnInit {
       params: {
         user: this.cookieService.get('login'),
         likes: likes.toString(),
-        painting: this.currentImage.toString()
+        painting: this.nbrUrl.toString()
       }
     }).subscribe();
     location.reload();
@@ -108,7 +107,7 @@ export class FrGalleryDetailComponent implements OnInit {
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
       // tslint:disable-next-line:radix
-      if (parseInt(likes[l]) === this.currentImage) {
+      if (parseInt(likes[l]) === this.nbrUrl) {
         likes.splice(l, 1);
         localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
@@ -119,7 +118,7 @@ export class FrGalleryDetailComponent implements OnInit {
           params: {
             user: this.cookieService.get('login'),
             likes,
-            painting : this.currentImage.toString()
+            painting : this.nbrUrl.toString()
           }
         }).subscribe();
         location.reload();
