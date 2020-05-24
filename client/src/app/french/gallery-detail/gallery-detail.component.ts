@@ -15,7 +15,7 @@ export class FrGalleryDetailComponent implements OnInit {
   @ViewChild('container', {static: true} ) container: ElementRef;
 
   public nbrUrl = 0;
-  public currentImage = '';
+  public currentImage: number;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   public param = '';
@@ -29,7 +29,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentImage = location.pathname.split('/').pop();
+    this.currentImage = Number(location.pathname.split('/').pop());
     /*const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');*/

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-gallery',
@@ -14,10 +14,11 @@ export class FrGalleryComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
-  style = '/api/galerie' + location.href.split('/gallery').pop();
+  style = '/api/galerie/' + location.href.split('/gallery/').pop();
   ngOnInit() {
-    this.http.get('/api/galerie')
+    this.http.get(this.style)
       .subscribe(result => {
+        console.log(result);
         this.transition = result;
       });
   }
