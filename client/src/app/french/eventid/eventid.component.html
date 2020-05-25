@@ -1,24 +1,30 @@
-<app-headerfr></app-headerfr>
-  <div class="pageWeb">
-    <img id="image" src="{{this.image}}" alt="image">
-    <div id="details">
-      <h1 id="nomEvenement">{{this.event.name}}</h1>
-      <p class="description">{{this.event.description}}</p>
-      <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
-    </div>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' '; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval';">
+  <meta charset="utf-8">
+</head>
 
-    <div id="comments">
-      <div class="commentList" *ngFor="let comment of comments">
-        <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
-        <p>{{comment.comment}}</p>
+  <app-headerfr></app-headerfr>
+    <div class="pageWeb">
+      <img id="image" src="{{this.image}}" alt="image">
+      <div id="details">
+        <h1 id="nomEvenement">{{this.event.name}}</h1>
+        <p class="description">{{this.event.description}}</p>
+        <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
       </div>
-      <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="newComment(checkoutForm.value)">
-        <p>Ajouter un commentaire</p>
-        <label>
-          <textarea id="inputComment" rows="10" formControlName="comment"></textarea>
-        </label>
-        <input id="submitComment" type="submit">
-      </form>
+
+      <div id="comments">
+        <div class="commentList" *ngFor="let comment of comments">
+          <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
+          <p>{{comment.comment}}</p>
+        </div>
+        <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="newComment(checkoutForm.value)">
+          <p>Ajouter un commentaire</p>
+          <label>
+            <textarea id="inputComment" rows="10" formControlName="comment"></textarea>
+          </label>
+          <input id="submitComment" type="submit">
+        </form>
+      </div>
     </div>
-  </div>
-<app-footerfr></app-footerfr>
+  <app-footerfr></app-footerfr>
+

@@ -1,31 +1,37 @@
-<div id="topnav">
-  <div id="divSelectLanguage">
-    <a class="itemSelectLanguage" id="fr" href="fr/{{this.page}}">FR</a>
-    <a class="itemSelectLanguage" id="en" href="en/{{this.page}}">EN</a>
-    <a class="itemSelectLanguage" id="nl" href="nl/{{this.page}}">NL</a>
-  </div>
-  <div id="loginDiv">
-    <a class="log" id="login" href="fr/login">{{this.login}}</a>
-    <a class="log" id="logout" href="fr/home" (click)="logout()">Déconnexion</a>
-  </div>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' '; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval';">
+  <meta charset="utf-8">
+</head>
+<body>
+  <div id="topnav">
+    <div id="divSelectLanguage">
+      <a class="itemSelectLanguage" id="fr" href="fr/{{this.page}}">FR</a>
+      <a class="itemSelectLanguage" id="en" href="en/{{this.page}}">EN</a>
+      <a class="itemSelectLanguage" id="nl" href="nl/{{this.page}}">NL</a>
+    </div>
+    <div id="loginDiv">
+      <a class="log" id="login" href="fr/login">{{this.login}}</a>
+      <a class="log" id="logout" href="fr/home" (click)="logout()">Déconnexion</a>
+    </div>
 
-  <a href=""><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
-  <div id="toolbar">
-      <a class="itemToolbar" href="fr/home">Accueil</a>
-      <div class="dropdown">
-        <a id="galerie">Galerie</a>
-        <div class="dropdown-content">
-          <a href="/fr/gallery/inSpires" class="itemDropdown">In spires</a>
-          <a href="/fr/gallery/pinsAndNeedles" class="itemDropdown">Pins and needles</a>
-          <a href="/fr/gallery/patchy" class="itemDropdown">Patchy</a>
-          <a href="/fr/gallery/splash" class="itemDropdown">Splash</a>
-          <a href="/fr/gallery/other" class="itemDropdown">Other</a>
-          <a href="/fr/gallery/stagingPaintings" class="itemDropdown">Staging paintings</a>
+    <a href=""><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
+    <div id="toolbar">
+        <a class="itemToolbar" href="fr/home">Accueil</a>
+        <div class="dropdown">
+          <a id="galerie">Galerie</a>
+          <div class="dropdown-content">
+            <a href="/fr/gallery/inSpires" class="itemDropdown">In spires</a>
+            <a href="/fr/gallery/pinsAndNeedles" class="itemDropdown">Pins and needles</a>
+            <a href="/fr/gallery/patchy" class="itemDropdown">Patchy</a>
+            <a href="/fr/gallery/splash" class="itemDropdown">Splash</a>
+            <a href="/fr/gallery/other" class="itemDropdown">Other</a>
+            <a href="/fr/gallery/stagingPaintings" class="itemDropdown">Staging paintings</a>
+          </div>
         </div>
-      </div>
-      <a class="itemToolbar" href="fr/presentation">Présentation</a>
-      <a class="itemToolbar" href="fr/event">Evenements</a>
-      <a class="itemToolbar" href="fr/contact">Contact</a>
-    <div id="espace"></div>
+        <a class="itemToolbar" href="fr/presentation">Présentation</a>
+        <a class="itemToolbar" href="fr/event">Evenements</a>
+        <a class="itemToolbar" href="fr/contact">Contact</a>
+      <div id="espace"></div>
+    </div>
   </div>
-</div>
+</body>
