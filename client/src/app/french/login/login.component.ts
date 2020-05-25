@@ -40,9 +40,11 @@ export class FrLoginComponent implements OnInit {
       .subscribe(result => {
         console.log(result);
         // @ts-ignore
+        if (result.message) {
+        // @ts-ignore
         document.getElementById('error').innerText = result.message;
         document.getElementById('error').style.display = 'inherit';
-      } else {
+        } else {
         // @ts-ignore
         this.cookieService.set('login', result.userId);
         // @ts-ignore
