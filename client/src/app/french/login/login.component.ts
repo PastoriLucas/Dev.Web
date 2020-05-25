@@ -44,7 +44,6 @@ export class FrLoginComponent implements OnInit {
       responseType : 'json'
     })
       .subscribe(result => {
-        console.log(result);
         // @ts-ignore
         if (result.message) {
         // @ts-ignore

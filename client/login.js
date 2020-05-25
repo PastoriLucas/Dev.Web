@@ -34,7 +34,6 @@ let pool = new pg.Pool({
 });
 pool.connect(function (err) {
   if (err) throw err;
-  console.log("Connected!");
 });
 
 app.use(cookieParser());
@@ -260,7 +259,7 @@ app.get('/api/commentsevent/:id', async (req, res) => {
 
 
 app.post('/api/admin', async (req, res) => {
-  pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\'', (err, rows) => {
+  pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\' AND mail like \'%admin@admin.admin%\'', (err, rows) => {
     if (err) throw err;
     bcrypt.compare(req.query.password, rows.rows[0].password, (err, values) => {
       if (err) throw err;
@@ -289,11 +288,7 @@ app.post('/api/contact', async (req,res) => {
   };
 
   transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
+    if (error) throw error;
   });
 });
 passport.serializeUser(function (user_id, done) {

@@ -37,7 +37,6 @@ export class FileComponent implements OnInit {
       }
     })
       .subscribe(result => {
-        console.log(result);
         if (result === false) {
           location.replace('/fr/home');
         }
@@ -52,7 +51,6 @@ export class FileComponent implements OnInit {
     const formData = new FormData();
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
-      console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
       this.http.post('http://51.178.40.75:8888/api/adminPainting', formData, {
         params: {
@@ -63,7 +61,6 @@ export class FileComponent implements OnInit {
         }
       })
         .subscribe((response) => {
-          console.log('response received is ', response);
         });
     }
   }
@@ -72,7 +69,6 @@ export class FileComponent implements OnInit {
     const formData = new FormData();
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
-      console.log(this.uploadedFiles[i].name);
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
       this.http.post('http://51.178.40.75:8888/api/adminEvent', formData, {
         params: {
@@ -84,9 +80,7 @@ export class FileComponent implements OnInit {
           eventFile: this.uploadedFiles[i].name
         }
       })
-        .subscribe((response) => {
-          console.log('response received is ', response);
-        });
+        .subscribe();
     }
   }
 }

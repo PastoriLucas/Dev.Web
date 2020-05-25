@@ -34,7 +34,6 @@ export class FrEventidComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:radix
     this.nbrUrl = parseInt(location.pathname.split('/').pop());
-    console.log(this.nbrUrl);
     this.http.get(`http://51.178.40.75:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore

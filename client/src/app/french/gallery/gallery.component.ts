@@ -18,7 +18,6 @@ export class FrGalleryComponent implements OnInit {
   requestGetting(style) {
     this.http.get(style)
     .subscribe(result => {
-      console.log(result);
       this.transition = result;
     });
   }

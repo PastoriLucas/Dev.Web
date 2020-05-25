@@ -47,7 +47,6 @@ export class FrInscriptionComponent implements OnInit {
         responseType : 'json'
       })
         .subscribe(result => {
-          console.log('resultat : ' + result);
           document.getElementById('error').innerText = '';
           if (result === false) {
             document.getElementById('error').innerText = 'L\'utilisateur existe déjà';

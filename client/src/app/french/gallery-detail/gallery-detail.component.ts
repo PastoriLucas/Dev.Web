@@ -54,10 +54,7 @@ export class FrGalleryDetailComponent implements OnInit {
       const likes = localStorage.getItem('likes').split(',');
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < likes.length; i++) {
-        // si déjà liké
-        console.log(Number(likes[i]));
         if (likes[i] === this.nbrUrl.toString()) {
-          console.log('liké');
           // @ts-ignore
           likes[i] = Number(likes[i]);
           document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
@@ -76,10 +73,8 @@ export class FrGalleryDetailComponent implements OnInit {
     if (!connected) {
       alert('Connectez-vous pour avoir accès à plus de contenu');
     } else if (connected === 'liked') {
-      console.log('Connecté, mais tu kiffe déjà cette oeuvre !');
       this.delLike();
     } else {
-      console.log('Connecté, tu peux encore liker !');
       this.addLike(connected);
     }
   }
@@ -150,10 +145,7 @@ export class FrGalleryDetailComponent implements OnInit {
         painting: this.nbrUrl.toString(),
         comment: res.comment
       }
-    })
-      .subscribe(result => {
-        console.log(result);
-      });
+    }).subscribe();
     location.reload();
   }
 }

@@ -36,13 +36,7 @@ export class FrContactComponent implements OnInit {
       headers : headers
     })
       .subscribe(result => {
-        if (result === false) {
-          console.log('Mail not ok');
-          return false;
-        } else {
-          console.log('Mail ok');
-          return true;
-        }
+        return result !== false;
       });
     location.reload();
   }
