@@ -40,20 +40,15 @@ export class FrLoginComponent implements OnInit {
       .subscribe(result => {
         console.log(result);
         // @ts-ignore
-        document.getElementById('error').innerText = '';
+        document.getElementById('error').innerText = result.message;
+        document.getElementById('error').style.display = 'inherit';
+      } else {
         // @ts-ignore
-        if (result.message) {
-          // @ts-ignore
-          document.getElementById('error').innerText = result.message;
-          document.getElementById('error').style.display = 'inherit';
-        } else {
-          const expires = 24 * 60 * 60 * 1000;
-          // @ts-ignore
-          this.cookieService.set('login', result.userId);
-          // @ts-ignore
-          localStorage.setItem('likes', result.likes);
-          location.replace('/fr/home');
-        }
-      });
+        this.cookieService.set('login', result.userId);
+        // @ts-ignore
+        localStorage.setItem('likes', result.likes);
+        location.replace('/fr/home');
+      }
+    });
   }
 }

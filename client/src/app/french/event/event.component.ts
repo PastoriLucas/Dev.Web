@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-event',
@@ -17,9 +17,6 @@ export class FrEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');*/
     this.http.get(`/api/evenement`)
       .subscribe(result => {
         this.sendValues(result);
