@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
-// @ts-ignore
 import { CookieService } from 'ngx-cookie-service';
-import {resolveFileWithPostfixes} from "@angular/compiler-cli/ngcc/src/utils";
 
 @Component({
   selector: 'app-inscription',

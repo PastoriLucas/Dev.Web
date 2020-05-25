@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:8888",
+    "target": "http://51.178.40.75:8888",
     "secure": false
   }
 }

@@ -10,7 +10,7 @@ import {FormBuilder} from '@angular/forms';
 })
 export class FrEventidComponent implements OnInit {
 
-  public nbrUrl;
+  public nbrUrl = 0;
   public param = '';
   comments: any;
   checkoutForm: any;
@@ -32,8 +32,10 @@ export class FrEventidComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nbrUrl = Number(location.pathname.split('/').pop());
-    this.http.get(`http://localhost:8888/api/evenement`)
+    // tslint:disable-next-line:radix
+    this.nbrUrl = parseInt(location.pathname.split('/').pop());
+    console.log(this.nbrUrl);
+    this.http.get(`/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
