@@ -57,7 +57,7 @@ export class FrLoginComponent implements OnInit {
         localStorage.setItem('likes', result.likes);
         // location.replace('/fr/home');
       }
-      return false;
+        return false;
     });
   }
 }

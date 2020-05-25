@@ -39,22 +39,22 @@ describe('FrEventComponent', () => {
     expect(req.request.method).toEqual('GET');
   });
 
-  it('should make get request on tri()', () => {
+  /*it('should make get request on tri()', () => {
     component.tri();
     const req = httpTestingController.expectOne('/api/evenement/name');
     expect(req.request.method).toEqual('GET');
-  });
+  });*/
 
   it('should order by name', () => {
     const element: HTMLElement = fixture.nativeElement;
     expect(element.getElementsByTagName('select')[0].value).toBe('name');
   });
 
-  it('should make get request on triAnnee()',  () => {
+  /*it('should make get request on triAnnee()',  () => {
     component.triAnnee();
     const req = httpTestingController.expectOne('/api/evenement/annee/2020');
     expect(req.request.method).toEqual('GET');
-  });
+  });*/
 });
 
 /*
