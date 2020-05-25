@@ -17,8 +17,8 @@ export class FrHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.page = location.pathname.split('/fr/').pop();
     if (this.cookieService.getAll().login) {
-      this.login = 'Mon compte';
       document.getElementById('logout').style.display = 'inherit';
+      document.getElementById('login').style.display = 'none';
     } else {
       this.login = 'Connexion';
     }
@@ -30,7 +30,7 @@ export class FrHeaderComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/logout', '', {
+    this.http.get('http://51.178.40.75:8888/api/logout').subscribe();
       headers
     })
       .subscribe();

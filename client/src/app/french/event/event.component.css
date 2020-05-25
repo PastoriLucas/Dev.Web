@@ -7,9 +7,9 @@
 .event{
   position: center;
   min-height: 16vw;
-  background-color: white;
+  background-color: #ededed;
   border-radius: 5px;
-  margin: 60px 2% 5%;
+  margin:  2% 2%;
   border: 1px solid white;
 }
 
@@ -73,7 +73,7 @@ iframe{
 
 #dropdownAnnee {
   position: absolute;
-  display: inline-block;
+  display: none;
   background-color: #ededed;
   text-align: center;
   padding: 1.5% 2% 0;
@@ -119,6 +119,7 @@ iframe{
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  float: right;
 }
 
 #dropdown-content-annee a {
