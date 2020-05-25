@@ -27,7 +27,6 @@ export class FrHeaderComponent implements OnInit {
   async logout() {
     await localStorage.clear();
     this.cookieService.delete('login');
-    this.http.post('http://51.178.40.75:8888/api/logout', '', {
-      .subscribe();
+    this.http.get('http://51.178.40.75:8888/api/logout').subscribe();
   }
 }
