@@ -30,7 +30,7 @@ export class FrHeaderComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/logout', '', {
+    this.http.post('http://51.178.40.75:8888/api/logout', '', {
       headers
     })
       .subscribe();

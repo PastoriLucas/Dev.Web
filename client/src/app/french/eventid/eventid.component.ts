@@ -35,7 +35,7 @@ export class FrEventidComponent implements OnInit {
     // tslint:disable-next-line:radix
     this.nbrUrl = parseInt(location.pathname.split('/').pop());
     console.log(this.nbrUrl);
-    this.http.get(`/api/evenement`)
+    this.http.get(`http://51.178.40.75:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -57,7 +57,7 @@ export class FrEventidComponent implements OnInit {
   }
 
   comment(id) {
-    const urlGet = '/api/commentsevent/' + id;
+    const urlGet = 'http://51.178.40.75:8888/api/commentsevent/' + id;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -76,7 +76,7 @@ export class FrEventidComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/commentsevent', '', {
+    this.http.post('http://51.178.40.75:8888/api/commentsevent', '', {
       headers,
       params: {
         user: login,
