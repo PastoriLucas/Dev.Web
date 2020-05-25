@@ -27,7 +27,12 @@ export class FrHeaderComponent implements OnInit {
   async logout() {
     await localStorage.clear();
     this.cookieService.delete('login');
-    this.http.post('http://51.178.40.75:8888/api/logout', '', {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('/api/logout', '', {
+      headers
+    })
       .subscribe();
   }
 }

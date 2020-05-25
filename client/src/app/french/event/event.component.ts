@@ -27,7 +27,7 @@ export class FrEventComponent implements OnInit {
     document.getElementById('triEvents').innerText = texteTri;
     /*document.getElementById('dropdown-content-tri').style.visibility = 'hidden';
     document.getElementById('dropdown-content-annee').style.visibility = 'hidden';*/
-    this.http.get(`/api/evenement/` + valeurTri)
+    this.http.get(`http://51.178.40.75:8888/api/evenement/` + valeurTri)
       .subscribe(result => {
         this.sendValues(result);
       });
@@ -38,7 +38,7 @@ export class FrEventComponent implements OnInit {
     document.getElementById('triAnnee').innerText = annee;
     /*document.getElementById('dropdown-content-tri').style.display = 'flex';
     document.getElementById('dropdown-content-annee').style.display = 'flex';*/
-    this.http.get(`/api/evenement/annee/` + annee)
+    this.http.get(`http://51.178.40.75:8888//api/evenement/annee/` + annee)
       .subscribe(result => {
         this.sendValues(result);
       });  }
