@@ -17,7 +17,7 @@ export class FrEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(`/api/evenement`)
+    this.http.get(`http://51.178.40.75:8888/api/evenement`)
       .subscribe(result => {
         this.sendValues(result);
     });

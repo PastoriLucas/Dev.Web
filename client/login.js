@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer');
 const https = require('https');
 var http = require('http');
 const cors = require('cors');
-var helmet = require('helmet');
+
 
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
@@ -22,23 +22,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'"],
-    styleSrc: ["'self'"],
-    imgSrc: ["'self'"],
-    connectSrc: ["'self'"],
-    fontSrc: ["'self'"],
-    objectSrc: ["'none'"],
-    mediaSrc: ["'self'"],
-    frameSrc: ["'none'"],
-    // reportUri: '/report-violation',
-  },
-  reportOnly: false, // set to true if you only want to report errors
-  setAllHeaders: false, // set to true if you want to set all headers
-  safari5: false // set to true if you want to force buggy CSP in Safari 5
-}));
+
 
 //connection avec la db
 let pool = new pg.Pool({

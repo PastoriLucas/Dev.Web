@@ -14,7 +14,7 @@ export class FrGalleryComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
-  style = '/api/galerie/' + location.href.split('/gallery/').pop();
+  style = 'http://51.178.40.75:8888/api/galerie/' + location.href.split('/gallery/').pop();
   requestGetting(style) {
     this.http.get(style)
     .subscribe(result => {
