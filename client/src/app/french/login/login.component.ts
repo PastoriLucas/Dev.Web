@@ -14,6 +14,7 @@ import {CookieService} from 'ngx-cookie-service';
 export class FrLoginComponent implements OnInit {
 
   public checkoutForm;
+  public usersInformations: object;
 
   constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
     this.checkoutForm = this.formBuilder.group({
@@ -22,14 +23,19 @@ export class FrLoginComponent implements OnInit {
     });
   }
 
+  public sendValue(result) {
+    this.usersInformations = result;
+  }
+
   ngOnInit(): void {
+
   }
 
   onSubmit(res) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/api/login', '', {
+    return this.http.post('http://localhost:8888/api/login', '', {
       params : {
         username : res.username,
         password : res.password
@@ -38,7 +44,8 @@ export class FrLoginComponent implements OnInit {
       responseType : 'json'
     })
     .subscribe(result => {
-      console.log(result);
+      this.sendValue(result);
+      console.log(this.usersInformations);
       // @ts-ignore
       document.getElementById('error').innerText = '';
       // @ts-ignore
@@ -51,8 +58,9 @@ export class FrLoginComponent implements OnInit {
         this.cookieService.set('login', result.userId, 24 * 60 * 60 * 1000, '/');
         // @ts-ignore
         localStorage.setItem('likes', result.likes);
-        location.replace('/fr/home');
+        // location.replace('/fr/home');
       }
+      return false;
     });
   }
 }

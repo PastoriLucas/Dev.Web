@@ -22,14 +22,10 @@ export class FrHeaderComponent implements OnInit {
     } else {
       this.login = 'Connexion';
     }
-    if (this.cookieService.getAll().login === '1') {
-      this.login = 'Admin';
-      document.getElementById('login').setAttribute('href', '/admin');
-    }
   }
 
-  logout() {
-    localStorage.clear();
+  async logout() {
+    await localStorage.clear();
     this.cookieService.delete('login');
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
