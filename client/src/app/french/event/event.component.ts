@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-event',
@@ -17,9 +17,6 @@ export class FrEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');*/
     this.http.get(`/api/evenement`)
       .subscribe(result => {
         this.sendValues(result);
@@ -31,12 +28,12 @@ export class FrEventComponent implements OnInit {
     if (tri === 'year') {
       console.log('annee');
       document.getElementById('year').style.display = 'flex';
-      return 'year';
+    } else {
+      this.http.get(`/api/evenement/` + tri)
+        .subscribe(result => {
+          this.sendValues(result);
+        });
     }
-    this.http.get(`/api/evenement/` + tri)
-      .subscribe(result => {
-        this.sendValues(result);
-      });
   }
 
   triAnnee() {
