@@ -14,6 +14,7 @@ import {CookieService} from 'ngx-cookie-service';
 export class FrLoginComponent implements OnInit {
 
   public checkoutForm;
+  public usersInformations: object;
 
   constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
     this.checkoutForm = this.formBuilder.group({
@@ -22,7 +23,12 @@ export class FrLoginComponent implements OnInit {
     });
   }
 
+  public sendValue(result) {
+    this.usersInformations = result;
+  }
+
   ngOnInit(): void {
+
   }
 
   onSubmit(res) {
@@ -49,8 +55,9 @@ export class FrLoginComponent implements OnInit {
         this.cookieService.set('login', result.userId);
         // @ts-ignore
         localStorage.setItem('likes', result.likes);
-        location.replace('/fr/home');
+        // location.replace('/fr/home');
       }
+        return false;
     });
   }
 }

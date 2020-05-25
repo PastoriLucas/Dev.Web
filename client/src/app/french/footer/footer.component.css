@@ -9,17 +9,78 @@ body {
   text-align: center;
 }
 
+.itemSelectLanguage:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid 3px black;
+}
+
+.itemToolbar {
+  position: relative;
+  color: black;
+  background-color: #ededed;
+  margin: 0 1%;
+  padding: 1.5% 3%;
+  text-decoration: none;
+  font-size: 1.55vw;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: #e4e4e4;
+  padding: 0.5% 2%;
+  overflow: visible;
+  font-size: 1.55vw;
+  margin: 0 1%;
+}
+
+.dropdown:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid black 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin-left: -22%;
+  margin-top: -200%;
+  background-color: #e4e4e4;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.itemDropdown {
+  border-bottom: solid #e4e4e4 3px;
+  font-size: 1.55vw;
+}
+
+.itemDropdown:hover {
+  border-bottom: solid black 3px;
+}
+
 #logoValouKervynBot {
   width: 20%;
   margin: 20px 40%;
 }
 
-#littleToolBar {
-  font-size: 1.7vw;
-}
-
-#littleNav {
+#galerie {
+  text-align: center;
+  color: black;
   text-decoration: none;
+  background-color: #e4e4e4;
+  padding: 0.5% 2%;
+  font-size: 1.55vw;
 }
 
 .littlenav {
@@ -28,6 +89,8 @@ body {
   text-decoration: none;
   background-color: #e4e4e4;
   padding: 0.5% 2%;
+  font-size: 1.55vw;
+  margin: 0 1%;
 }
 
 .network {
