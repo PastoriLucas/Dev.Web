@@ -14,7 +14,7 @@ export class FrGalleryDetailComponent implements OnInit {
 
   @ViewChild('container', {static: true} ) container: ElementRef;
 
-  public nbrUrl;
+  public nbrUrl: number;
   public urlStyle;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
