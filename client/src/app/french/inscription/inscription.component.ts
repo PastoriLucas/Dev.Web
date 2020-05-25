@@ -35,7 +35,7 @@ export class FrInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('/api/users', '', {
+      this.http.post('http://51.178.40.75:8888/api/users', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -47,7 +47,6 @@ export class FrInscriptionComponent implements OnInit {
         responseType : 'json'
       })
         .subscribe(result => {
-          console.log('resultat : ' + result);
           document.getElementById('error').innerText = '';
           if (result === false) {
             document.getElementById('error').innerText = 'L\'utilisateur existe déjà';

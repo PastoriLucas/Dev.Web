@@ -34,8 +34,7 @@ export class FrEventidComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:radix
     this.nbrUrl = parseInt(location.pathname.split('/').pop());
-    console.log(this.nbrUrl);
-    this.http.get(`/api/evenement`)
+    this.http.get(`http://51.178.40.75:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -53,36 +52,37 @@ export class FrEventidComponent implements OnInit {
           }
         }
       });
-    this.comment();
+    this.comment(this.nbrUrl);
   }
 
-  comment() {
-    const urlGet = '/api/commentsevent/' + this.nbrUrl;
+  comment(id) {
+    const urlGet = 'http://51.178.40.75:8888/api/commentsevent/' + id;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
       });
   }
 
-  newComment(res) {
+  checkUser(res) {
     if (!this.cookieService.get('login')) {
       alert('Connectez vous');
-      return false;
+    } else {
+      this.newComment(res, this.cookieService.get('login'), this.nbrUrl.toString());
     }
+  }
+
+  newComment(res, login, evenement) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/commentsevent', '', {
+    this.http.post('http://51.178.40.75:8888/api/commentsevent', '', {
       headers,
       params: {
-        user: this.cookieService.get('login'),
-        event: this.nbrUrl.toString(),
+        user: login,
+        event: evenement,
         comment: res.comment
       }
-    })
-      .subscribe(result => {
-        console.log(result);
-      });
+    }).subscribe();
     location.reload();
   }
 }

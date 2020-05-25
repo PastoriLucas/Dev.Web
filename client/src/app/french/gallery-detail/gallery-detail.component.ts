@@ -30,8 +30,18 @@ export class FrGalleryDetailComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   requestGetting(url) {
     this.http.get(url)
+=======
+  ngOnInit() {
+    this.nbrUrl = Number(location.pathname.split('/').pop());
+    this.urlStyle = location.pathname.split('/')[3];
+    /*const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');*/
+    this.http.get(`http://51.178.40.75:8888/api/galerie/` + this.urlStyle)
+>>>>>>> Luc.Pas
       .subscribe(result => {
         this.paints = result;
         // tslint:disable-next-line:prefer-for-of
@@ -56,11 +66,16 @@ export class FrGalleryDetailComponent implements OnInit {
   connect(constlikes) {
     if (localStorage.length > 0) {
       // tslint:disable-next-line:prefer-for-of
+<<<<<<< HEAD
       for (let i = 0; i < constlikes.length; i++) {
         // si déjà liké
         console.log(Number(constlikes[i]));
         if (constlikes[i] === this.nbrUrl.toString()) {
           console.log('liké');
+=======
+      for (let i = 0; i < likes.length; i++) {
+        if (likes[i] === this.nbrUrl.toString()) {
+>>>>>>> Luc.Pas
           // @ts-ignore
           if (document.getElementById('likeImage') !== null) {
               document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
@@ -97,7 +112,7 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`/api/like`, '', {
+    this.http.post(`http://51.178.40.75:8888/api/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
@@ -123,7 +138,7 @@ export class FrGalleryDetailComponent implements OnInit {
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`/api/dislike`, '', {
+        this.http.post(`http://51.178.40.75:8888/api/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
@@ -141,7 +156,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   comment() {
-    const urlGet = '/api/commentsgallery/' + this.nbrUrl;
+    const urlGet = 'http://51.178.40.75:8888/api/commentsgallery/' + this.nbrUrl;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -156,17 +171,14 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('/api/commentsgallery', '', {
+    this.http.post('http://51.178.40.75:8888/api/commentsgallery', '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
         painting: this.nbrUrl.toString(),
         comment: res.comment
       }
-    })
-      .subscribe(result => {
-        console.log(result);
-      });
+    }).subscribe();
     location.reload();
   }
 }

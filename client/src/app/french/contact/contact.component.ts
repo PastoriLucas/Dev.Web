@@ -26,7 +26,7 @@ export class FrContactComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://localhost:8888/api/contact', '', {
+    this.http.post('http://51.178.40.75:8888/api/contact', '', {
       params : {
         name : res.formName,
         envoyeur : res.formMail,
@@ -36,13 +36,8 @@ export class FrContactComponent implements OnInit {
       headers : headers
     })
       .subscribe(result => {
-        if (result === false) {
-          console.log('Mail not ok');
-          return false;
-        } else {
-          console.log('Mail ok');
-          return true;
-        }
+        return result !== false;
       });
+    location.reload();
   }
 }

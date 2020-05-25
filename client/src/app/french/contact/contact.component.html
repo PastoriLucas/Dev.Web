@@ -1,34 +1,39 @@
-<app-headerfr></app-headerfr>
-<div class="pageContact">
-  <div class="contactGauche">
-    <div class="espaceGauche">
-      <h3 id="phone">Numéro de téléphone </h3>
-      <div class="separator"></div>
-      <p>0473/66.32.41</p>
-    </div>
-    <div class="espaceGauche">
-      <h3 id="mail">E-mail </h3>
-      <div class="separator"></div>
-      <p>varmotiv0@gmail.com</p>
-    </div>
-  </div>
-  <div class="contactDroit">
-    <form id="form" [formGroup]="mailForm" (ngSubmit)="onSubmit(mailForm.value)">
-      <div id="formSuperieur">
-        <label id="nameLabel" for="formName" >Votre nom (obligatoire)</label><br>
-        <label id="mailLabel" for="formMail">Votre e-mail (obligatoire)</label><br>
-        <input type="text" id="formName" name="formName" formControlName="formName"><br><br>
-        <input type="text" id="formMail" name="formMail" formControlName="formMail"><br><br>
+<head>
+  <meta charset="utf-8">
+</head>
+
+  <app-headerfr></app-headerfr>
+  <div class="pageContact">
+    <div class="contactGauche">
+      <div class="espaceGauche">
+        <h3 id="phone">Numéro de téléphone </h3>
+        <div class="separator"></div>
+        <p>0473/66.32.41</p>
       </div>
-      <div class="separator"></div>
-      <label for="formSjt">Sujet</label><br>
-      <input type="text" id="formSjt" name="formSjt" formControlName="formSjt"><br><br>
-      <div class="separator"></div>
-      <label for="formMsg">Votre message</label><br>
-      <input type="text" id="formMsg" name="formMsg" formControlName="formMsg"><br><br>
-      <input type="submit" id="sbt">
-      <input type="reset" id="rst">
-    </form>
+      <div class="espaceGauche">
+        <h3 id="mail">E-mail </h3>
+        <div class="separator"></div>
+        <p>varmotiv0@gmail.com</p>
+      </div>
+    </div>
+    <div class="contactDroit">
+      <form id="form" [formGroup]="mailForm" (ngSubmit)="onSubmit(mailForm.value)">
+        <div id="formSuperieur">
+          <label id="nameLabel" for="formName" >Votre nom (obligatoire)</label><br>
+          <label id="mailLabel" for="formMail">Votre e-mail (obligatoire)</label><br>
+          <input type="text" id="formName" name="formName" formControlName="formName"><br><br>
+          <input type="text" id="formMail" name="formMail" formControlName="formMail"><br><br>
+        </div>
+        <div class="separator"></div>
+        <label for="formSjt">Sujet</label><br>
+        <input type="text" id="formSjt" name="formSjt" formControlName="formSjt"><br><br>
+        <div class="separator"></div>
+        <label for="formMsg">Votre message</label><br>
+        <input type="text" id="formMsg" name="formMsg" formControlName="formMsg"><br><br>
+        <input type="submit" id="sbt">
+        <input type="reset" id="rst">
+      </form>
+    </div>
   </div>
-</div>
-<app-footerfr></app-footerfr>
+  <app-footerfr></app-footerfr>
+

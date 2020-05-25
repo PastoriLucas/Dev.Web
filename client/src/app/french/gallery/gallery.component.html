@@ -1,9 +1,14 @@
-<app-headerfr></app-headerfr>
-  <div class="pageWeb">
-    <div class="blocImages">
-      <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.paintingId">
-        <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
-      </a>
+<head>
+  <meta charset="utf-8">
+</head>
+
+  <app-headerfr></app-headerfr>
+    <div class="pageWeb">
+      <div class="blocImages">
+        <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.paintingId">
+          <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
+        </a>
+      </div>
     </div>
-  </div>
-<app-footerfr></app-footerfr>
+  <app-footerfr></app-footerfr>
+
