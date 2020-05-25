@@ -43,11 +43,11 @@ describe('FrEventComponent', () => {
     component.tri('name', 'Nom');
     const req = httpTestingController.expectOne('/api/evenement/name');
     expect(req.request.method).toEqual('GET');
-  });*/
+  });
 
   it('should make get request on triAnnee()',  () => {
     component.triAnnee('2020', 'Année');
     const req = httpTestingController.expectOne('/api/evenement/annee/2020');
     expect(req.request.method).toEqual('GET');
-  });*/
+  });
 });
