@@ -16,9 +16,11 @@ export class FrGalleryDetailComponent implements OnInit {
 
   public nbrUrl: number;
   public urlStyle;
+  public url;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
   public paints;
   public param = '';
+  public constlikes;
   comments: any;
   checkoutForm: any;
 
@@ -28,13 +30,8 @@ export class FrGalleryDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.nbrUrl = Number(location.pathname.split('/').pop());
-    this.urlStyle = location.pathname.split('/')[3];
-    /*const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');*/
-    this.http.get(`/api/galerie/` + this.urlStyle)
+  requestGetting(url) {
+    this.http.get(url)
       .subscribe(result => {
         this.paints = result;
         // tslint:disable-next-line:prefer-for-of
@@ -44,43 +41,52 @@ export class FrGalleryDetailComponent implements OnInit {
           }
         }
       });
-    this.comment();
-    // vérifie connexion
-    this.connect();
   }
 
-  connect() {
+  ngOnInit() {
+    this.nbrUrl = Number(location.pathname.split('/').pop());
+    this.urlStyle = location.pathname.split('/')[3];
+    this.url = '/api/galerie/' + this.urlStyle;
+    this.requestGetting(this.url);
+    this.comment();
+    this.constlikes = localStorage.getItem('likes').split(',');
+    this.connect(this.constlikes);
+  }
+
+  connect(constlikes) {
     if (localStorage.length > 0) {
-      const likes = localStorage.getItem('likes').split(',');
       // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < likes.length; i++) {
+      for (let i = 0; i < constlikes.length; i++) {
         // si déjà liké
-        console.log(Number(likes[i]));
-        if (likes[i] === this.nbrUrl.toString()) {
+        console.log(Number(constlikes[i]));
+        if (constlikes[i] === this.nbrUrl.toString()) {
           console.log('liké');
           // @ts-ignore
-          likes[i] = Number(likes[i]);
-          document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+          if (document.getElementById('likeImage') !== null) {
+              document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+          }
+          constlikes[i] = Number(constlikes[i]);
           return 'liked';
         }
         // @ts-ignore
-        likes[i] = Number(likes[i]);
+        constlikes[i] = Number(constlikes[i]);
       }
-      return likes;
+      return constlikes;
     }
     return false;
   }
 
-  likes() {
-    const connected = this.connect();
+  likes(constlikes) {
+    const connected = this.connect(constlikes);
     if (!connected) {
       alert('Connectez-vous pour avoir accès à plus de contenu');
+      return 'unlogged';
     } else if (connected === 'liked') {
-      console.log('Connecté, mais tu kiffe déjà cette oeuvre !');
       this.delLike();
+      return 'disliked';
     } else {
-      console.log('Connecté, tu peux encore liker !');
       this.addLike(connected);
+      return 'liked';
     }
   }
 
@@ -103,7 +109,11 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   delLike() {
-    const likes = localStorage.getItem('likes').split(',');
+    let likes = ['0'];
+    if (localStorage.getItem('likes') !== null) {
+      likes = localStorage.getItem('likes').split(',');
+    }
+    console.log(likes);
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
       // tslint:disable-next-line:radix
@@ -118,13 +128,16 @@ export class FrGalleryDetailComponent implements OnInit {
           params: {
             user: this.cookieService.get('login'),
             likes,
-            painting : this.nbrUrl.toString()
+            painting: this.nbrUrl.toString()
           }
         }).subscribe();
         location.reload();
-        document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
+        if (document.getElementById('likeImage') !== null) {
+          document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
+        }
       }
     }
+    return 'unliked';
   }
 
   comment() {

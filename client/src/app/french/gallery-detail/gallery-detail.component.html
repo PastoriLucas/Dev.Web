@@ -6,7 +6,7 @@
       <p>Taille : {{this.actualPaint.size}}</p>
       <p>Date de création : {{this.actualPaint.creationdate}}</p>
       <div id="like">
-        <h2><img id="likeImage" src="../../assets/img/heart_empty.png" (click)="likes()" width="20px" alt="like"> {{this.actualPaint.likes}}</h2>
+        <h2><img id="likeImage" src="../../assets/img/heart_empty.png" (click)="likes(this.constlikes)" width="20px" alt="like"> {{this.actualPaint.likes}}</h2>
       </div>
     </div>
     <div id="comments">
