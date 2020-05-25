@@ -5,20 +5,17 @@
 }
 
 #image {
-  padding: 3% 5% 0.5% 5%;
-  width: 40%;
-}
-
-#nomEvenement {
-
+  float: left;
+  padding: 0 5% 0.5% 5%;
+  width: 30%;
 }
 
 #details {
   position: relative;
   padding: 3%;
-  width: 39%;
-  margin-left: 50%;
-  margin-top: -41%;
+  width: 49%;
+  margin-left: 40%;
+  margin-top: 0;
   text-align: left;
   background-color: #ededed;
   font-size: 1.7vw;
@@ -36,7 +33,7 @@
 #comments {
   padding: 2% 3%;
   background-color: #ededed;
-  margin-top: 18%;
+  margin-top: 8%;
   margin-left: 5%;
   width: 84%;
 }
