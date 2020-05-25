@@ -44,5 +44,6 @@ export class FrContactComponent implements OnInit {
           return true;
         }
       });
+    location.reload();
   }
 }

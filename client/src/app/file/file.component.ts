@@ -31,7 +31,7 @@ export class FileComponent implements OnInit {
 
   ngOnInit() {
     const pwd = window.prompt('Mot de passe administrateur : ', '');
-    this.http.post('/api/admin', '', {
+    this.http.post('http://51.178.40.75:8888/api/admin', '', {
       params: {
         password: pwd
       }
