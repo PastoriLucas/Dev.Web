@@ -55,7 +55,7 @@ export class FrLoginComponent implements OnInit {
         this.cookieService.set('login', result.userId);
         // @ts-ignore
         localStorage.setItem('likes', result.likes);
-        // location.replace('/fr/home');
+        location.replace('/fr/home');
       }
         return false;
     });
