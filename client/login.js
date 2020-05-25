@@ -307,16 +307,6 @@ passport.deserializeUser(function (user_id, done) {
   done(null, user_id);
 });
 
-https.createServer({
-  key: fs.readFileSync('https/server.key'),
-  cert: fs.readFileSync('https/server.cert')
-}, app)
-  .listen(3000, function () {
-    console.log('Example app listening on port 3000! Go to https://localhost:3000/')
-  });
-
-http.createServer(app).listen(80);
-
 //ecoute sur le port 8888
 app.listen(8888);
 
