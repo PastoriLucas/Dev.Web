@@ -25,8 +25,10 @@ export class FrEventComponent implements OnInit {
 
   tri(valeurTri, texteTri) {
     document.getElementById('triEvents').innerText = texteTri;
-    /*document.getElementById('dropdown-content-tri').style.visibility = 'hidden';
-    document.getElementById('dropdown-content-annee').style.visibility = 'hidden';*/
+    document.getElementById('dropdownAnnee').style.display = 'none';
+    if (valeurTri === 'year') {
+      document.getElementById('dropdownAnnee').style.display = 'block';
+    }
     this.http.get(`/api/evenement/` + valeurTri)
       .subscribe(result => {
         this.sendValues(result);
@@ -34,10 +36,9 @@ export class FrEventComponent implements OnInit {
   }
 
   triAnnee(annee, texteTri) {
+    document.getElementById('dropdownAnnee').style.display = 'block';
     document.getElementById('triEvents').innerText = texteTri;
     document.getElementById('triAnnee').innerText = annee;
-    /*document.getElementById('dropdown-content-tri').style.display = 'flex';
-    document.getElementById('dropdown-content-annee').style.display = 'flex';*/
     this.http.get(`/api/evenement/annee/` + annee)
       .subscribe(result => {
         this.sendValues(result);

@@ -17,8 +17,8 @@ export class FrHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.page = location.pathname.split('/fr/').pop();
     if (this.cookieService.getAll().login) {
-      this.login = 'Mon compte';
       document.getElementById('logout').style.display = 'inherit';
+      document.getElementById('login').style.display = 'none';
     } else {
       this.login = 'Connexion';
     }
