@@ -29,7 +29,7 @@ export class FrLoginComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/api/login', '', {
+    this.http.post('/api/login', '', {
       params : {
         username : res.username,
         password : res.password
@@ -37,22 +37,23 @@ export class FrLoginComponent implements OnInit {
       headers,
       responseType : 'json'
     })
-    .subscribe(result => {
-      console.log(result);
-      // @ts-ignore
-      document.getElementById('error').innerText = '';
-      // @ts-ignore
-      if (result.message) {
+      .subscribe(result => {
+        console.log(result);
         // @ts-ignore
-        document.getElementById('error').innerText = result.message;
-        document.getElementById('error').style.display = 'inherit';
-      } else {
+        document.getElementById('error').innerText = '';
         // @ts-ignore
-        this.cookieService.set('login', result.userId, 24 * 60 * 60 * 1000, '/');
-        // @ts-ignore
-        localStorage.setItem('likes', result.likes);
-        location.replace('/fr/home');
-      }
-    });
+        if (result.message) {
+          // @ts-ignore
+          document.getElementById('error').innerText = result.message;
+          document.getElementById('error').style.display = 'inherit';
+        } else {
+          const expires = 24 * 60 * 60 * 1000;
+          // @ts-ignore
+          this.cookieService.set('login', result.userId);
+          // @ts-ignore
+          localStorage.setItem('likes', result.likes);
+          location.replace('/fr/home');
+        }
+      });
   }
 }
