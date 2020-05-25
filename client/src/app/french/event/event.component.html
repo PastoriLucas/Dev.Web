@@ -1,17 +1,34 @@
 <app-headerfr></app-headerfr>
   <div id="pageWeb">
-   <div id="tri">
-     <p>Trier par : </p>
-     <div>
-    <label>
-      <select id="selectTri">
-        <option value="name">Nom</option>
-        <option value="begin">Date de debut</option>
-        <option value="year">Par année</option>
-        <option value="end">Date de fin</option>
-      </select>
-    </label>
-    <input type="submit" id="submitTri" (click)="tri()">
+    <div id="tri">
+     <p id="texteTri">Trier par : </p>
+      <div id="dropdownEvents">
+        <a id="triEvents">Date de début</a>
+        <div id="dropdown-content-tri">
+          <p class="itemDropdown" (click)="tri('name', 'Nom')">Nom</p>
+          <p class="itemDropdown" (click)="tri('begin', 'Date de début')">Date de début</p>
+          <p class="itemDropdown" (click)="tri('end', 'Date de fin')">Date de fin</p>
+          <p class="itemDropdown" (click)="triAnnee('2020', 'Année')">Année</p>
+        </div>
+      </div>
+      <div id="dropdownAnnee">
+        <a id="triAnnee">2020</a>
+        <div id="dropdown-content-annee">
+          <p class="itemDropdown" (click)="triAnnee('2020', 'Année')">2020</p>
+          <p class="itemDropdown" (click)="triAnnee('2019', 'Année')">2019</p>
+          <p class="itemDropdown" (click)="triAnnee('2018', 'Année')">2018</p>
+        </div>
+      </div>
+     <!--<div>
+      <label>
+        <select id="selectTri">
+          <option value="name">Nom</option>
+          <option value="begin">Date de debut</option>
+          <option value="year">Par année</option>
+          <option value="end">Date de fin</option>
+        </select>
+      </label>
+    <input type="submit" id="submitTri" (click)="tri('name')">
     </div>
     <div id="year">
     <label>
@@ -22,8 +39,8 @@
       </select>
     </label>
     <input type="submit" id="submitTriAnnee" (click)="triAnnee()">
+    </div>-->
     </div>
-  </div>
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
       <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
       <div class="text">

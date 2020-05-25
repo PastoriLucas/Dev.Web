@@ -26,22 +26,22 @@ export class FrEventComponent implements OnInit {
     });
   }
 
-  tri() {
-    const tri = document.getElementsByTagName('select')[0].value;
-    if (tri === 'year') {
-      console.log('annee');
-      document.getElementById('year').style.display = 'flex';
-      return 'year';
-    }
-    this.http.get(`/api/evenement/` + tri)
+  tri(valeurTri, texteTri) {
+    document.getElementById('triEvents').innerText = texteTri;
+    /*document.getElementById('dropdown-content-tri').style.visibility = 'hidden';
+    document.getElementById('dropdown-content-annee').style.visibility = 'hidden';*/
+    this.http.get(`/api/evenement/` + valeurTri)
       .subscribe(result => {
         this.sendValues(result);
       });
   }
 
-  triAnnee() {
-    const tri = document.getElementsByTagName('select')[1].value;
-    this.http.get(`/api/evenement/annee/` + tri)
+  triAnnee(annee, texteTri) {
+    document.getElementById('triEvents').innerText = texteTri;
+    document.getElementById('triAnnee').innerText = annee;
+    /*document.getElementById('dropdown-content-tri').style.display = 'flex';
+    document.getElementById('dropdown-content-annee').style.display = 'flex';*/
+    this.http.get(`/api/evenement/annee/` + annee)
       .subscribe(result => {
         this.sendValues(result);
       });  }
