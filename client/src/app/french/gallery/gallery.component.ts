@@ -15,11 +15,14 @@ export class FrGalleryComponent implements OnInit {
   }
 
   style = '/api/galerie/' + location.href.split('/gallery/').pop();
+  requestGetting(style) {
+    this.http.get(style)
+    .subscribe(result => {
+      console.log(result);
+      this.transition = result;
+    });
+  }
   ngOnInit() {
-    this.http.get(this.style)
-      .subscribe(result => {
-        console.log(result);
-        this.transition = result;
-      });
+    this.requestGetting(this.style);
   }
 }
