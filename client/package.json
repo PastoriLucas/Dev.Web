@@ -37,6 +37,8 @@
     "express-pg-session": "^1.1.0",
     "express-session": "^1.17.1",
     "express-validator": "^6.4.1",
+    "helmet": "^3.22.0",
+    "helmet-csp": "^2.10.0",
     "intl": "^1.2.5",
     "ngx-cookie-service": "^3.0.4",
     "nodemailer": "^6.4.6",
