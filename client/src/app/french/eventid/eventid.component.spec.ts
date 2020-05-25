@@ -12,7 +12,6 @@ import {FrFooterComponent} from '../footer/footer.component';
 
 describe('FrEventid', () => {
   let component: FrEventidComponent;
-  let httpTestingController: HttpTestingController;
   let fixture: ComponentFixture<FrEventidComponent>;
   let debugElement: DebugElement;
   let htmlElement: HTMLElement;
@@ -27,11 +26,19 @@ describe('FrEventid', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FrEventidComponent);
     component = fixture.componentInstance;
+
+    fixture.detectChanges();
+
     debugElement = fixture.debugElement.query(By.css('img'));
     htmlElement = debugElement.nativeElement;
   });
+
   it('should change nbrUrl value', () => {
     expect(htmlElement.getAttribute('src')).toBeNull();
+  });
+
+  it('should be beau', () => {
+    expect(htmlElement.getAttribute('src')).toBeDefined();
   });
 });
 

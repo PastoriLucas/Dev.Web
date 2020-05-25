@@ -23,17 +23,6 @@
       <input type="submit" id="submitTriAnnee" (click)="triAnnee()">
       </div>
     </div>
-    <div id="year">
-    <label>
-      <select id="selectYear">
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-      </select>
-    </label>
-    <input type="submit" id="submitTriAnnee" (click)="triAnnee()">
-    </div>
-  </div>
     <div class="event" *ngFor="let oeuvre of transition" [routerLink]="oeuvre.eventId">
       <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
       <div class="text">
