@@ -9,6 +9,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pgSession = require('connect-pg-simple')(session);
 const nodemailer = require('nodemailer');
+const https = require('https');
+var http = require('http');
 const cors = require('cors');
 
 const multipart = require('connect-multiparty');
