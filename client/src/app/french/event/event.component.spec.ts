@@ -39,55 +39,15 @@ describe('FrEventComponent', () => {
     expect(req.request.method).toEqual('GET');
   });
 
-  /*it('should make get request on tri()', () => {
-    component.tri();
+  it('should make get request on tri()', () => {
+    component.tri('name', 'Nom');
     const req = httpTestingController.expectOne('/api/evenement/name');
     expect(req.request.method).toEqual('GET');
-  });*/
-
-  it('should order by name', () => {
-    const element: HTMLElement = fixture.nativeElement;
-    expect(element.getElementsByTagName('select')[0].value).toBe('name');
   });
 
-  /*it('should make get request on triAnnee()',  () => {
-    component.triAnnee();
+  it('should make get request on triAnnee()',  () => {
+    component.triAnnee('2020', 'Année');
     const req = httpTestingController.expectOne('/api/evenement/annee/2020');
     expect(req.request.method).toEqual('GET');
-  });*/
+  });
 });
-
-/*
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FrEventComponent } from './event.component';
-import {HttpClient, HttpHandler} from '@angular/common/http';
-import {FrFooterComponent} from '../footer/footer.component';
-import {FrHeaderComponent} from '../header/header.component';
-
-describe('BannerComponent', () => {
-  let component: FrEventComponent;
-  let fixture: ComponentFixture<FrEventComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FrEventComponent, FrFooterComponent, FrHeaderComponent ],
-      providers: [HttpClient, HttpHandler]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FrEventComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeDefined();
-  });
-
-  it('should be waw', () => {
-    const element: HTMLElement = fixture.nativeElement;
-    expect(element.getElementsByTagName('select')[0].value).toBe('name');
-  });
-});*/

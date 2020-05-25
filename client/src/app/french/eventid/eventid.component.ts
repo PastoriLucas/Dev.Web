@@ -53,36 +53,37 @@ export class FrEventidComponent implements OnInit {
           }
         }
       });
-    this.comment();
+    this.comment(this.nbrUrl);
   }
 
-  comment() {
-    const urlGet = '/api/commentsevent/' + this.nbrUrl;
+  comment(id) {
+    const urlGet = '/api/commentsevent/' + id;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
       });
   }
 
-  newComment(res) {
+  checkUser(res) {
     if (!this.cookieService.get('login')) {
       alert('Connectez vous');
-      return false;
+    } else {
+      this.newComment(res, this.cookieService.get('login'), this.nbrUrl.toString());
     }
+  }
+
+  newComment(res, login, evenement) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
     this.http.post('/api/commentsevent', '', {
       headers,
       params: {
-        user: this.cookieService.get('login'),
-        event: this.nbrUrl.toString(),
+        user: login,
+        event: evenement,
         comment: res.comment
       }
-    })
-      .subscribe(result => {
-        console.log(result);
-      });
+    }).subscribe();
     location.reload();
   }
 }
