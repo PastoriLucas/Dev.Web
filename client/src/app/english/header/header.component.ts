@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./header.component.css']
 })
 
-export class FrHeaderComponent implements OnInit {
+export class EnHeaderComponent implements OnInit {
   login: any;
   page: any;
 

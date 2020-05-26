@@ -14,7 +14,7 @@ export class NlHeaderComponent implements OnInit {
   constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.page = location.pathname.split('/fr/').pop();
+    this.page = location.pathname.split('/nl/').pop();
     if (this.cookieService.getAll().login) {
       document.getElementById('logout').style.display = 'inherit';
       document.getElementById('login').style.display = 'none';
