@@ -1,10 +1,13 @@
+<head>
+  <meta charset="utf-8">
+</head>
+
 <app-headeren></app-headeren>
-  <div class="pageWeb">
-      <br>
-      <div class="blocImages">
-          <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.id">
-            <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
-          </a>
-    </div>
+<div class="pageWeb">
+  <div class="blocImages">
+    <a *ngFor="let oeuvre of transition" [routerLink]="oeuvre.paintingId">
+      <img class="imgs" src="{{oeuvre.image}}" alt="oeuvre">
+    </a>
   </div>
+</div>
 <app-footeren></app-footeren>

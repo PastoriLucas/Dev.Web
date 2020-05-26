@@ -4,3 +4,8 @@ html{
 }
 
 body { margin: 0;}
+
+@font-face {
+  font-family: GeosansLight;
+  src: url("/assets/fonts/Geosanslight/GeosansLight.ttf");
+}

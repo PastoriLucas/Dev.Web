@@ -1,8 +1,7 @@
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormBuilder} from '@angular/forms';
 import { FrLoginComponent } from './login.component';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {Router, RouterModule, Routes} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LoginComponent', () => {
@@ -54,7 +53,7 @@ describe('LoginComponent', () => {
   });
 
   it('should do a post request to backend', () => {
-    const url = `/api/login?username=test&password=123`;
+    const url = `http://51.178.40.75:8888/api/login?username=test&password=123`;
     component.onSubmit(valeurTest[2]);
     const req = httpTestingController.expectOne(url);
     expect(req.request.urlWithParams).toBe(url);

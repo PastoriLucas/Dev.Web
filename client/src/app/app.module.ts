@@ -71,8 +71,8 @@ const appRoutes: Routes = [
   { path: 'fr/login', component: FrLoginComponent },
   { path: 'fr/inscription', component: FrInscriptionComponent},
   /*ENGLISH*/
-  { path: 'en/gallery', component: EnGalleryComponent },
-  { path: 'en/gallery/:id', component: EnGalleryDetailComponent },
+  { path: 'en/gallery/:style', component: EnGalleryComponent },
+  { path: 'en/gallery/:style/:id', component: EnGalleryDetailComponent },
   { path: 'en/presentation', component: EnPresentationComponent },
   { path: 'en/event', component: EnEventComponent },
   { path: 'en/contact', component: EnContactComponent },
@@ -81,8 +81,8 @@ const appRoutes: Routes = [
   { path: 'en/login', component: EnLoginComponent },
   { path: 'en/inscription', component: EnInscriptionComponent},
   /*DUTCH*/
-  { path: 'nl/gallery', component: NlGalleryComponent },
-  { path: 'nl/gallery/:id', component: NlGalleryDetailComponent },
+  { path: 'nl/gallery/:style', component: NlGalleryComponent },
+  { path: 'nl/gallery/:style/:id', component: NlGalleryDetailComponent },
   { path: 'nl/presentation', component: NlPresentationComponent },
   { path: 'nl/event', component: NlEventComponent },
   { path: 'nl/contact', component: NlContactComponent },

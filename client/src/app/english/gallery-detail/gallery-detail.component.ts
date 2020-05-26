@@ -2,122 +2,159 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// @ts-ignore
 import {CookieService} from 'ngx-cookie-service';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-gallery-detail',
   templateUrl: './gallery-detail.component.html',
   styleUrls: ['./gallery-detail.component.css']
 })
-export class EnGalleryDetailComponent implements OnInit {
+  export class EnGalleryDetailComponent implements OnInit {
 
   @ViewChild('container', {static: true} ) container: ElementRef;
 
-  public url = 0;
-  public currentImage = '';
+  public nbrUrl: number;
+  public urlStyle;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
-  public paints;
   public param = '';
+  public likes;
+  comments: any;
+  checkoutForm: any;
 
-  constructor(private router: Router, private http: HttpClient, public cookieService: CookieService) {}
+  constructor(private router: Router, private http: HttpClient, public cookieService: CookieService, private formBuilder: FormBuilder) {
+    this.checkoutForm = this.formBuilder.group({
+      comment: ''
+    });
+  }
 
-  ngOnInit() {
-    this.currentImage = this.router.url.substr(12);
-    const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/galerie`, '', {
-      headers
-    })
+  requestGetting() {
+    this.http.get(`http://51.178.40.75:8888/api/galerie/` + this.urlStyle)
       .subscribe(result => {
-        this.paints = result;
-        this.url = Number(this.currentImage);
+        // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.paints.length; i++) {
-          if (this.paints[i].id === this.url) {
-            this.actualPaint = (this.paints[i]);
+        for (let i = 0; i < result.length; i++) {
+          if (result[i].paintingId === this.nbrUrl) {
+            this.actualPaint = (result[i]);
           }
         }
       });
+  }
+
+  ngOnInit() {
+    this.nbrUrl = Number(location.pathname.split('/').pop());
+    this.urlStyle = location.pathname.split('/')[3];
+    this.requestGetting();
+    this.comment();
     // vérifie connexion
     this.connect();
   }
+
   connect() {
     if (localStorage.length > 0) {
-      const likes = localStorage.getItem('likes').split(',');
+      this.likes = localStorage.getItem('likes').split(',');
       // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < likes.length; i++) {
-        // si déjà liké
-        console.log(Number(likes[i]));
-        if (likes[i] === this.currentImage.toString()) {
-          console.log('liké');
-          // @ts-ignore
-          likes[i] = Number(likes[i]);
-          document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+      for (let i = 0; i < this.likes.length; i++) {
+        // tslint:disable-next-line:radix
+        this.likes[i] = parseInt(this.likes[i]);
+        if (this.likes[i] === this.nbrUrl) {
+          if (document.getElementById('likeImage') !== null) {
+            document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+          }
           return 'liked';
         }
-        // @ts-ignore
-        likes[i] = Number(likes[i]);
       }
-      return likes;
+      return this.likes;
     }
     return false;
   }
 
-  likes() {
-    const connected = this.connect();
-    if (!connected) {
-      alert('Log in to access more content');
+  like(connected) {
+    if (connected === false) {
+      alert('Connectez-vous pour avoir accès à plus de contenu');
+      return 'unlogged';
     } else if (connected === 'liked') {
-      console.log('Connected, but you already love this work!');
-      this.delLike();
+      this.delLike(this.likes);
+      return 'unliked';
     } else {
-      console.log('Connected, you can still like!');
       this.addLike(connected);
+      return 'liked';
     }
   }
 
-
   addLike(likes) {
-    likes.push(Number(this.currentImage));
+    likes.push(Number(this.nbrUrl));
     localStorage.setItem('likes', likes.toString());
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/like`, '', {
+    this.http.post(`http://51.178.40.75:8888/api/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        likes: likes.toString(),
-        painting: this.currentImage
+        likes: likes,
+        painting: this.nbrUrl.toString()
       }
     }).subscribe();
     location.reload();
   }
 
-  delLike() {
-    const likes = localStorage.getItem('likes').split(',');
+  delLike(likes) {
     // tslint:disable-next-line:prefer-for-of
     for (let l = 0; l < likes.length; l++) {
-      if (likes[l] === this.currentImage) {
+      // tslint:disable-next-line:radix
+      if (parseInt(likes[l]) === this.nbrUrl) {
         likes.splice(l, 1);
         localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`http://51.178.40.75:8888/dislike`, '', {
+        this.http.post(`http://51.178.40.75:8888/api/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
-            likes : likes,
-            painting : this.currentImage
+            likes: likes,
+            painting : this.nbrUrl.toString()
           }
-        }).subscribe();
-        location.reload();
-        document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
+        }).subscribe( () => {
+          if (document.getElementById('likeImage') !== null) {
+            document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
+          }
+        });
       }
+      location.reload();
     }
+    return 'unliked';
+  }
+
+  comment() {
+    const urlGet = 'http://51.178.40.75:8888/api/commentsgallery/' + this.nbrUrl;
+    this.http.get(urlGet)
+      .subscribe(result => {
+        this.comments = result;
+      });
+  }
+
+  newComment(res) {
+    if (!this.cookieService.get('login')) {
+      alert('Connectez vous');
+      return false;
+    }
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.post('http://51.178.40.75:8888/api/commentsgallery', '', {
+      headers,
+      params: {
+        user: this.cookieService.get('login'),
+        painting: this.nbrUrl.toString(),
+        comment: res.comment
+      }
+    })
+      .subscribe(result => {
+        console.log(result);
+      });
+    location.reload();
   }
 }
 

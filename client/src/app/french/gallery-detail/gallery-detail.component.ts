@@ -17,9 +17,8 @@ export class FrGalleryDetailComponent implements OnInit {
   public nbrUrl: number;
   public urlStyle;
   public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
-  public paints;
   public param = '';
-  public constlikes;
+  public likes;
   comments: any;
   checkoutForm: any;
 
@@ -30,68 +29,58 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   requestGetting() {
-    this.http.get(`http://51.178.40.75/api/galerie/` + this.urlStyle)
+    this.http.get(`http://51.178.40.75:8888/api/galerie/` + this.urlStyle)
       .subscribe(result => {
-        this.paints = result;
+        // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.paints.length; i++) {
-          if (this.paints[i].paintingId === this.nbrUrl) {
-            this.actualPaint = (this.paints[i]);
+        for (let i = 0; i < result.length; i++) {
+          if (result[i].paintingId === this.nbrUrl) {
+            this.actualPaint = (result[i]);
           }
         }
       });
   }
+
   ngOnInit() {
     this.nbrUrl = Number(location.pathname.split('/').pop());
     this.urlStyle = location.pathname.split('/')[3];
-    this.constlikes = localStorage.getItem('likes').split(',');
-    /*const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');*/
     this.requestGetting();
     this.comment();
     // vérifie connexion
-    this.connect(this.constlikes);
+    this.connect();
   }
 
-  connect(likes) {
+  connect() {
     if (localStorage.length > 0) {
+      this.likes = localStorage.getItem('likes').split(',');
       // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < likes.length; i++) {
-        // si déjà liké
-        console.log(Number(likes[i]));
-        if (likes[i] === this.nbrUrl.toString()) {
-          console.log('liké');
-          // @ts-ignore
-          likes[i] = Number(likes[i]);
+      for (let i = 0; i < this.likes.length; i++) {
+        // tslint:disable-next-line:radix
+        this.likes[i] = parseInt(this.likes[i]);
+        if (this.likes[i] === this.nbrUrl) {
           if (document.getElementById('likeImage') !== null) {
             document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
           }
           return 'liked';
         }
-        // @ts-ignore
-        likes[i] = Number(likes[i]);
       }
-      return likes;
+      return this.likes;
     }
     return false;
   }
 
-  likes(connected) {
-    if (!connected) {
+  like(connected) {
+    if (connected === false) {
       alert('Connectez-vous pour avoir accès à plus de contenu');
       return 'unlogged';
     } else if (connected === 'liked') {
-      console.log('Connecté, mais tu kiffe déjà cette oeuvre !');
-      this.delLike(this.constlikes);
+      this.delLike(this.likes);
       return 'unliked';
     } else {
-      console.log('Connecté, tu peux encore liker !');
       this.addLike(connected);
       return 'liked';
     }
   }
-
 
   addLike(likes) {
     likes.push(Number(this.nbrUrl));
@@ -103,20 +92,20 @@ export class FrGalleryDetailComponent implements OnInit {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        likes: likes.toString(),
+        likes: likes,
         painting: this.nbrUrl.toString()
       }
     }).subscribe();
     location.reload();
   }
 
-  delLike(constlikes) {
+  delLike(likes) {
     // tslint:disable-next-line:prefer-for-of
-    for (let l = 0; l < constlikes.length; l++) {
+    for (let l = 0; l < likes.length; l++) {
       // tslint:disable-next-line:radix
-      if (parseInt(constlikes[l]) === this.nbrUrl) {
-        constlikes.splice(l, 1);
-        localStorage.setItem('likes', constlikes.toString());
+      if (parseInt(likes[l]) === this.nbrUrl) {
+        likes.splice(l, 1);
+        localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
@@ -127,12 +116,13 @@ export class FrGalleryDetailComponent implements OnInit {
             likes : this.constlikes,
             painting : this.nbrUrl.toString()
           }
-        }).subscribe();
-        location.reload();
-        if (document.getElementById('likeImage') !== null) {
-          document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
-        }
+        }).subscribe( () => {
+          if (document.getElementById('likeImage') !== null) {
+            document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
+          }
+        });
       }
+      location.reload();
     }
     return 'unliked';
   }

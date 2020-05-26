@@ -1,33 +1,34 @@
-.pageWeb {
+body {
+  background-color: #ededed;
+}
+
+#pageWeb {
   background-color: white;
-  margin: 0 5%;
+  margin-left : 5%;
+  margin-right: 5%;
   padding: 1%;
 }
+
 #img1 {
-  width: 40%;
-  padding: 2% 3% 2% 8%;
+  float: left;
+  width: 30%;
+  padding: 3% 3% 0.5% 3%;
 }
 #p1{
-  width: 45%;
-  padding: 2% 2% 2% 0%;
+  float: none;
+  width: 94%;
+  padding: 3%;
+  font-size: 15px;
 }
-#p2{
-  width: 45%;
-  padding: 2% 8% 2% 20%;
-  text-align: right;
+
+.italique {
+  font-style: italic;
+  color: #b2b2b2;
+  font-size: 20px;
 }
-#img2{
-  padding: 2% 2% 2% 8%;
-  width: 10%;
+.nom {
+  font-size: 25px;
 }
-#p3{
-  padding: 2% 5%;
-  text-align: center;
-}
-#paragraphe{
-  display: flex;
-  flex-wrap: wrap;
-}
-#titre {
-  padding: 0% 8%;
+.gris {
+  color: #b2b2b2;
 }

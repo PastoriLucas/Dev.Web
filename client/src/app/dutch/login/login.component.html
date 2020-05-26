@@ -1,12 +1,18 @@
+<head>
+  <meta charset="utf-8">
+</head>
+
+<app-headernl></app-headernl>
 <div class="pageWeb">
-  <h1>Connectez-vous à votre compte</h1>
+  <h1>Log in</h1>
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
-    <label for="email">E-mail : </label><br><input type="email" required placeholder="example@gmail.com" id="email" formControlName="email"><br>
-    <label for="password">Mot de passe : </label><br><input type="password" required id="password" placeholder="password123" formControlName="password"><br>
-    <input type="submit" id="submit" value="Valider" class="bouton">
-    <a href="/register"><input type="button" id="inscription" value="Inscription" class="bouton"></a>
-    <p>Password forgotten ?</p>
-    <br><br>
+    <label for="username">E-mail : </label><br><input type="email" required placeholder="example@gmail.com" id="username" formControlName="username"><br>
+    <label for="password">Wachtwoord : </label><br><input type="password" required id="password" placeholder="password123" formControlName="password"><br>
+    <input type="submit" id="submit" value="Bevestigen" class="bouton">
+    <a href="/nl/inscription"><input type="button" id="inscription" value="Inschrijving" class="bouton"></a>
+    <p id="error"></p>
   </form>
   <br>
 </div>
+<app-footernl></app-footernl>
+

@@ -1,20 +1,28 @@
+<head>
+  <meta charset="utf-8">
+</head>
+<app-headernl></app-headernl>
 <div class="inscription">
-  <form id="form" action="/inscription" method="post" name="register">
-  <label for="firstname">Prénom : </label>
-    <input type="text" id="firstname" name="firstName" required>
-  <label for="lastname">Nom : </label><input type="text" id="lastname" name="lastName" required><br>
-  <label for="mail">Mail : </label><input type="email" id="mail" name="mail" required><br>
-  <label for="pwd1">Mot de passe : </label><input type="password" id="pwd1" name="pwd1" required>
-  <label for="shwPwd"> Voir le mot de passe </label> <input type="checkbox" name="shwPwd" id="shwPwd" onchange="shwPassword()"><br>
-  <label for="pwd2">Confirmation du mot de passe : </label><input type="password" id="pwd2" name="pwd2" required >
-  <div id="notif">Voulez-vous recevoir des notifications ?
-    <input type="radio" id="yes" name="notif" value="yes" checked>
-    <label for="yes">Oui :</label>
-    <input type="radio" id="no" name="notif" value="no">
-    <label for="no">Non :</label> </div>
-  <input class="submit" type="submit" id="submit" value="Submit" onmouseover="passwordCheck(register)">
-    <a href="/login">
-      <input type="button" value="Connection">
+  <form id="form" action="" method="post" name="register" [formGroup]="register" (ngSubmit)="onSubmit(register.value)">
+    <label for="firstname">Voornaam : </label>
+    <input type="text" id="firstname" name="firstName" required formControlName="firstname">
+    <label for="lastname">Achternaam : </label><input type="text" id="lastname" name="lastName" required formControlName="lastname"><br>
+    <label for="mail">Mail : </label><input type="email" id="mail" name="mail" required formControlName="email"><br>
+    <label for="pwd1">Wachtwoord : </label><input type="password" id="pwd1" name="pwd1" required formControlName="password">
+    <label for="shwPwd"> Zie wachtwoord </label> <input type="checkbox" name="shwPwd" id="shwPwd" (click)="shwPassword()"><br>
+    <label for="pwd2">Wachtwoordbevestiging : </label><input type="password" id="pwd2" name="pwd2" required formControlName="confirm">
+    <div id="notif">Wil je meldingen ontvangen?
+      <input type="radio" id="yes" name="notification" value="yes" checked formControlName="notification">
+      <label for="yes">Ja :</label>
+      <input type="radio" id="no" name="notification" value="no" formControlName="notification">
+      <label for="no">Nee :</label> </div>
+    <input class="submit" type="submit" id="submit" value="Bevestigen">
+    <a href="/fr/login">
+      <input type="button" value="Login">
     </a>
-</form>
+  </form>
 </div>
+<div id="error">
+  <hr>
+</div>
+<app-footernl></app-footernl>

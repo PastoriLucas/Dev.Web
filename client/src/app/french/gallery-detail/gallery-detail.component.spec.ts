@@ -39,7 +39,6 @@ describe('FrGalleryDetailComponent', () => {
 
   it('Should answer an unlogged log after trying to like iunlogged', () => {
     // tslint:disable-next-line:no-shadowed-variable
-    const likes = false;
     component.nbrUrl = 2;
     // tslint:disable-next-line:no-shadowed-variable
     const testedFunct = component.likes(false);

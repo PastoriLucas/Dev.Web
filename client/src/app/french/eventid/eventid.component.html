@@ -6,6 +6,9 @@
     <p class="description">{{this.event.description}}</p>
     <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
   </div>
+  <div id="mapFrame">
+    <iframe id="map"></iframe>
+  </div>
 
   <div id="comments">
     <div class="commentList" *ngFor="let comment of comments">
