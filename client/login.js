@@ -110,7 +110,6 @@ app.get('/api/evenement', async (req, res) => {
 
 app.get('/api/evenement/annee/:tri', async (req, res) => {
   let tri = parseInt(req.url.split('/annee/').pop());
-  // recupere les valeurs du formulaire
   let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = '+tri+') ORDER BY "events"."begin" DESC';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
@@ -120,8 +119,16 @@ app.get('/api/evenement/annee/:tri', async (req, res) => {
 
 app.get('/api/evenement/:tri', async (req, res) => {
   let tri = req.url.split('/evenement/').pop();
-  // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '"';
+  let order = '';
+  if (tri === 'asc') {
+    tri = 'begin' ;
+    order = 'ASC'
+  }
+  if (tri === 'desc') {
+    tri = 'begin';
+    order = 'desc';
+  }
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '" '+ order;
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
@@ -134,23 +141,6 @@ app.get('/api/galerie/:style', async (req, res) => {
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
-  });
-});
-
-app.post('/api/test', async (req, res) => {
-  let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
-  await pool.query(sql, (err,rows) => {
-    if(rows.rows.length > 0) {
-      bcrypt.compare(req.query.password, rows.rows[0].password, (err, match) => {
-        if (match){
-          req.login(rows.rows[0].id, function () {
-            return res.end(true);
-          });
-        }
-        return res.end(false);
-      });
-    }
-    return res.end(false);
   });
 });
 
