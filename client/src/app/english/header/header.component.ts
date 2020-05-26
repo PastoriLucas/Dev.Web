@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-// @ts-ignore
-import {CookieService} from 'ngx-cookie-service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-headeren',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class EnHeaderComponent implements OnInit {
+
+export class FrHeaderComponent implements OnInit {
   login: any;
   page: any;
 
@@ -16,27 +16,17 @@ export class EnHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.page = location.pathname.split('/en/').pop();
-    console.log(this.page);
     if (this.cookieService.getAll().login) {
-      this.login = 'Mon compte';
       document.getElementById('logout').style.display = 'inherit';
+      document.getElementById('login').style.display = 'none';
     } else {
       this.login = 'Connexion';
     }
   }
 
-  logout() {
-    console.log('logout');
-    localStorage.clear();
+  async logout() {
+    await localStorage.clear();
     this.cookieService.delete('login');
-    const headers = new HttpHeaders()
-      .set('Authorization', 'my-auth-token')
-      .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/logout', '', {
-      headers
-    })
-      .subscribe(result => {
-        console.log(result);
-      });
+    this.http.get('http://51.178.40.75:8888/api/logout').subscribe();
   }
 }
