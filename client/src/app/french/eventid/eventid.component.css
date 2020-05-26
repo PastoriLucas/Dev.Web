@@ -8,6 +8,7 @@
   float: left;
   padding: 0 5% 0.5% 5%;
   width: 30%;
+  margin-bottom: 2%;
 }
 
 #details {
@@ -26,14 +27,11 @@
   text-align: center;
   background-color: #e4e4e4;
 }
-#mapArea {
-  size: auto;
-}
 
 #comments {
   padding: 2% 3%;
   background-color: #ededed;
-  margin-top: 8%;
+  margin-top: 2%;
   margin-left: 5%;
   width: 84%;
 }
@@ -63,7 +61,9 @@
   width: 20%;
   font-size: 1.7vw;
 }
-
+#mapFrame {
+  margin: 2% 5%;
+}
 #map {
   height: 500px;
   width: 100%;
