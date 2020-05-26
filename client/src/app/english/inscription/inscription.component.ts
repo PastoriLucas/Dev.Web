@@ -35,7 +35,7 @@ export class EnInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('https://51.178.40.75:8888/api/users', '', {
+      this.http.post('https://valoukervyn.ephec-ti.be:8888/api/users', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -56,7 +56,7 @@ export class EnInscriptionComponent implements OnInit {
             document.getElementById('error').style.display = 'flex';
             this.cookieService.set(result.toString(), 'value', 1000 * 60 * 60 * 24 * 2 );
             this.cookieValue = this.cookieService.get('name');
-            this.router.navigate(['/fr/login']);
+            this.router.navigate(['/en/login']);
           } else {
             // @ts-ignore
             // tslint:disable-next-line:prefer-for-of

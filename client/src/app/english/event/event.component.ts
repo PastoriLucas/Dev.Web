@@ -17,7 +17,7 @@ export class EnEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(`https://51.178.40.75:8888/api/evenement`)
+    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/evenement`)
       .subscribe(result => {
         this.sendValues(result);
       });
@@ -29,7 +29,7 @@ export class EnEventComponent implements OnInit {
     if (valeurTri === 'year') {
       document.getElementById('dropdownAnnee').style.display = 'block';
     }
-    this.http.get(`https://51.178.40.75:8888/api/evenement/` + valeurTri)
+    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/evenement/` + valeurTri)
       .subscribe(result => {
         this.sendValues(result);
       });
@@ -41,7 +41,7 @@ export class EnEventComponent implements OnInit {
     document.getElementById('triAnnee').innerText = annee;
     /*document.getElementById('dropdown-content-tri').style.display = 'flex';
     document.getElementById('dropdown-content-annee').style.display = 'flex';*/
-    this.http.get(`https://51.178.40.75:8888/api/evenement/annee/` + annee)
+    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/evenement/annee/` + annee)
       .subscribe(result => {
         this.sendValues(result);
       });  }
