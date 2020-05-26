@@ -128,7 +128,7 @@ app.get('/api/evenement/:tri', async (req, res) => {
 
 app.get('/api/galerie/:style', async (req, res) => {
   let style = req.url.split('/galerie/').pop();
-  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings WHERE category = \'' + style + '\' ORDER BY "paintingId"';
+  let sql = 'SELECT "paintingId", description, image, likes FROM paintings WHERE category = \'' + style + '\' ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
