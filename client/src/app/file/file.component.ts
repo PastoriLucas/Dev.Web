@@ -31,7 +31,7 @@ export class FileComponent implements OnInit {
 
   ngOnInit() {
     const pwd = window.prompt('Mot de passe administrateur : ', '');
-    this.http.post('http://51.178.40.75:8888/api/admin', '', {
+    this.http.post('https://51.178.40.75:8888/api/admin', '', {
       params: {
         password: pwd
       }
@@ -52,7 +52,7 @@ export class FileComponent implements OnInit {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('http://51.178.40.75:8888/api/adminPainting', formData, {
+      this.http.post('https://51.178.40.75:8888/api/adminPainting', formData, {
         params: {
           galleryName: res.value.name,
           gallerySize: res.value.size,

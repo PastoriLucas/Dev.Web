@@ -13,6 +13,8 @@ const https = require('https');
 var http = require('http');
 const cors = require('cors');
 
+https.globalAgent.options.secureProtocol = 'SSLv3_method';
+
 
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({

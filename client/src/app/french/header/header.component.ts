@@ -17,6 +17,7 @@ export class FrHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.page = location.pathname.split('/fr/').pop();
     if (this.cookieService.getAll().login) {
+      this.login = 'Mon Compte';
       document.getElementById('logout').style.display = 'inherit';
       document.getElementById('login').style.display = 'none';
     } else {
@@ -27,6 +28,6 @@ export class FrHeaderComponent implements OnInit {
   async logout() {
     await localStorage.clear();
     this.cookieService.delete('login');
-    this.http.get('http://51.178.40.75:8888/api/logout').subscribe();
+    this.http.get('https://51.178.40.75:8888/api/logout').subscribe();
   }
 }
