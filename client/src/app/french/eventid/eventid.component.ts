@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {FormBuilder} from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-event',

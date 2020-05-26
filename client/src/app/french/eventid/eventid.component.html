@@ -1,4 +1,6 @@
 <app-headerfr></app-headerfr>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq4TvPKogUIilCh_38VgrV4URD5o1a8xk"
+        type="text/javascript"></script>
 <div class="pageWeb">
   <img id="image" src="{{this.image}}" alt="image">
   <div id="details">
@@ -6,6 +8,7 @@
     <p class="description">{{this.event.description}}</p>
     <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
   </div>
+  <div #mapContainer id="map"></div>
 
   <div id="comments">
     <div class="commentList" *ngFor="let comment of comments">
