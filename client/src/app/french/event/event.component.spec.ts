@@ -35,19 +35,19 @@ describe('FrEventComponent', () => {
 
   it('should make get request', () => {
     component.ngOnInit();
-    const req = httpTestingController.expectOne('http://51.178.40.75:8888/api/evenement');
+    const req = httpTestingController.expectOne('https://51.178.40.75:8888/api/evenement');
     expect(req.request.method).toEqual('GET');
   });
 
   it('should make get request on tri()', () => {
     component.tri('name', 'Nom');
-    const req = httpTestingController.expectOne('http://51.178.40.75:8888/api/evenement/name');
+    const req = httpTestingController.expectOne('https://51.178.40.75:8888/api/evenement/name');
     expect(req.request.method).toEqual('GET');
   });
 
   it('should make get request on triAnnee()',  () => {
     component.triAnnee('2020', 'Année');
-    const req = httpTestingController.expectOne('http://51.178.40.75:8888/api/evenement/annee/2020');
+    const req = httpTestingController.expectOne('https://51.178.40.75:8888/api/evenement/annee/2020');
     expect(req.request.method).toEqual('GET');
   });
 });

@@ -23,7 +23,7 @@ describe('FrContactComponent', () => {
   afterEach(() => httpTestingController.verify());
 
   it('Should do a post request to backend for sending email', () => {
-    const url = `http://51.178.40.75:8888/api/contact?name=TestName&envoyeur=test@email.com&objet=testSubject&texte=testMessage`;
+    const url = `https://51.178.40.75:8888/api/contact?name=TestName&envoyeur=test@email.com&objet=testSubject&texte=testMessage`;
     component.onSubmit(valeurTest);
     const req = httpTestingController.expectOne(url);
     expect(req.request.urlWithParams).toBe(url);

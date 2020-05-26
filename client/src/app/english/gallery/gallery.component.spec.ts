@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EnGalleryComponent } from './gallery.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {FormBuilder} from "@angular/forms";
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {FormBuilder} from '@angular/forms';
 
 describe('EnGalleryComponent', () => {
   let component: EnGalleryComponent;

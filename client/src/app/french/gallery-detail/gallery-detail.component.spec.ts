@@ -23,7 +23,7 @@ describe('FrGalleryDetailComponent', () => {
   it('Should make the API request to get detailed information of picture', () => {
     component.urlStyle = 'splash';
     component.requestGetting();
-    const req = httpTestingController.expectOne('http://51.178.40.75/api/galerie/splash');
+    const req = httpTestingController.expectOne('https://51.178.40.75/api/galerie/splash');
     expect(req.request.method).toEqual('GET');
   });
 
@@ -33,7 +33,7 @@ describe('FrGalleryDetailComponent', () => {
     localStorage.setItem('likes', likes.toString());
     component.nbrUrl = 2;
     // tslint:disable-next-line:no-shadowed-variable
-    const testedFunct = component.connect(likes);
+    const testedFunct = component.connect();
     expect(testedFunct).toEqual('liked');
   });
 
@@ -67,12 +67,12 @@ describe('FrGalleryDetailComponent', () => {
   it('Should make get request for gallery comments', () => {
     component.nbrUrl = 2;
     component.comment();
-    const req = httpTestingController.expectOne('http://51.178.40.75:8888/api/commentsgallery/2');
+    const req = httpTestingController.expectOne('https://51.178.40.75:8888/api/commentsgallery/2');
     expect(req.request.method).toEqual('GET');
   });
 
   it('Should do a post request to backend for new comments', () => {
-    const url = `http://51.178.40.75:8888/api/commentsgallery?user=1&painting=2&comment=testing%20comment`;
+    const url = `https://51.178.40.75:8888/api/commentsgallery?user=1&painting=2&comment=testing%20comment`;
     const comment = {comment : 'testing comment'};
     component.nbrUrl = 2;
     component.cookieService.set('login', '1');

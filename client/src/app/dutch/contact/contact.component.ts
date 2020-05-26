@@ -26,7 +26,7 @@ export class NlContactComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/api/contact', '', {
+    this.http.post('https://51.178.40.75:8888/api/contact', '', {
       params : {
         name : res.formName,
         envoyeur : res.formMail,

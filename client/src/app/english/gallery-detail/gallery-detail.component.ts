@@ -29,7 +29,7 @@ import {FormBuilder} from '@angular/forms';
   }
 
   requestGetting() {
-    this.http.get(`http://51.178.40.75:8888/api/galerie/` + this.urlStyle)
+    this.http.get(`https://51.178.40.75:8888/api/galerie/` + this.urlStyle)
       .subscribe(result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -88,11 +88,11 @@ import {FormBuilder} from '@angular/forms';
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`http://51.178.40.75:8888/api/like`, '', {
+    this.http.post(`https://51.178.40.75:8888/api/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
-        likes: likes,
+        likes: this.likes,
         painting: this.nbrUrl.toString()
       }
     }).subscribe();
@@ -109,11 +109,11 @@ import {FormBuilder} from '@angular/forms';
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`http://51.178.40.75:8888/api/dislike`, '', {
+        this.http.post(`https://51.178.40.75:8888/api/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
-            likes: likes,
+            likes: this.likes,
             painting : this.nbrUrl.toString()
           }
         }).subscribe( () => {
@@ -128,7 +128,7 @@ import {FormBuilder} from '@angular/forms';
   }
 
   comment() {
-    const urlGet = 'http://51.178.40.75:8888/api/commentsgallery/' + this.nbrUrl;
+    const urlGet = 'https://51.178.40.75:8888/api/commentsgallery/' + this.nbrUrl;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -143,7 +143,7 @@ import {FormBuilder} from '@angular/forms';
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/api/commentsgallery', '', {
+    this.http.post('https://51.178.40.75:8888/api/commentsgallery', '', {
       headers,
       params: {
         user: this.cookieService.get('login'),

@@ -36,7 +36,7 @@ export class EnEventidComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:radix
     this.nbrUrl = parseInt(location.pathname.split('/').pop());
-    this.http.get(`http://51.178.40.75:8888/api/evenement`)
+    this.http.get(`https://51.178.40.75:8888/api/evenement`)
       .subscribe(async result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -58,7 +58,7 @@ export class EnEventidComponent implements OnInit {
   }
 
   comment(id) {
-    const urlGet = 'http://51.178.40.75:8888/api/commentsevent/' + id;
+    const urlGet = 'https://51.178.40.75:8888/api/commentsevent/' + id;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -77,7 +77,7 @@ export class EnEventidComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('http://51.178.40.75:8888/api/commentsevent', '', {
+    this.http.post('https://51.178.40.75:8888/api/commentsevent', '', {
       headers,
       params: {
         user: login,

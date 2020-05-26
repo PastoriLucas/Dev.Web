@@ -35,7 +35,7 @@ export class NlInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('http://51.178.40.75:8888/api/users', '', {
+      this.http.post('https://51.178.40.75:8888/api/users', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -68,7 +68,7 @@ export class NlInscriptionComponent implements OnInit {
           }
         });
     } else { document.getElementById('error').innerText = 'Veuillez indiquer 2 fois le même mot de passe ! ';
-      document.getElementById('error').style.display = 'flex'; }
+             document.getElementById('error').style.display = 'flex'; }
   }
   shwPassword() {
     if (document.getElementById('pwd1').getAttribute('type') === 'password' ) {
