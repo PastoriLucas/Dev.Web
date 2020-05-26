@@ -81,8 +81,8 @@ const appRoutes: Routes = [
   { path: 'en/login', component: EnLoginComponent },
   { path: 'en/inscription', component: EnInscriptionComponent},
   /*DUTCH*/
-  { path: 'nl/gallery', component: NlGalleryComponent },
-  { path: 'nl/gallery/:id', component: NlGalleryDetailComponent },
+  { path: 'nl/gallery/:style', component: NlGalleryComponent },
+  { path: 'nl/gallery/:style/:id', component: NlGalleryDetailComponent },
   { path: 'nl/presentation', component: NlPresentationComponent },
   { path: 'nl/event', component: NlEventComponent },
   { path: 'nl/contact', component: NlContactComponent },

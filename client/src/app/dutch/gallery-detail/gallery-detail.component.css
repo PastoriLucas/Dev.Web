@@ -1,32 +1,58 @@
-/*img {
-  margin: 0.5%;
-  background-color: white;
-  border: 5px solid black;
-}*/
-
 .pageWeb {
   margin: 0 5%;
   background-color: white;
 }
 
-.imageEtDetails {
-  background-color: white;
-  width: 100%;
-  margin-top: -1.5%;
-}
 #image {
-  text-align: left;
-  margin-left: 1.5%;
-  margin-top: 1.5%;
-  margin-bottom: 1.5%;
+  padding: 3% 5% 0.5% 5%;
   width: 40%;
 }
 
-.details {
-  text-align: center;
-  background-color: #e4e4e4;
-  float: right;
-  margin-right: 3%;
+#details {
+  position: relative;
+  padding: 3%;
+  width: 39%;
+  margin-left: 50%;
+  margin-top: -41%;
+  text-align: left;
+  background-color: #ededed;
+  font-size: 1.7vw;
+  border-bottom: solid 3px black;
+}
+
+#nomOeuvre {
+  font-size: 3vw;
+  font-weight: bolder;
   margin-top: 1.5%;
-  width: 50%;
+}
+
+#comments {
+  padding: 2% 3%;
+  background-color: #ededed;
+  margin-top: 15%;
+  margin-left: 5%;
+  width: 84%;
+}
+.commentList {
+  border-bottom: 1px solid slategrey;
+  margin: 2% 5%;
+  font-size: 1.5vw;
+}
+
+.name {
+  color: #323232;
+  text-decoration: underline gray ;
+}
+#commentAdd {
+  padding: 3%;
+  font-size: 2vw;
+}
+
+#inputComment {
+  margin-left: 1%;
+  width: 98%;
+  font-size: 1.5vw;
+}
+#submitComment {
+  float: right;
 }

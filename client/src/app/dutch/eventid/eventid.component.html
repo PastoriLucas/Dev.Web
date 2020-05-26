@@ -1,11 +1,27 @@
-<div id="evenement">
-  <div id="imagesArea">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.433388115995!2d4.352145815954223!3d50.84165836697961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c47c348161f1%3A0x66803a34a8004870!2sPlace%20du%20Grand%20Sablon%202%2C%201000%20Bruxelles!5e0!3m2!1sen!2sbe!4v1585072468479!5m2!1sen!2sbe" aria-hidden="false" tabindex="0"></iframe>
-    <img src="../../assets{{this.event.image}}" alt="image">
-  </div>
-  <div id="textArea">
-    <h1 class="titre">{{this.event.name}}</h1>
+<app-headernl></app-headernl>
+<div class="pageWeb">
+  <img id="image" src="{{this.image}}" alt="image">
+  <div id="details">
+    <h1 id="nomEvenement">{{this.event.name}}</h1>
     <p class="description">{{this.event.description}}</p>
-    <p class="date">{{this.event.dateBegin}} - {{this.event.dateEnd}}</p>
+    <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
+  </div>
+  <div id="mapFrame">
+    <iframe id="map"></iframe>
+  </div>
+
+  <div id="comments">
+    <div class="commentList" *ngFor="let comment of comments">
+      <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
+      <p>{{comment.comment}}</p>
+    </div>
+    <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="checkUser(checkoutForm.value)">
+      <p>Ajouter un commentaire</p>
+      <label>
+        <textarea id="inputComment" rows="10" formControlName="comment"></textarea>
+      </label>
+      <input id="submitComment" type="submit">
+    </form>
   </div>
 </div>
+<app-footernl></app-footernl>

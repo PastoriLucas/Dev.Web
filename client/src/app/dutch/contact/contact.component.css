@@ -1,17 +1,19 @@
 .pageContact {
+  float: none;
   margin: 0 5%;
   background-color: white;
   z-index: 1;
   height: 800px;
+  font-size: 1.5vw;
 }
 .contactDroit{
   float: right;
- width: 65%;
-  padding: 35px 0px;
+  width: 65%;
+  padding: 2% 0;
 }
 
 .contactGauche{
- float: left;
+  float: left;
   width: 25% ;
   margin: 0 2%;
 }
@@ -20,11 +22,11 @@
   height: 1px;
   width: 95%;
   border-top: 2px dashed #b2b2b2;
-  margin: 2% 0%;
+  margin: 2% 0;
 }
 
 .espaceGauche {
-  padding: 15px 0px;
+  padding: 2% 0;
 }
 
 #formName {
@@ -39,7 +41,7 @@
   height: 20%;
 }
 #formSjt{
-  margin: 2% 0%;
+  margin: 2% 0;
   width: 95%;
 }
 #formMsg{
@@ -52,7 +54,7 @@
   flex-wrap: wrap;
 }
 #sbt{
-  margin-right: 20px;
+  margin-right: 2%;
 }
 #mailLabel{
   width: 50%;
@@ -61,4 +63,9 @@
 #nameLabel{
   width: 50%;
   height: 40%;
+}
+
+input {
+  font-size: 1.5vw;
+  font-family: GeosansLight, sans-serif;
 }

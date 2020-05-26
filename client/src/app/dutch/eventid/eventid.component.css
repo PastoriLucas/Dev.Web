@@ -1,30 +1,70 @@
-#evenement {
+.pageWeb {
   margin: 0 5%;
   background-color: white;
-  padding: 1%;
-  min-height: 1000px;
-  font-size: 20px;
+  padding: 2%;
 }
 
-#imagesArea {
-  width: 50%;
+#image {
   float: left;
-  border-right: solid #e4e4e4 3px;
-  text-align: center;
+  padding: 0 5% 0.5% 5%;
+  width: 30%;
+  margin-bottom: 2%;
 }
-iframe {
-  width: 90%;
-  height: 300px;
-  border: 0;
-}
-img {
-  width: 90%;
-  margin-top: 20px;
+
+#details {
+  position: relative;
+  padding: 3%;
+  width: 49%;
+  margin-left: 40%;
+  margin-top: 0;
+  text-align: left;
+  background-color: #ededed;
+  font-size: 1.7vw;
+  border-bottom: solid 3px black;
 }
 
 #textArea {
-  width: 50%;
-  float: right;
   text-align: center;
-  margin-top: -900px;
+  background-color: #e4e4e4;
+}
+
+#comments {
+  padding: 2% 3%;
+  background-color: #ededed;
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 84%;
+}
+.commentList {
+  border-bottom: 1px solid slategrey;
+  margin: 2% 5%;
+  font-size: 1.5vw;
+}
+
+.name {
+  color: #323232;
+  text-decoration: underline gray ;
+}
+
+#commentAdd {
+  padding: 3%;
+  font-size: 2vw;
+}
+
+#inputComment {
+  margin-left: 1%;
+  width: 98%;
+  font-size: 1.5vw;
+}
+#submitComment {
+  float: right;
+  width: 20%;
+  font-size: 1.7vw;
+}
+#mapFrame {
+  margin: 2% 5%;
+}
+#map {
+  height: 500px;
+  width: 100%;
 }

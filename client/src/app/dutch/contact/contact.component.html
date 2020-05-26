@@ -1,41 +1,39 @@
-<<<<<<< HEAD:client/src/app/dutch/contact/contact.component.html
-<app-headerfr></app-headerfr>
-  <div class="pageWeb">
-    <h1>Contact</h1>
-    <p>Rien de fou par ici pour le moment... Revenez plus tard !</p>
-  </div>
-<app-footerfr></app-footerfr>
-=======
+<head>
+  <meta charset="utf-8">
+</head>
+
+<app-headernl></app-headernl>
 <div class="pageContact">
   <div class="contactGauche">
     <div class="espaceGauche">
-      <h3 id="phone">Numéro de téléphone </h3>
+      <h3 id="phone">Telefoonnummer </h3>
       <div class="separator"></div>
-      <p>0470proute</p>
+      <p>0473/66.32.41</p>
     </div>
     <div class="espaceGauche">
       <h3 id="mail">E-mail </h3>
       <div class="separator"></div>
-      <p>AUTRETEST@GMAGUEULE.COM</p>
+      <p>varmotiv0@gmail.com</p>
     </div>
   </div>
   <div class="contactDroit">
     <form id="form" [formGroup]="mailForm" (ngSubmit)="onSubmit(mailForm.value)">
       <div id="formSuperieur">
-        <label id="nameLabel" for="formName" >Votre nom (obligatoire)</label><br>
-        <label id="mailLabel" for="formMail">Votre e-mail (obligatoire)</label><br>
+        <label id="nameLabel" for="formName" >Uw naam (verplicht)</label><br>
+        <label id="mailLabel" for="formMail">Votre e-mail (verplicht)</label><br>
         <input type="text" id="formName" name="formName" formControlName="formName"><br><br>
         <input type="text" id="formMail" name="formMail" formControlName="formMail"><br><br>
       </div>
       <div class="separator"></div>
-      <label for="formSjt">Sujet</label><br>
+      <label for="formSjt">Onderwerp</label><br>
       <input type="text" id="formSjt" name="formSjt" formControlName="formSjt"><br><br>
       <div class="separator"></div>
-      <label for="formMsg">Votre message</label><br>
+      <label for="formMsg">Uw bericht</label><br>
       <input type="text" id="formMsg" name="formMsg" formControlName="formMsg"><br><br>
-      <input type="submit" id="sbt">
-      <input type="reset" id="rst">
+      <input type="submit" id="sbt" value="Bevestigen">
+      <input type="reset" id="rst" value="Reset">
     </form>
   </div>
 </div>
->>>>>>> Luc.Pas:client/src/app/contact/contact.component.html
+<app-footernl></app-footernl>
+

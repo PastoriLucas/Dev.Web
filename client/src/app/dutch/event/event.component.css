@@ -1,47 +1,42 @@
-.pageEvent {
+#pageWeb {
   margin: 0 5%;
   background-color: white;
   padding: 1%;
 }
 
-.order{
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-bottom: 1%;
-}
-.order a{
-  border: 0;
-  background-color: #e4e4e4;
-  margin: 1% 5%;
-  font-size: 20px;
-  padding: 0 5%;
-  position: center;
-  float: contour;
-}
-.order a:hover{
-  border-bottom: 3px black solid;
-  background-color: #ededed;
-}
-
-
 .event{
   position: center;
-  height: 150px;
+  min-height: 16vw;
   background-color: #ededed;
   border-radius: 5px;
-  margin: 0 10px 10px 10px;
-}
-img{
-  float: left;
-  margin-right: 10px;
-  border-radius: 5px 0 0 5px;
-  width: 150px;
-  height: 150px;
+  margin:  2% 2%;
+  border: 1px solid white;
 }
 
-h1{
-  margin-top: 0;
+.event:hover{
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+.text {
+  margin-left: 25%;
+}
+
+.text h1 {
+  margin-top: 3%;
   margin-bottom: 2px;
+  font-size: 2.4vw;
+}
+
+.text p {
+  font-size: 1.5vw;
+}
+
+img{
+  float: left;
+  margin-right: 3%;
+  border-radius: 5px 0 0 5px;
+  width: 18.9%;
 }
 
 iframe{
@@ -50,7 +45,132 @@ iframe{
   border-radius: 5px;
 }
 
+#tri {
+  width: 98%;
+  background-color: #ededed;
+  padding: 1%;
+  height: 10%;
+}
 
-.event:hover{
+#texteTri {
+  font-size: 1.5vw;
+  width: 10%;
+  /*float: left;*/
+}
+
+#dropdownEvents {
+  position: absolute;
+  display: inline-block;
+  background-color: #ededed;
+  text-align: center;
+  padding: 1.5% 3% 0;
+  width: 15%;
+  overflow: visible;
+  font-size: 1.55vw;
+  margin-top: -4.5%;
+  margin-left: 10%;
+}
+
+#dropdownAnnee {
+  position: absolute;
+  display: none;
+  background-color: #ededed;
+  text-align: center;
+  padding: 1.5% 2% 0;
+  width: 15%;
+  overflow: visible;
+  font-size: 1.55vw;
+  margin-top: -4.5%;
+  margin-left: 32%;
+}
+
+#dropdownEvents:hover {
   background-color: #e4e4e4;
+  border-bottom: solid black 0;
+}
+
+#dropdownAnnee:hover {
+  background-color: #e4e4e4;
+  border-bottom: solid black 0;
+}
+
+#dropdown-content-tri {
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin-left: -14%;
+  margin-top: 0;
+  background-color: #e4e4e4;
+  z-index: 1;
+}
+
+#dropdown-content-annee{
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin-left: -10.5%;
+  margin-top: 0;
+  background-color: #e4e4e4;
+  z-index: 1;
+}
+
+#dropdown-content-tri a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  float: right;
+}
+
+#dropdown-content-annee a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#dropdownEvents:hover #dropdown-content-tri {
+  display: block;
+}
+
+#dropdownAnnee:hover #dropdown-content-annee {
+  display: block;
+}
+
+.itemDropdown {
+  border-bottom: solid #e4e4e4 3px;
+  font-size: 1.2vw;
+}
+
+.itemDropdown:hover {
+  border-bottom: solid black 3px;
+}
+
+#selectTri {
+  float: left;
+  width: 120px;
+  position: relative;
+}
+
+#submitTri {
+  float: left;
+  width: 70px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#year {
+  display: none;
+}
+
+#selectYear {
+  float: left;
+  width: 70px;
+  position: relative;
+}
+
+#submitTriAnnee {
+  float: left;
+  width: 70px;
+  position: relative;
 }

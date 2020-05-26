@@ -1,13 +1,30 @@
+<head>
+  <meta charset="utf-8">
+</head>
+<app-headernl></app-headernl>
 <div class="pageWeb">
-  <br>
-  <div class="imageEtDetails">
-    <img id="image" src="{{this.actualPaint.image}}" alt="oeuvre">
-    <div class="details">
-      <h1>Details de l'oeuvre :</h1>
-      <h2>Nom : {{this.actualPaint.name}}</h2>
-      <h2>Taille : {{this.actualPaint.size}}</h2>
-      <h2>Date de création : {{this.actualPaint.creationdate}}</h2>
+  <img id="image" src="{{this.actualPaint.image}}" alt="oeuvre">
+  <div id="details">
+    <p id="nomOeuvre">{{this.actualPaint.name}}</p>
+    <p>Afmetingen : {{this.actualPaint.size}}</p>
+    <p>Aanmaakdatum : {{this.actualPaint.creationdate}}</p>
+    <div id="like">
+      <h2><img id="likeImage" src="../../assets/img/heart_empty.png" (click)="like(this.connect())" width="20px" alt="like"> {{this.actualPaint.likes}}</h2>
     </div>
+  </div>
+  <div id="comments">
+    <div class="commentList" *ngFor="let comment of comments">
+      <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
+      <p>{{comment.comment}}</p>
+    </div>
+    <form id="commentAdd" [formGroup]="checkoutForm" (ngSubmit)="newComment(checkoutForm.value)">
+      <p>Reactie toevoegen</p>
+      <label>
+        <textarea id="inputComment" rows="10" formControlName="comment"></textarea>
+      </label>
+      <input id="submitComment" type="submit">
+    </form>
   </div>
   <br>
 </div>
+<app-footernl></app-footernl>

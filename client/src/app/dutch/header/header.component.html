@@ -1,29 +1,36 @@
-<div class="topnav">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<div id="topnav">
   <div id="divSelectLanguage">
-    <a class="selectLanguage" href="nl/{{this.page}}">NL</a>
-    <a class="selectLanguage" href="en/{{this.page}}">EN</a>
-    <a class="selectLanguage" href="fr/{{this.page}}">FR</a>
+    <a class="itemSelectLanguage" id="fr" href="fr/{{this.page}}">FR</a>
+    <a class="itemSelectLanguage" id="en" href="en/{{this.page}}">EN</a>
+    <a class="itemSelectLanguage" id="nl" href="nl/{{this.page}}">NL</a>
   </div>
   <div id="loginDiv">
-    <a id="login" href="nl/register">Mon Compte</a>
+    <a class="log" id="login" href="nl/login">{{this.login}}</a>
+    <a class="log" id="logout" href="nl/home" (click)="logout()">Logout</a>
   </div>
-  <a href=""><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
+
+  <a href="nl/home"><img id="logoValouKervynTop" src="../assets/img/logoValouKervyn.png" alt="logoArtiste"></a>
   <div id="toolbar">
-    <div id="hoverHome">
-      <a class="itemToolbar" href="nl/home">Accueil</a>
+    <a class="itemToolbar" href="nl/home">Home</a>
+    <div class="dropdown">
+      <a id="galerie">Galerij</a>
+      <div class="dropdown-content">
+        <a href="/nl/gallery/inSpires" class="itemDropdown">In spires</a>
+        <a href="/nl/gallery/pinsAndNeedles" class="itemDropdown">Pins and needles</a>
+        <a href="/nl/gallery/patchy" class="itemDropdown">Patchy</a>
+        <a href="/nl/gallery/splash" class="itemDropdown">Splash</a>
+        <a href="/nl/gallery/other" class="itemDropdown">Other</a>
+        <a href="/nl/gallery/stagingPaintings" class="itemDropdown">Staging paintings</a>
+      </div>
     </div>
-    <div id="hoverGallery">
-      <a class="itemToolbar" href="nl/gallery">Galerie</a>
-    </div>
-    <div id="hoverPresentation">
-      <a class="itemToolbar" href="nl/presentation">Présentation</a>
-    </div>
-    <div id="hoverEvent">
-      <a class="itemToolbar" href="nl/event">Evenements</a>
-    </div>
-    <div id="hoverContact">
-      <a class="itemToolbar" href="nl/contact">Contact</a>
-    </div>
+    <a class="itemToolbar" href="nl/presentation">Presentatie</a>
+    <a class="itemToolbar" href="nl/event">Evenementen</a>
+    <a class="itemToolbar" href="nl/contact">Contact</a>
+    <div id="espace"></div>
   </div>
 </div>
-<br>
+</body>

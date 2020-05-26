@@ -1,6 +1,7 @@
 .pageWeb {
   margin: 0 5%;
   background-color: white;
+  padding: 1%;
 }
 
 #paraIntro {
@@ -18,8 +19,7 @@
 }
 
 .horrow {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 1% 5%;
 }
 div#slider {
   margin-left: 33% ;
