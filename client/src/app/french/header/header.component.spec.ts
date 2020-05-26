@@ -33,7 +33,7 @@ describe('FrHeaderComponent', () => {
   it('should init with user', () => {
     component.cookieService.set('login', '1');
     component.ngOnInit();
-    expect(component.login).toBe('Mon compte');
+    expect(component.login).toBe('Mon Compte');
     component.cookieService.deleteAll();
   });
 

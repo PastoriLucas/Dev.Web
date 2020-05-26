@@ -124,7 +124,7 @@ export class FrGalleryDetailComponent implements OnInit {
           headers,
           params: {
             user: this.cookieService.get('login'),
-            constlikes,
+            likes : this.constlikes,
             painting : this.nbrUrl.toString()
           }
         }).subscribe();
