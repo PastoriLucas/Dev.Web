@@ -12,10 +12,13 @@
       <label for="shwPwd"> Voir le mot de passe </label> <input type="checkbox" name="shwPwd" id="shwPwd" (click)="shwPassword()"><br>
       <label for="pwd2">Confirmation du mot de passe : </label><input type="password" id="pwd2" name="pwd2" required formControlName="confirm">
       <div id="notif">Voulez-vous recevoir des notifications ?
-        <input type="radio" id="yes" name="notification" value="yes" checked formControlName="notification">
-        <label for="yes">Oui :</label>
-        <input type="radio" id="no" name="notification" value="no" formControlName="notification">
-        <label for="no">Non :</label> </div>
+        <label for="yes">Oui :
+          <input type="radio" id="yes" name="notification" value="yes" checked formControlName="notification">
+        </label>
+        <label for="no">Non :
+          <input type="radio" id="no" name="notification" value="no" formControlName="notification">
+        </label>
+      </div>
       <input class="submit" type="submit" id="submit" value="Valider">
         <a href="/fr/login">
           <input type="button" value="Connection">

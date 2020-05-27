@@ -51,20 +51,22 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   connect() {
-    if (localStorage.length > 0) {
-      this.likes = localStorage.getItem('likes').split(',');
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.likes.length; i++) {
-        // tslint:disable-next-line:radix
-        this.likes[i] = parseInt(this.likes[i]);
-        if (this.likes[i] === this.nbrUrl) {
-          if (document.getElementById('likeImage') !== null) {
-            document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+    if (localStorage.length > 0 || this.cookieService.get('login')) {
+      if (localStorage.length > 0) {
+        this.likes = localStorage.getItem('likes').split(',');
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.likes.length; i++) {
+          // tslint:disable-next-line:radix
+          this.likes[i] = parseInt(this.likes[i]);
+          if (this.likes[i] === this.nbrUrl) {
+            if (document.getElementById('likeImage') !== null) {
+              document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart.png');
+            }
+            return 'liked';
           }
-          return 'liked';
         }
+        return this.likes;
       }
-      return this.likes;
     }
     return false;
   }
@@ -83,6 +85,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   addLike(likes) {
+    console.log(likes);
     likes.push(Number(this.nbrUrl));
     localStorage.setItem('likes', likes.toString());
     const headers = new HttpHeaders()
@@ -95,7 +98,9 @@ export class FrGalleryDetailComponent implements OnInit {
         likes: this.likes,
         painting: this.nbrUrl.toString()
       }
-    }).subscribe();
+    }).subscribe( result => {
+      console.log(result);
+    });
     location.reload();
   }
 

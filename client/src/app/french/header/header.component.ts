@@ -23,7 +23,7 @@ export class FrHeaderComponent implements OnInit {
 
   async logout() {
     await localStorage.clear();
-    this.cookieService.delete('login');
+    this.cookieService.delete('login', '/');
     this.http.get('https://valoukervyn.ephec-ti.be:8888/api/logout').subscribe();
   }
 }

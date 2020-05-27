@@ -5,9 +5,7 @@
 <div class="pageWeb">
   <img id="image" src="{{this.actualPaint.image}}" alt="oeuvre">
   <div id="details">
-    <p id="nomOeuvre">{{this.actualPaint.name}}</p>
-    <p>Afmetingen : {{this.actualPaint.size}}</p>
-    <p>Aanmaakdatum : {{this.actualPaint.creationdate}}</p>
+    <p id="nomOeuvre">{{this.actualPaint.description}}</p>
     <div id="like">
       <h2><img id="likeImage" src="../../assets/img/heart_empty.png" (click)="like(this.connect())" width="20px" alt="like"> {{this.actualPaint.likes}}</h2>
     </div>

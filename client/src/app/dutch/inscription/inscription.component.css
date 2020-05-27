@@ -33,3 +33,7 @@ label {
   display: none;
   color: red;
 }
+
+input {
+  font-family: GeosansLight, sans-serif;
+}

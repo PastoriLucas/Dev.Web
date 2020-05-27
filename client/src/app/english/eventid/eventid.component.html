@@ -8,8 +8,9 @@
     <p class="description">{{this.event.description}}</p>
     <p class="date">{{this.event.begin}} - {{this.event.end}}</p>
   </div>
-  <div #mapContainer id="map"></div>
-
+  <div id="mapFrame">
+    <iframe id="map"></iframe>
+  </div>
   <div id="comments">
     <div class="commentList" *ngFor="let comment of comments">
       <p class="name">{{comment.lastname}} {{comment.firstname}}</p>
@@ -20,7 +21,7 @@
       <label>
         <textarea id="inputComment" rows="10" formControlName="comment"></textarea>
       </label>
-      <input id="submitComment" type="submit">
+      <input id="submitComment" type="submit" value="Submit">
     </form>
   </div>
 </div>
