@@ -263,7 +263,88 @@ app.get('/api/admin', async (req, res) => {
   }
 });
 
+app.get('/api/notifGalerie', async (req,res) => {
+  let sql = "select mail from users where notifications is true ";
+  let mails = [];
+  pool.query(sql, (err, rows) => {
+    console.log(rows.rows);
+    if (err) throw err;
+    for (let i = 0; i < rows.rows.length; i++ ){
+      mails[i] = rows.rows[i].mail;
+    }
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'lpastori0606@gmail.com',
+        pass: 'PastoPower1'
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
 
+    for (let j =0; j < mails.length; j++){
+      var mailOptions = {
+        from: "lpastori0606@gmail.com",
+        to: mails[j],
+        subject: 'ValouKervyn.ephec-ti.be',
+        text: 'Une nouvelle photo à été rajoutée dans la galerie de notre site. https://ValouKervyn.ephec-ti.be/fr/home' + '\n'+
+          'A new photo has been added in the gallery of our site. https://ValouKervyn.ephec-ti.be/en/home'+ '\n'+
+          'Er is een nieuwe foto toegevoegd in de galerij van onze site.https://ValouKervyn.ephec-ti.be/nl/home'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
+    return true;
+  });
+
+});
+
+app.get('/api/notifEvent', async (req,res) => {
+  let sql = 'select mail from users where notifications is true';
+  let mails = [];
+  pool.query(sql, (err, rows) => {
+    if (err) throw err;
+    for (let i = 0; i < rows.rows.length; i++ ){
+      mails[i] = rows.rows[i].mail;
+    }
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'lpastori0606@gmail.com',
+        pass: 'PastoPower1'
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+    for (let j =0; j < mails.length; j++){
+      var mailOptions = {
+        from: "lpastori0606@gmail.com",
+        to: mails[j],
+        subject: 'ValouKervyn.ephec-ti.be',
+        text: 'Un nouvel évènement à été rajouté sur le site internet. https://ValouKervyn.ephec-ti.be/fr/home' + '\n'+
+          ' A new event has been added to the website. https://ValouKervyn.ephec-ti.be/en/home ' + '\n'+
+          ' Er is een nieuw evenement toegevoegd aan de website.https:// ValouKervyn.ephec-ti.be/nl/home '
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
+    return true;
+  });
+});
 
 
 app.post('/api/contact', async (req,res) => {
