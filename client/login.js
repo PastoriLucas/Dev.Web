@@ -217,8 +217,9 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
 
 app.post('/api/commentsgallery', async (req, res) => {
   let query = req.query;
-  let sql = 'INSERT INTO commentsGallery ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
-  pool.query(sql, (err) => {
+  let sql = 'INSERT INTO commentsGallery ("userId", comment, "paintingId") VALUES ($1,$2,$3)';
+  let value = [parseInt(query.user), query.comment, parseInt(query.painting)];
+  pool.query(sql, value, (err) => {
     if (err) throw err;
     return res.send(true);
   })
@@ -234,8 +235,9 @@ app.get('/api/commentsgallery/:id', async (req, res) => {
 
 app.post('/api/commentsevent', async (req, res) => {
   let query = req.query;
-  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.event)+")";
-  pool.query(sql, (err) => {
+  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ($1,$2,$3)'
+  let value = [parseInt(query.user), query.comment, parseInt(query.event)];
+  pool.query(sql, value, (err) => {
     if (err) throw err;
     return res.send(true);
   })
@@ -287,6 +289,7 @@ app.post('/api/contact', async (req,res) => {
     if (error) throw error;
   });
 });
+
 passport.serializeUser(function (user_id, done) {
   done(null, user_id);
 });

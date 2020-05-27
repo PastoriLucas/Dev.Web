@@ -1,3 +1,4 @@
+/* tslint:disable:object-literal-shorthand */
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
