@@ -27,6 +27,6 @@ describe('NlHeaderComponent', () => {
   it('should logout', () => {
     component.logout();
     expect(localStorage.length).toEqual(0);
-    expect(component.cookieService.get('login')).toEqual('1');
+    expect(component.cookieService.get('login')).toEqual('');
   });
 });

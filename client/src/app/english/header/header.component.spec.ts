@@ -1,26 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnHeaderComponent } from './header.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClient, HttpHandler} from '@angular/common/http';
-import {FormBuilder} from '@angular/forms';
+import {EnHeaderComponent} from './header.component';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {EnFooterComponent} from '../footer/footer.component';
+
 
 describe('EnHeaderComponent', () => {
   let component: EnHeaderComponent;
+  let httpTestingController: HttpTestingController;
   let fixture: ComponentFixture<EnHeaderComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ EnHeaderComponent ],
-      imports: [ RouterTestingModule],
-      providers: [HttpHandler, HttpClient, FormBuilder]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [EnHeaderComponent, EnFooterComponent],
+      imports: [HttpClientTestingModule]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    component = TestBed.inject(EnHeaderComponent);
     fixture = TestBed.createComponent(EnHeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  });
+
+  it('should logout', () => {
+    component.logout();
+    expect(localStorage.length).toEqual(0);
+    expect(component.cookieService.get('login')).toEqual('');
   });
 });

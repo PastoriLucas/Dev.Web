@@ -23,9 +23,10 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  title: 'Valou Kervyn - Artiste peintre';
+  title = 'Valou Kervyn - Artiste peintre';
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
+    this.title = newTitle;
   }
 
   ngOnInit(): void {

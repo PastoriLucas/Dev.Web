@@ -28,6 +28,8 @@ describe('NlEventidComponent', () => {
   it('should initialize page', () => {
     const spyComment = spyOn(component, 'comment');
     component.ngOnInit();
+    const req = httpTestingController.expectOne('https://valoukervyn.ephec-ti.be:8888/api/evenement');
+    expect(req.request.method).toEqual('GET');
     expect(spyComment).toHaveBeenCalled();
   });
 
