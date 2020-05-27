@@ -1,26 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {HttpClient, HttpHandler} from '@angular/common/http';
-import {FormBuilder} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
 import { NlGalleryComponent } from './gallery.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FormBuilder} from '@angular/forms';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('NlGalleryComponent', () => {
   let component: NlGalleryComponent;
-  let fixture: ComponentFixture<NlGalleryComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ RouterTestingModule],
-      providers: [HttpClient, HttpHandler, FormBuilder],
-      declarations: [ NlGalleryComponent ]
-    })
-    .compileComponents();
-  }));
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NlGalleryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [NlGalleryComponent, FormBuilder],
+      imports: [HttpClientTestingModule, RouterTestingModule]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    component = TestBed.inject(NlGalleryComponent);
+  });
+
+  afterEach(() => httpTestingController.verify());
+
+  it('Should make the API request to get gallery informations', () => {
+    const style = 'https://valoukervyn.ephec-ti.be/api/gallery/splash';
+    component.requestGetting(style);
+    const req = httpTestingController.expectOne(style);
+    expect(req.request.method).toEqual('GET');
   });
 });
