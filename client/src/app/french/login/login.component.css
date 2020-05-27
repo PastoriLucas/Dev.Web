@@ -2,8 +2,11 @@
   margin: 0 5%;
   background-color: white;
   padding: 1%;
-  font-size: 20px;
   text-align: center;
+}
+
+h1 {
+  font-size: 3.5vw;
 }
 
 input {
@@ -12,11 +15,12 @@ input {
   padding: 1%;
   margin: 1%;
   font-family: "Champagne & Limousines", sans-serif;
-  font-size: 20px;
+  font-size: 1.55vw;
   width: 30%;
 }
 label {
   margin-left: 1%;
+  font-size: 1.55vw;
 }
 
 #submit {
