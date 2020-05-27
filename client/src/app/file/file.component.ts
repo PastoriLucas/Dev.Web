@@ -46,7 +46,7 @@ export class FileComponent implements OnInit {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('https://51.178.40.75:8888/api/adminPainting', formData, {
+      this.http.post('https://valoukervyn.ephec-ti.be:8888/api/adminPainting', formData, {
         params: {
           galleryDescription: res.value.description,
           galleryFile: this.uploadedFiles[i].name,
@@ -63,7 +63,7 @@ export class FileComponent implements OnInit {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      this.http.post('http://51.178.40.75:8888/api/adminEvent', formData, {
+      this.http.post('https://valoukervyn.ephec-ti.be:8888/api/adminEvent', formData, {
         params: {
           eventName: res.value.name,
           eventBegin: res.value.dateBegin.toString(),
@@ -83,7 +83,7 @@ export class FileComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.get('http://localhost:8888/api/admin', {
+    this.http.get('https://valoukervyn.ephec-ti.be:8888/api/admin', {
       params: {
         mail: res.mail,
         password: res.password

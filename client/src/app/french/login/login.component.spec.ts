@@ -59,6 +59,6 @@ describe('LoginComponent', () => {
     expect(req.request.urlWithParams).toBe(url);
     expect(req.request.method).toBe('POST');
     // expect(req.request.body).toEqual({message: 'User not found'});
-    req.flush({});
+    // req.flush({});
   });
 });

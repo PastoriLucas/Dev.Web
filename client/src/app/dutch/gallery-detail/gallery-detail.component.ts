@@ -16,7 +16,7 @@ export class NlGalleryDetailComponent implements OnInit {
 
   public nbrUrl: number;
   public urlStyle;
-  public actualPaint = {id: '', name: '', size: '', creationdate: '', image: '', likes: ''};
+  public actualPaint = {id: '', description: '', image: '', likes: ''};
   public param = '';
   public likes;
   comments: any;

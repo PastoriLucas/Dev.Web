@@ -17,6 +17,7 @@
   width: 49%;
   margin-left: 40%;
   margin-top: 0;
+  margin-bottom: 2%;
   text-align: left;
   background-color: #ededed;
   font-size: 1.7vw;
@@ -67,4 +68,8 @@
 #map {
   height: 500px;
   width: 100%;
+}
+
+input {
+  font-family: 'GeosansLight', sans-serif;
 }

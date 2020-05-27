@@ -10,15 +10,18 @@
     <label for="mail">Mail : </label><input type="email" id="mail" name="mail" required formControlName="email"><br>
     <label for="pwd1">Password : </label><input type="password" id="pwd1" name="pwd1" required formControlName="password">
     <label for="shwPwd"> View password </label> <input type="checkbox" name="shwPwd" id="shwPwd" (click)="shwPassword()"><br>
-    <label for="pwd2">Password Confirmation : </label><input type="password" id="pwd2" name="pwd2" required formControlName="confirm">
+    <label for="pwd2">Password confirmation : </label><input type="password" id="pwd2" name="pwd2" required formControlName="confirm">
     <div id="notif">Do you want to receive notifications?
-      <input type="radio" id="yes" name="notification" value="yes" checked formControlName="notification">
-      <label for="yes">Yes :</label>
-      <input type="radio" id="no" name="notification" value="no" formControlName="notification">
-      <label for="no">No :</label> </div>
-    <input class="submit" type="submit" id="submit" value="Valider">
+      <label for="yes">Yes :
+        <input type="radio" id="yes" name="notification" value="yes" checked formControlName="notification">
+      </label>
+      <label for="no">No :
+        <input type="radio" id="no" name="notification" value="no" formControlName="notification">
+      </label>
+    </div>
+    <input class="submit" type="submit" id="submit" value="Confirm">
     <a href="/fr/login">
-      <input type="button" value="Connection">
+      <input type="button" value="Log in">
     </a>
   </form>
 </div>

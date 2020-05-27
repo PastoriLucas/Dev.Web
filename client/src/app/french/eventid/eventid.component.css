@@ -68,3 +68,7 @@
   height: 500px;
   width: 100%;
 }
+
+input {
+  font-family: 'GeosansLight', sans-serif;
+}

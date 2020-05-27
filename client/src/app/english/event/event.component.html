@@ -7,20 +7,20 @@
   <div id="tri">
     <p id="texteTri">Sort by : </p>
     <div id="dropdownEvents">
-      <a id="triEvents">Start date</a>
+      <a id="triEvents">Descending date</a>
       <div id="dropdown-content-tri">
         <p class="itemDropdown" (click)="tri('name', 'Nom')">Name</p>
-        <p class="itemDropdown" (click)="tri('begin', 'Date de début')">Start date</p>
-        <p class="itemDropdown" (click)="tri('end', 'Date de fin')">End date</p>
-        <p class="itemDropdown" (click)="triAnnee('2020', 'Année')">Year</p>
+        <p class="itemDropdown" (click)="tri('asc', 'Ascending date')">Ascending date</p>
+        <p class="itemDropdown" (click)="tri('desc', 'Descending date')">Descending date</p>
+        <p class="itemDropdown" (click)="triAnnee('2020', 'Year')">Year</p>
       </div>
     </div>
     <div id="dropdownAnnee">
       <a id="triAnnee">2020</a>
       <div id="dropdown-content-annee">
-        <p class="itemDropdown" (click)="triAnnee('2020', 'Année')">2020</p>
-        <p class="itemDropdown" (click)="triAnnee('2019', 'Année')">2019</p>
-        <p class="itemDropdown" (click)="triAnnee('2018', 'Année')">2018</p>
+        <p class="itemDropdown" (click)="triAnnee('2020', 'Year')">2020</p>
+        <p class="itemDropdown" (click)="triAnnee('2019', 'Year')">2019</p>
+        <p class="itemDropdown" (click)="triAnnee('2018', 'Year')">2018</p>
       </div>
     </div>
   </div>

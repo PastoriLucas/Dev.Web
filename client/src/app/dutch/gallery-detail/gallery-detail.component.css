@@ -1,19 +1,20 @@
 .pageWeb {
   margin: 0 5%;
   background-color: white;
+  padding: 2%;
 }
 
 #image {
-  padding: 3% 5% 0.5% 5%;
-  width: 40%;
+  padding: 0 2% 0.5%;
+  width: 44%;
 }
 
 #details {
-  position: relative;
+  float: right;
   padding: 3%;
-  width: 39%;
-  margin-left: 50%;
-  margin-top: -41%;
+  width: 44%;
+  /*margin-left: 50%;*/
+  margin-top: 0;
   text-align: left;
   background-color: #ededed;
   font-size: 1.7vw;
@@ -26,12 +27,17 @@
   margin-top: 1.5%;
 }
 
+#likeImage {
+  width: 5%;
+}
+
 #comments {
+  float: none;
   padding: 2% 3%;
   background-color: #ededed;
-  margin-top: 15%;
-  margin-left: 5%;
-  width: 84%;
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 92%;
 }
 .commentList {
   border-bottom: 1px solid slategrey;

@@ -109,3 +109,8 @@ body {
 .botnav img:hover {
   opacity: 0.8;
 }
+
+#copyright {
+  margin-top: 0;
+  font-size: 1vw;
+}
