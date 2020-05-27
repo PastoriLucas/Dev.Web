@@ -1,5 +1,16 @@
 <app-headerfr></app-headerfr>
-<div class="mainContainer">
+<div class="access" id="access">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <label>Mail :
+      <input type="email" placeholder="Mail" formControlName="mail">
+    </label><br>
+    <label>Mot de passe :
+      <input type="password" placeholder="Mot de passe" formControlName="password">
+    </label>
+    <input type="submit">
+  </form>
+</div>
+<div class="mainContainer" id="main">
   <div class="content">
     <div class="header">
       <h1>Admin</h1>
@@ -7,11 +18,8 @@
     <div class="paintings">
       <h1>Galerie</h1>
       <form method="post" enctype="multipart/form-data" [formGroup]="gallery" (ngSubmit)="sendPainting(this.gallery)">
-        <label>Nom :
-          <input type="text" required name="name" formControlName="name" placeholder="Nom">
-        </label><br>
-        <label>Taille :
-          <input type="text" required name="size" formControlName="size" placeholder="Taille">
+        <label>Description :
+          <input type="text" required name="size" formControlName="description" placeholder="Description">
         </label><br>
         <label>Image :
           <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">

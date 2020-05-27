@@ -23,7 +23,7 @@ describe('FrGalleryDetailComponent', () => {
   it('Should make the API request to get detailed information of picture', () => {
     component.urlStyle = 'splash';
     component.requestGetting();
-    const req = httpTestingController.expectOne('https://51.178.40.75/api/galerie/splash');
+    const req = httpTestingController.expectOne('https://51.178.40.75:8888/api/galerie/splash');
     expect(req.request.method).toEqual('GET');
   });
 
@@ -41,7 +41,7 @@ describe('FrGalleryDetailComponent', () => {
     // tslint:disable-next-line:no-shadowed-variable
     component.nbrUrl = 2;
     // tslint:disable-next-line:no-shadowed-variable
-    const testedFunct = component.likes(false);
+    const testedFunct = component.like(false);
     expect(testedFunct).toEqual('unlogged');
   });
 
