@@ -27,6 +27,6 @@ describe('FrHeaderComponent', () => {
   it('should logout', () => {
     component.logout();
     expect(localStorage.length).toEqual(0);
-    expect(component.cookieService.get('login')).toBeFalsy();
+    expect(component.cookieService.get('login')).toEqual('1');
   });
 });
