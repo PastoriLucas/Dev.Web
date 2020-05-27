@@ -14,7 +14,8 @@ export class FrGalleryComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
-  style = 'https://valoukervyn.ephec-ti.be:8888/api/galerie/' + location.href.split('/gallery/').pop();
+  // style = 'https://valoukervyn.ephec-ti.be:8888/api/galerie/' + location.href.split('/gallery/').pop();
+   style = 'http://localhost:8888/api/galerie/' + location.href.split('/gallery/').pop();
   requestGetting(style) {
     this.http.get(style)
       .subscribe(result => {

@@ -29,8 +29,8 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   requestGetting() {
-    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/galerie/` + this.urlStyle)
-    // this.http.get(`localhost:8888/api/galerie/` + this.urlStyle)
+    // this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/galerie/` + this.urlStyle)
+    this.http.get(`http://localhost:8888/api/galerie/` + this.urlStyle)
       .subscribe(result => {
         // @ts-ignore
         // tslint:disable-next-line:prefer-for-of
@@ -89,8 +89,8 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post(`https://valoukervyn.ephec-ti.be:8888/api/like`, '', {
-    // this.http.post(`https://localhost:8888/api/like`, '', {
+    // this.http.post(`https://valoukervyn.ephec-ti.be:8888/api/like`, '', {
+    this.http.post(`http://localhost:8888/api/like`, '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
@@ -111,8 +111,8 @@ export class FrGalleryDetailComponent implements OnInit {
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
-        this.http.post(`https://valoukervyn.ephec-ti.be:8888/api/dislike`, '', {
-        // this.http.post(`localhost:8888/api/dislike`, '', {
+        // this.http.post(`https://valoukervyn.ephec-ti.be:8888/api/dislike`, '', {
+        this.http.post(`http://localhost:8888/api/dislike`, '', {
           headers,
           params: {
             user: this.cookieService.get('login'),
@@ -131,8 +131,8 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   comment() {
-    const urlGet = 'https://valoukervyn.ephec-ti.be:8888/api/commentsgallery/' + this.nbrUrl;
-    //  const urlGet = 'localhost:8888/api/commentsgallery/' + this.nbrUrl;
+    // const urlGet = 'https://valoukervyn.ephec-ti.be:8888/api/commentsgallery/' + this.nbrUrl;
+    const urlGet = 'http://localhost:8888/api/commentsgallery/' + this.nbrUrl;
     this.http.get(urlGet)
       .subscribe(result => {
         this.comments = result;
@@ -147,8 +147,8 @@ export class FrGalleryDetailComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('https://valoukervyn.ephec-ti.be:8888/api/commentsgallery', '', {
-    // this.http.post('localhost:8888/api/commentsgallery', '', {
+    // this.http.post('https://valoukervyn.ephec-ti.be:8888/api/commentsgallery', '', {
+    this.http.post('http://localhost:8888/api/commentsgallery', '', {
       headers,
       params: {
         user: this.cookieService.get('login'),
