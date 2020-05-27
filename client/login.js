@@ -146,7 +146,7 @@ app.get('/api/galerie/:style', async (req, res) => {
 
 app.post('/api/users', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
-  check('firstname', 'Firstname must only include MAJ and low').isAlpha(),
+  check('firstname', 'Firstname must only include MAJ and low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[- ])[A-Za-z\d]+$/, 'i'),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
   check('lastname', 'Lastname must only include MAJ and low').isAlpha(),
   check('email', 'Email must have @ and . ').isEmail(),
@@ -286,7 +286,11 @@ app.post('/api/contact', async (req,res) => {
   };
 
   transporter.sendMail(mailOptions, function(error, info){
-    if (error) throw error;
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
   });
 });
 

@@ -37,6 +37,7 @@ export class FrContactComponent implements OnInit {
       headers : headers
     })
       .subscribe(result => {
+        console.log(result);
         return result !== false;
       });
     location.reload();
