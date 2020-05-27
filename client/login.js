@@ -290,7 +290,11 @@ app.post('/api/contact', async (req,res) => {
   };
 
   transporter.sendMail(mailOptions, function(error, info){
-    if (error) throw error;
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
   });
 });
 passport.serializeUser(function (user_id, done) {
