@@ -17,3 +17,10 @@
 .upload {
   cursor: pointer;
 }
+.access {
+  margin-left: 5%;
+}
+
+.mainContainer {
+  display: none;
+}

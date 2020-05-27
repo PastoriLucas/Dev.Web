@@ -35,7 +35,7 @@ export class FrLoginComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
-    this.http.post('https://51.178.40.75:8888/api/login', '', {
+    this.http.post('https://valoukervyn.ephec-ti.be:8888/api/login', '', {
       params : {
         username : res.username,
         password : res.password

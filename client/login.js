@@ -13,6 +13,8 @@ const https = require('https');
 var http = require('http');
 const cors = require('cors');
 
+https.globalAgent.options.secureProtocol = 'SSLv3_method';
+
 
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
@@ -128,7 +130,7 @@ app.get('/api/evenement/:tri', async (req, res) => {
 
 app.get('/api/galerie/:style', async (req, res) => {
   let style = req.url.split('/galerie/').pop();
-  let sql = 'SELECT "paintingId", name, size, to_char(creationdate, \'DD/MM/YYYY\') as creationdate, image, likes FROM paintings WHERE category = \'' + style + '\' ORDER BY "paintingId"';
+  let sql = 'SELECT "paintingId", description, image, likes FROM paintings WHERE category = \'' + style + '\' ORDER BY "paintingId"';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
@@ -257,15 +259,19 @@ app.get('/api/commentsevent/:id', async (req, res) => {
   })
 });
 
-
-app.post('/api/admin', async (req, res) => {
-  pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\' AND mail like \'%admin@admin.admin%\'', (err, rows) => {
-    if (err) throw err;
-    bcrypt.compare(req.query.password, rows.rows[0].password, (err, values) => {
+app.get('/api/admin', async (req, res) => {
+  if (req.query.mail === 'admin@admin.admin') {
+    pool.query('SELECT * FROM users WHERE "firstname" like \'%Admin%\' AND "lastname" like \'%Admin%\' AND mail like \'%admin@admin.admin%\'', (err, rows) => {
       if (err) throw err;
-      return res.send(values);
-    });
-  })
+      bcrypt.compare(req.query.password, rows.rows[0].password, (err, values) => {
+        if (err) throw err;
+        return res.send(values);
+      });
+    })
+  }
+  else {
+    return false;
+  }
 });
 
 app.post('/api/contact', async (req,res) => {

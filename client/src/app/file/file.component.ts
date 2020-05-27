@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
+import {consoleTestResultHandler} from "tslint/lib/test";
 
 @Component({
   selector: 'app-file',
@@ -13,11 +14,11 @@ export class FileComponent implements OnInit {
   uploadedFiles: Array < File > ;
   gallery: any;
   event: any;
+  checkoutForm: any;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, public cookieService: CookieService) {
     this.gallery = this.formBuilder.group({
-      name : '',
-      size : '',
+      description : '',
       category : ''
     });
     this.event = this.formBuilder.group({
@@ -27,20 +28,13 @@ export class FileComponent implements OnInit {
       place: '',
       description: ''
     });
+    this.checkoutForm = this.formBuilder.group({
+      mail: '',
+      password: ''
+    });
   }
 
   ngOnInit() {
-    const pwd = window.prompt('Mot de passe administrateur : ', '');
-    this.http.post('https://51.178.40.75:8888/api/admin', '', {
-      params: {
-        password: pwd
-      }
-    })
-      .subscribe(result => {
-        if (result === false) {
-          location.replace('/fr/home');
-        }
-      });
   }
 
   fileChange(element) {
@@ -54,8 +48,7 @@ export class FileComponent implements OnInit {
       formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
       this.http.post('https://51.178.40.75:8888/api/adminPainting', formData, {
         params: {
-          galleryName: res.value.name,
-          gallerySize: res.value.size,
+          galleryDescription: res.value.description,
           galleryFile: this.uploadedFiles[i].name,
           category : res.value.category
         }
@@ -80,7 +73,29 @@ export class FileComponent implements OnInit {
           eventFile: this.uploadedFiles[i].name
         }
       })
-        .subscribe();
+        .subscribe( result => {
+          console.log(result);
+          });
     }
+  }
+
+  onSubmit(res) {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    this.http.get('http://localhost:8888/api/admin', {
+      params: {
+        mail: res.mail,
+        password: res.password
+      },
+      headers: headers
+    }).subscribe( result => {
+      if (result) {
+        document.getElementById('main').style.display = 'flex';
+        document.getElementById('access').style.display = 'none';
+      } else {
+        location.replace('/fr/home');
+      }
+    });
   }
 }
