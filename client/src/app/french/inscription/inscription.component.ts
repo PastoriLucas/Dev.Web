@@ -35,7 +35,8 @@ export class FrInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      this.http.post('https://valoukervyn.ephec-ti.be:8888/api/users', '', {
+      // this.http.post('https://valoukervyn.ephec-ti.be:8888/api/users', '', {
+      this.http.post('http://localhost:8888/api/users', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
@@ -49,7 +50,7 @@ export class FrInscriptionComponent implements OnInit {
         .subscribe(result => {
           document.getElementById('error').innerText = '';
           if (result === false) {
-            document.getElementById('error').innerText = 'L\'utilisateur existe déjà';
+            document.getElementById('error').innerText = 'This e-mail address is still used.';
             document.getElementById('error').style.display = 'flex';
           } else if (result === true) {
             document.getElementById('error').innerText = 'Va vers login';
@@ -67,7 +68,7 @@ export class FrInscriptionComponent implements OnInit {
             }
           }
         });
-    } else { document.getElementById('error').innerText = 'Veuillez indiquer 2 fois le même mot de passe ! ';
+    } else { document.getElementById('error').innerText = 'Please enter twice the same password';
              document.getElementById('error').style.display = 'flex'; }
   }
   shwPassword() {

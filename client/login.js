@@ -156,9 +156,7 @@ app.post('/api/test', async (req, res) => {
 
 app.post('/api/users', [
   check('firstname', 'Firstname cannot be empty').notEmpty(),
-  check('firstname', 'Firstname must only include MAJ and low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[- ])[A-Za-z\d]+$/, 'i'),
   check('lastname', 'Lastname cannot be empty').notEmpty(),
-  check('lastname', 'Lastname must only include MAJ and low').isAlpha(),
   check('email', 'Email must have @ and . ').isEmail(),
   check('password', 'Password length must be between 8 and 50').isLength({min: 8, max : 50}),
   check('password', 'Password must include spécial (@$.!%*#?&), number, Maj and Low').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,}$/, 'i')

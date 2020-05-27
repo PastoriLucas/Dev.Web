@@ -2,7 +2,7 @@
   margin: 0 5%;
   background-color: white;
   padding: 1%;
-  font-size: 20px;
+  font-size: 1.55vw;
 }
 input {
   background-color: #ededed;
@@ -10,7 +10,7 @@ input {
   padding: 1%;
   margin: 1%;
   font-family: "Champagne & Limousines", sans-serif;
-  font-size: 20px;
+  font-size: 1.5vw;
   width: 30%;
 }
 label {
@@ -29,7 +29,7 @@ label {
   margin: 0 5%;
   background-color: white;
   padding: 1%;
-  font-size: 20px;
+  font-size: 1.7vw;
   display: none;
   color: red;
 }
