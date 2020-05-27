@@ -54,9 +54,12 @@ export class FileComponent implements OnInit {
         }
       })
         .subscribe((response) => {
-          this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifGalerie').subscribe();
+          if (!response) {
+            return false;
+          }
         });
     }
+    this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifGalerie').subscribe();
   }
 
   sendEvent(res) {
@@ -76,9 +79,13 @@ export class FileComponent implements OnInit {
       })
         .subscribe( result => {
           console.log(result);
-          this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifEvent').subscribe();
+          if (!result) {
+            return false ;
+          }
+
           });
     }
+    this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifEvent').subscribe();
   }
 
   onSubmit(res) {

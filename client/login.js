@@ -193,7 +193,9 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
     'message': 'File uploaded succesfully.'
   });
   let file = '../../assets/img/' + req.query.galleryFile;
-  pool.query("INSERT INTO paintings (description, image, category) VALUES ('"+ req.query.galleryDescription +"', '" + file + "', '"+ req.query.category +"')",
+  let value = [req.query.galleryDescription,file,req.query.category];
+  let sql = "INSERT INTO paintings (description, image, category) VALUES ($1,$2,$3)";
+  pool.query(sql, value,
     (err) => {
     if (err) throw err;
     return res.end(true);
@@ -203,11 +205,12 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
 app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
   console.log(req.query);
   let file = '../../assets/img/' + req.query.eventFile;
+  let values = [req.query.eventName,req.query.eventBegin,req.query.eventEnd,req.query.eventPlace,req.query.eventDescription,file];
   let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
-    "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
-  pool.query(sql, (err, rows) => {
+    "VALUES ($1,$2,$3,$4,$5,$6)";
+  pool.query(sql, values,  (err, rows) => {
     if (err) throw err;
-    return rows;
+    return res.send(true);
   })
 });
 
