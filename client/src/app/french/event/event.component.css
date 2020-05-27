@@ -37,6 +37,7 @@ img{
   margin-right: 3%;
   border-radius: 5px 0 0 5px;
   width: 18.9%;
+  max-height: 220px;
 }
 
 iframe{

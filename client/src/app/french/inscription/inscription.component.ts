@@ -35,8 +35,7 @@ export class FrInscriptionComponent implements OnInit {
       const headers = new HttpHeaders()
         .set('Authorization', 'my-auth-token')
         .set('Content-Type', 'application/json');
-      // this.http.post('https://valoukervyn.ephec-ti.be:8888/api/users', '', {
-      this.http.post('http://localhost:8888/api/users', '', {
+      this.http.post('https://valoukervyn.ephec-ti.be:8888/api/users', '', {
         params : {
           firstname: res.firstname,
           lastname: res.lastname,
