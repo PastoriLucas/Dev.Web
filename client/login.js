@@ -224,7 +224,7 @@ app.post('/api/commentsgallery', async (req, res) => {
 });
 
 app.get('/api/commentsgallery/:id', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, commentsGallery.comment FROM commentsGallery JOIN users on commentsGallery."userId" = users."userId" where "paintingId" = ' + req.params.id;
+  let sql = 'select users.lastname, users.firstname, commentsGallery.comment FROM commentsGallery JOIN users on commentsGallery."userId" = users."userId" where "paintingId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);
@@ -242,7 +242,7 @@ app.post('/api/commentsevent', async (req, res) => {
 });
 
 app.get('/api/commentsevent/:id', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id;
+  let sql = 'select users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);

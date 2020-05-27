@@ -21,7 +21,7 @@ describe('FrGalleryComponent', () => {
   afterEach(() => httpTestingController.verify());
 
   it('Should make the API request to get gallery informations', () => {
-    const style = '/api/gallery/splash';
+    const style = 'https://valoukervyn.ephec-ti.be/api/gallery/splash';
     component.requestGetting(style);
     const req = httpTestingController.expectOne(style);
     expect(req.request.method).toEqual('GET');
