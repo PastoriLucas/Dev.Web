@@ -54,7 +54,7 @@ export class FrLoginComponent implements OnInit {
           this.expire.setDate(Date.now());
           this.expire.setDate( this.expire.getDate() + 1);
           // @ts-ignore
-          this.cookieService.set('login', result.userId, this.expire, '/');
+          this.cookieService.set('login', result.userId, this.expire, '/', '', true, 'None');
           // @ts-ignore
           localStorage.setItem('likes', result.likes);
           location.replace('/fr/home');
