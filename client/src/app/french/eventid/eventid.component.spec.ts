@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import { FrEventidComponent } from './eventid.component';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {FormBuilder} from '@angular/forms';
-import {HttpClient, HttpHandler} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 describe('FrEventComponent', () => {
   let component: FrEventidComponent;
@@ -12,7 +12,7 @@ describe('FrEventComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FrEventidComponent, FormBuilder, HttpClient, HttpHandler],
+      providers: [FrEventidComponent, FormBuilder, HttpClient],
       imports: [HttpClientTestingModule]
     });
     httpTestingController = TestBed.inject(HttpTestingController);

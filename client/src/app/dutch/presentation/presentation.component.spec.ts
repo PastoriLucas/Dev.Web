@@ -1,21 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NlPresentationComponent } from './presentation.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FormBuilder} from '@angular/forms';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('NlPresentationComponent', () => {
   let component: NlPresentationComponent;
-  let fixture: ComponentFixture<NlPresentationComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NlPresentationComponent ]
-    })
-    .compileComponents();
-  }));
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NlPresentationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [ NlPresentationComponent, FormBuilder ],
+      imports: [HttpClientTestingModule, RouterTestingModule]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    component = TestBed.inject(NlPresentationComponent);
   });
+
+  afterEach(() => httpTestingController.verify());
 });
