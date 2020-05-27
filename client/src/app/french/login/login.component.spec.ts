@@ -4,7 +4,7 @@ import { FrLoginComponent } from './login.component';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe('LoginComponent', () => {
+describe('FrLoginComponent', () => {
   let component: FrLoginComponent;
   let httpTestingController: HttpTestingController;
 
@@ -34,7 +34,6 @@ describe('LoginComponent', () => {
   afterEach(() => httpTestingController.verify());
 
   it('Should send error if user doesn\'t exist', () => {
-    const url = '/api/login';
     if (usersTest[0].mail === valeurTest[2].username) {
       component.usersInformations = usersTest[0];
     } else if (usersTest[1].mail === valeurTest[2].username) {
@@ -58,7 +57,6 @@ describe('LoginComponent', () => {
     const req = httpTestingController.expectOne(url);
     expect(req.request.urlWithParams).toBe(url);
     expect(req.request.method).toBe('POST');
-    // expect(req.request.body).toEqual({message: 'User not found'});
-    // req.flush({});
+    req.flush({});
   });
 });

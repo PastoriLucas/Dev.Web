@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {HttpClient, HttpHandler} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {EnEventidComponent} from './eventid.component';
@@ -11,7 +11,7 @@ describe('EnEventidComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EnEventidComponent, FormBuilder, HttpClient, HttpHandler],
+      providers: [EnEventidComponent, FormBuilder, HttpClient],
       imports: [HttpClientTestingModule]
     });
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -27,6 +27,8 @@ describe('EnEventidComponent', () => {
   it('should initialize page', () => {
     const spyComment = spyOn(component, 'comment');
     component.ngOnInit();
+    const req = httpTestingController.expectOne('https://valoukervyn.ephec-ti.be:8888/api/evenement');
+    expect(req.request.method).toEqual('GET');
     expect(spyComment).toHaveBeenCalled();
   });
 
