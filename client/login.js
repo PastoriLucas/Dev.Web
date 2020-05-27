@@ -18,7 +18,7 @@ https.globalAgent.options.secureProtocol = 'SSLv3_method';
 
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
-  uploadDir: '.dist/client/assets/img'
+  uploadDir: './dist/client/assets/img'
 });
 const app = express();
 
