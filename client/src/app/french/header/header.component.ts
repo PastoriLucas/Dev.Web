@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-headerfr',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
