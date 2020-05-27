@@ -44,6 +44,7 @@ describe('FrInscriptionComponent', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
+  afterEach(() => httpTestingController.verify());
 
   it('verify shwPassword', async (() => {
     let attribute = document.getElementById('pwd1').getAttribute('type');

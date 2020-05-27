@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { FrContactComponent } from './contact.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FormBuilder} from '@angular/forms';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+
 
 describe('FrContactComponent', () => {
   let component: FrContactComponent;
@@ -23,7 +24,8 @@ describe('FrContactComponent', () => {
   afterEach(() => httpTestingController.verify());
 
   it('Should do a post request to backend for sending email', () => {
-    const url = `https://51.178.40.75:8888/api/contact?name=TestName&envoyeur=test@email.com&objet=testSubject&texte=testMessage`;
+    // tslint:disable-next-line:max-line-length
+    const url = `https://valoukervyn.ephec-ti.be:8888/api/contact?name=TestName&envoyeur=test@email.com&objet=testSubject&texte=testMessage`;
     component.onSubmit(valeurTest);
     const req = httpTestingController.expectOne(url);
     expect(req.request.urlWithParams).toBe(url);

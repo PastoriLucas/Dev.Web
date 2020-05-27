@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class FrHeaderComponent implements OnInit {
   page: any;
+  login: any;
 
   constructor(public cookieService: CookieService, private http: HttpClient) { }
 
@@ -18,6 +19,9 @@ export class FrHeaderComponent implements OnInit {
     if (this.cookieService.get('login')) {
       document.getElementById('logout').style.display = 'inherit';
       document.getElementById('login').style.display = 'none';
+      this.login = 'Mon Compte';
+    } else {
+      this.login = 'Connexion';
     }
   }
 

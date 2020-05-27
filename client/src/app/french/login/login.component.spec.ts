@@ -53,7 +53,7 @@ describe('LoginComponent', () => {
   });
 
   it('should do a post request to backend', () => {
-    const url = `https://51.178.40.75:8888/api/login?username=test&password=123`;
+    const url = `https://valoukervyn.ephec-ti.be:8888/api/login?username=test&password=123`;
     component.onSubmit(valeurTest[2]);
     const req = httpTestingController.expectOne(url);
     expect(req.request.urlWithParams).toBe(url);

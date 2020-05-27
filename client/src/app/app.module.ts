@@ -151,7 +151,7 @@ const appRoutes: Routes = [
     NlFooterComponent,
     NlHeaderComponent,
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, FrFooterComponent, FrHeaderComponent],
   providers: [CookieService, Title],
   bootstrap: [AppComponent]
 })

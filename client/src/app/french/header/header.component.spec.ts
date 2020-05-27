@@ -36,10 +36,4 @@ describe('FrHeaderComponent', () => {
     expect(component.login).toBe('Mon Compte');
     component.cookieService.deleteAll();
   });
-
-  it('should logout', () => {
-    component.logout();
-    expect(localStorage.length).toEqual(0);
-    expect(component.cookieService.get('login')).toBeFalsy();
-  });
 });

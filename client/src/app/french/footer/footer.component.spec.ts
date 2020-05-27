@@ -1,26 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { FrFooterComponent } from './footer.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClient, HttpHandler} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('FrFooterComponent', () => {
   let component: FrFooterComponent;
-  let fixture: ComponentFixture<FrFooterComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FrFooterComponent ],
-      imports: [ RouterTestingModule],
-      providers: [HttpHandler, HttpClient, FormBuilder]
-    })
-    .compileComponents();
-  }));
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrFooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [FrFooterComponent, FormBuilder],
+      imports: [HttpClientTestingModule, RouterTestingModule]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    component = TestBed.inject(FrFooterComponent);
   });
+
+  afterEach(() => httpTestingController.verify());
 });
