@@ -15,6 +15,7 @@ export class EnLoginComponent implements OnInit {
 
   public checkoutForm;
   public usersInformations: object;
+  private expire;
 
   constructor(public http: HttpClient, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
     this.checkoutForm = this.formBuilder.group({
@@ -50,8 +51,10 @@ export class EnLoginComponent implements OnInit {
           document.getElementById('error').innerText = result.message;
           document.getElementById('error').style.display = 'inherit';
         } else {
+          this.expire.setDate(Date.now());
+          this.expire.setDate( this.expire.getDate() + 1);
           // @ts-ignore
-          this.cookieService.set('login', result.userId);
+          this.cookieService.set('login', result.userId, this.expire, '/', '.ephec-ti.be', true, 'None');
           // @ts-ignore
           localStorage.setItem('likes', result.likes);
           location.replace('/en/home');
