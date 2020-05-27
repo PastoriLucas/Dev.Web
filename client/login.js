@@ -201,17 +201,16 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
 });
 
 app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
-  res.json({
-    'message': 'File uploaded succesfully.'
-  });
+  console.log(req.query);
   let file = '../../assets/img/' + req.query.eventFile;
   let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
     "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
   pool.query(sql, (err, rows) => {
-    if (err) {return err}
+    if (err) throw err;
     return rows;
   })
 });
+
 
 app.post('/api/commentsgallery', async (req, res) => {
   let query = req.query;
