@@ -17,7 +17,7 @@ export class FrEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/evenement`)
+    this.http.get(`http://localhost:8888/api/evenement`)
       .subscribe(result => {
         this.sendValues(result);
     });
@@ -29,7 +29,7 @@ export class FrEventComponent implements OnInit {
     if (valeurTri === 'year') {
       document.getElementById('dropdownAnnee').style.display = 'block';
     }
-    this.http.get(`https://valoukervyn.ephec-ti.be:8888/api/evenement/` + valeurTri)
+    this.http.get(`http://localhost:8888/api/evenement/` + valeurTri)
       .subscribe(result => {
         this.sendValues(result);
       });

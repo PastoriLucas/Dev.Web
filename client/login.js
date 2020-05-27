@@ -110,7 +110,6 @@ app.get('/api/evenement', async (req, res) => {
 
 app.get('/api/evenement/annee/:tri', async (req, res) => {
   let tri = parseInt(req.url.split('/annee/').pop());
-  // recupere les valeurs du formulaire
   let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events WHERE (SELECT extract(YEAR from begin) = '+tri+') ORDER BY "events"."begin" DESC';
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
@@ -120,8 +119,16 @@ app.get('/api/evenement/annee/:tri', async (req, res) => {
 
 app.get('/api/evenement/:tri', async (req, res) => {
   let tri = req.url.split('/evenement/').pop();
-  // recupere les valeurs du formulaire
-  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '"';
+  let order = '';
+  if (tri === 'asc') {
+    tri = 'begin' ;
+    order = 'ASC'
+  }
+  if (tri === 'desc') {
+    tri = 'begin';
+    order = 'desc';
+  }
+  let sql = 'SELECT "eventId" , name, to_char("begin", \'DD/MM/YYYY\') as "begin", to_char("end", \'DD/MM/YYYY\') as "end", place, description, image FROM events ORDER BY "events"."'+tri+ '" '+ order;
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
@@ -134,23 +141,6 @@ app.get('/api/galerie/:style', async (req, res) => {
   await pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.json(rows.rows);
-  });
-});
-
-app.post('/api/test', async (req, res) => {
-  let sql = 'SELECT * FROM users WHERE mail=\''+ req.query.email + '\'';
-  await pool.query(sql, (err,rows) => {
-    if(rows.rows.length > 0) {
-      bcrypt.compare(req.query.password, rows.rows[0].password, (err, match) => {
-        if (match){
-          req.login(rows.rows[0].id, function () {
-            return res.end(true);
-          });
-        }
-        return res.end(false);
-      });
-    }
-    return res.end(false);
   });
 });
 
@@ -225,8 +215,9 @@ app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
 
 app.post('/api/commentsgallery', async (req, res) => {
   let query = req.query;
-  let sql = 'INSERT INTO commentsGallery ("userId", comment, "paintingId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.painting)+")";
-  pool.query(sql, (err) => {
+  let sql = 'INSERT INTO commentsGallery ("userId", comment, "paintingId") VALUES ($1,$2,$3)';
+  let value = [parseInt(query.user), query.comment, parseInt(query.painting)];
+  pool.query(sql, value, (err) => {
     if (err) throw err;
     return res.send(true);
   })
@@ -242,8 +233,9 @@ app.get('/api/commentsgallery/:id', async (req, res) => {
 
 app.post('/api/commentsevent', async (req, res) => {
   let query = req.query;
-  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ('+parseInt(query.user)+", '"+query.comment+"', "+parseInt(query.event)+")";
-  pool.query(sql, (err) => {
+  let sql = 'INSERT INTO commentsEvent ("userId", comment, "eventId") VALUES ($1,$2,$3)'
+  let value = [parseInt(query.user), query.comment, parseInt(query.event)];
+  pool.query(sql, value, (err) => {
     if (err) throw err;
     return res.send(true);
   })
@@ -292,9 +284,14 @@ app.post('/api/contact', async (req,res) => {
   };
 
   transporter.sendMail(mailOptions, function(error, info){
-    if (error) throw error;
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
   });
 });
+
 passport.serializeUser(function (user_id, done) {
   done(null, user_id);
 });
