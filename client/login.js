@@ -170,22 +170,24 @@ app.post('/api/users', [
   }
 });
 
-app.post('/api/like', async (req) => {
-  await pool.query(
-    'update paintings set likes = likes + 1 where "paintingId" = '+ req.query.painting + ';' +
-    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+app.post('/api/like', async (req, res) => {
+  await pool.query('UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
       if (err) throw err;
-      return res;
     });
+  await pool.query('UPDATE paintings SET likes = likes + 1 where "paintingId" = '+ req.query.painting + ';', (err, result) => {
+    if (err) throw err;
+    return res.send(true);
+    })
 });
 
-app.post('/api/dislike', async (req) => {
-  await pool.query(
-    'UPDATE paintings SET likes = likes - 1 WHERE "paintingId" = '+ req.query.painting + ';' +
-    'UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
+app.post('/api/dislike', async (req, res) => {
+  await pool.query('UPDATE users SET likes = \'{' + req.query.likes + '}\' WHERE "userId" = ' + req.query.user, (err, res) => {
       if (err) throw err;
-      return res;
     });
+  await pool.query('UPDATE paintings SET likes = likes - 1 WHERE "paintingId" = '+ req.query.painting + ';', (err, result) => {
+    if (err) throw err;
+    return res.send(true);
+  })
 });
 
 app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
@@ -226,7 +228,7 @@ app.post('/api/commentsgallery', async (req, res) => {
 });
 
 app.get('/api/commentsgallery/:id', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, commentsGallery.comment FROM commentsGallery JOIN users on commentsGallery."userId" = users."userId" where "paintingId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
+  let sql = 'SELECT users.lastname, users.firstname, commentsGallery.comment FROM commentsGallery JOIN users on commentsGallery."userId" = users."userId" where "paintingId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);
@@ -244,7 +246,7 @@ app.post('/api/commentsevent', async (req, res) => {
 });
 
 app.get('/api/commentsevent/:id', async (req, res) => {
-  let sql = 'select users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
+  let sql = 'SELECT users.lastname, users.firstname, commentsEvent.comment FROM commentsEvent JOIN users on commentsEvent."userId" = users."userId" where "eventId" = ' + req.params.id + ' ORDER BY "commentId" ASC';
   pool.query(sql, (err, rows) => {
     if (err) throw err;
     return res.send(rows.rows);

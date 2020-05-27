@@ -85,9 +85,7 @@ export class FrGalleryDetailComponent implements OnInit {
   }
 
   addLike(likes) {
-    console.log(likes);
     likes.push(Number(this.nbrUrl));
-    localStorage.setItem('likes', likes.toString());
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
@@ -99,7 +97,9 @@ export class FrGalleryDetailComponent implements OnInit {
         painting: this.nbrUrl.toString()
       }
     }).subscribe( result => {
-      console.log(result);
+      if (result) {
+        localStorage.setItem('likes', likes.toString());
+      }
     });
     location.reload();
   }
@@ -110,7 +110,6 @@ export class FrGalleryDetailComponent implements OnInit {
       // tslint:disable-next-line:radix
       if (parseInt(likes[l]) === this.nbrUrl) {
         likes.splice(l, 1);
-        localStorage.setItem('likes', likes.toString());
         const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
@@ -121,7 +120,10 @@ export class FrGalleryDetailComponent implements OnInit {
             likes : this.likes,
             painting : this.nbrUrl.toString()
           }
-        }).subscribe( () => {
+        }).subscribe( result => {
+          if (result) {
+            localStorage.setItem('likes', likes.toString());
+          }
           if (document.getElementById('likeImage') !== null) {
             document.getElementById('likeImage').setAttribute('src', '../../assets/img/heart_empty.png');
           }
