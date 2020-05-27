@@ -54,6 +54,7 @@ export class FileComponent implements OnInit {
         }
       })
         .subscribe((response) => {
+          this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifGalerie').subscribe();
         });
     }
   }
@@ -75,6 +76,7 @@ export class FileComponent implements OnInit {
       })
         .subscribe( result => {
           console.log(result);
+          this.http.get('https://valoukervyn.ephec-ti.be:8888/api/notifEvent').subscribe();
           });
     }
   }
