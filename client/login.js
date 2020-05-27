@@ -18,7 +18,7 @@ https.globalAgent.options.secureProtocol = 'SSLv3_method';
 
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({
-  uploadDir: './src/assets/img'
+  uploadDir: './dist/client/assets/img'
 });
 const app = express();
 
@@ -193,7 +193,7 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
     'message': 'File uploaded succesfully.'
   });
   let file = '../../assets/img/' + req.query.galleryFile;
-  pool.query("INSERT INTO paintings (name, size, creationdate, image, category) VALUES ('" + req.query.galleryName + "', '" + req.query.gallerySize + "', current_date, '" + file + "', '"+ req.query.category +"')",
+  pool.query("INSERT INTO paintings (description, image, category) VALUES ('"+ req.query.galleryDescription +"', '" + file + "', '"+ req.query.category +"')",
     (err) => {
     if (err) throw err;
     return res.end(true);
@@ -201,17 +201,16 @@ app.post('/api/adminPainting', multipartMiddleware, (req, res) => {
 });
 
 app.post('/api/adminEvent', multipartMiddleware, (req, res) => {
-  res.json({
-    'message': 'File uploaded succesfully.'
-  });
+  console.log(req.query);
   let file = '../../assets/img/' + req.query.eventFile;
   let sql = 'INSERT INTO events ("name", "begin", "end", "place", "description", "image") ' +
     "VALUES ('"+req.query.eventName+"', '"+req.query.eventBegin+"', '"+ req.query.eventEnd +"', '"+ req.query.eventPlace+"', '"+ req.query.eventDescription +"', '" +file+"')";
   pool.query(sql, (err, rows) => {
-    if (err) {return err}
+    if (err) throw err;
     return rows;
   })
 });
+
 
 app.post('/api/commentsgallery', async (req, res) => {
   let query = req.query;
